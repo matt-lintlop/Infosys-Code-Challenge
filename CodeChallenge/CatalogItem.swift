@@ -8,19 +8,24 @@
 
 import Foundation
 
+// Catalog Items
+class CatalogItems: Decodable {
+    var items: [String:[String:String]]             // catalog item dictionaries
+}
+
 // Catalog Item Summary
-enum CatalogItemSummaryKeys: String, Decodable {
-    case type                            // item type
-    case name                            // item name
-    case color                           // item color
-    case descreption                     // item descreption
+enum CatalogItemSummaryKeys: String {
+    case type                                       // item type
+    case name                                       // item name
+    case color                                      // item color
+    case descreption                                // item descreption
 }
 
 // Catalog Item Image
 struct CatalogItemImageReference: Decodable  {
-    let imageUrlPath: String                    // image url path
-    let imageWidth: String                      // image width string (example: "50px")
-    let imageHeight: String                     // image height string (example: "50px")
+    let imageUrlPath: String                        // image url path
+    let imageWidth: String                          // image width string (example: "50px")
+    let imageHeight: String                         // image height string (example: "50px")
     
     private enum CodingKeys: String, CodingKey {
         case imageUrlPath = "url"
@@ -29,7 +34,7 @@ struct CatalogItemImageReference: Decodable  {
     }
 }
 
-// Catalog Item Base Class
+// Catalog Item
 class CatalogItem: Decodable {
     let itemIdentifier: CatalogItemIdentifier         // item identifier
     let itemSummaryDict: [String:String]              // item summary dictionary
@@ -43,7 +48,6 @@ class CatalogItem: Decodable {
     }
     
     private enum CodingKeys: String, CodingKey {
-        case itemIdentifier = "url"
         case itemSummaryDict = "object_summary"
     }
 
@@ -54,9 +58,9 @@ class CatalogItem: Decodable {
 
 // Pet Catalog Item
 class PetCatalogItem: CatalogItem {
-    var petImage: CatalogItemImageReference?                // pet image
-    let petAge: String                                      // pet age
-    let favoriteToy: String                                 // favorite toy
+    var petImage: CatalogItemImageReference?        // pet image
+    let petAge: String                              // pet age
+    let favoriteToy: String                         // favorite toy
         
     required init(from decoder: Decoder) throws {
         fatalError("init(from:) has not been implemented")

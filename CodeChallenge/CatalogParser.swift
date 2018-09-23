@@ -21,8 +21,12 @@ class CatalogParser {
             return
         }
         do {
-            let json = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments)
-            print("Loaded JSON: \(json)")
+            guard let json = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as? Array<[String: AnyObject]> else {
+                return
+            }
+           print("Loaded JSON: \(json)")
+           print("JSON item count: \(json.count)")
+            
             completion(nil, [])
         }
         catch {
