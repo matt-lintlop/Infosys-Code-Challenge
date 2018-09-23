@@ -51,8 +51,8 @@ struct CatalogItemImageReference: Decodable {
 
 // Catalog Item
 class CatalogObject: Decodable  {
-    let objectIdentifier: String                         // object identifier
-    let objectSummary: CatalogObjectSummary              // object summary dictionary
+    var objectIdentifier: String                         // object identifier
+    var objectSummary: CatalogObjectSummary              // object summary dictionary
 
     enum CatalogObjectdentifier: String {
         case car
@@ -69,7 +69,7 @@ class CatalogObject: Decodable  {
         fatalError("init(from:) has not been implemented")
     }
  
-    init?(objectIdentifier: String, objectSummary: CatalogObjectSummary) {
+    init(objectIdentifier: String, objectSummary: CatalogObjectSummary) {
         self.objectIdentifier = objectIdentifier
         self.objectSummary = objectSummary
     }
