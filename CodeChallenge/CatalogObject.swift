@@ -51,8 +51,8 @@ struct ObjectImageReference: Decodable {
 
 // Catalog Object
 class CatalogObject: Decodable  {
-    let objectIdentifier: String                            // object identifier
-    let objectSummary: CatalogObjectSummary                 // object summary dictionary
+    var objectIdentifier: String                            // object identifier
+    var objectSummary: CatalogObjectSummary                 // object summary dictionary
 
     enum CatalogObjectdentifier: String {
         case car
@@ -99,5 +99,7 @@ class PetCatalogObject: CatalogObject {
     
     convenience init?(objectIdentifier: String, objectSummary: CatalogObjectSummary, from decoder: Decoder) throws {
         try self.init(from: decoder)
-    }
+        self.objectIdentifier = objectIdentifier
+        self.objectSummary = objectSummary
+   }
 }
