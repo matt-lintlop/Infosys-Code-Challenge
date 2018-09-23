@@ -67,11 +67,12 @@ class CatalogObject: Decodable  {
 
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.objectSummary = try container.decode(CatalogObjectSummary.self, forKey: .objectSummary)
+        self.objectSummary = try container.decode(CatalogObjectSummary.self, forKey:.objectSummary)
         self.objectIdentifier = ""
      }
  
-    init(objectIdentifier: String, objectSummary: CatalogObjectSummary) {
+    convenience init?(objectIdentifier: String, objectSummary: CatalogObjectSummary, from decoder: Decoder) throws {
+        try self.init(from: decoder)
         self.objectIdentifier = objectIdentifier
         self.objectSummary = objectSummary
     }
@@ -91,9 +92,9 @@ class PetCatalogObject: CatalogObject {
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.imageReference = try container.decode(ObjectImageReference.self, forKey: .imageReference)
-        self.age = try container.decode(String.self, forKey: .age)
-        self.favoriteToy = try container.decode(String.self, forKey: .favoriteToy)
+        self.imageReference = try container.decode(ObjectImageReference.self, forKey:.imageReference)
+        self.age = try container.decode(String.self, forKey:.age)
+        self.favoriteToy = try container.decode(String.self, forKey:.favoriteToy)
         try super.init(from: decoder)
     }
     
@@ -102,4 +103,52 @@ class PetCatalogObject: CatalogObject {
         self.objectIdentifier = objectIdentifier
         self.objectSummary = objectSummary
    }
+}
+
+// Car Catalog Object
+class CarCatalogObject: CatalogObject {
+    let doors: String
+    let price: String
+    let milage: String
+    
+    private enum CodingKeys: String, CodingKey, Decodable {
+        case doors
+        case price
+        case milage
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.doors = try container.decode(String.self, forKey:.doors)
+        self.price = try container.decode(String.self, forKey:.price)
+        self.milage = try container.decode(String.self, forKey:.milage)
+        try super.init(from: decoder)
+    }
+    
+    convenience init?(objectIdentifier: String, objectSummary: CatalogObjectSummary, from decoder: Decoder) throws {
+        try self.init(from: decoder)
+        self.objectIdentifier = objectIdentifier
+        self.objectSummary = objectSummary
+    }
+}
+
+// Computer Catalog Object
+class ComputerCatalogObject: CatalogObject {
+    let purchaseDate: String
+    
+    private enum CodingKeys: String, CodingKey, Decodable {
+        case purchaseDate = "purchase_date"
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.purchaseDate = try container.decode(String.self, forKey:. purchaseDate)
+        try super.init(from: decoder)
+    }
+    
+    convenience init?(objectIdentifier: String, objectSummary: CatalogObjectSummary, from decoder: Decoder) throws {
+        try self.init(from: decoder)
+        self.objectIdentifier = objectIdentifier
+        self.objectSummary = objectSummary
+    }
 }
