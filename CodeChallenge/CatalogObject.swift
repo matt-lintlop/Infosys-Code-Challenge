@@ -8,17 +8,17 @@
 
 import Foundation
 
-// Catalog Items
-class CatalogItems: Decodable {
-    var items: [String:[String:String]]             // catalog item dictionaries
+// Catalog Objects
+class CatalogObjects: Decodable {
+    var objectsDict: [String:[CatalogObjectSummary]]    // catalog object summaries
 }
 
-// Catalog Item Summary
+// Catalog Object Summary
 struct CatalogObjectSummary: Decodable {
-    let type: String                                // item type
-    let name: String                                // item name
-    let color: String                               // item color
-    let description: String                         // item description
+    let type: String                                    // item type
+    let name: String                                    // item name
+    let color: String                                   // item color
+    let description: String                             // item description
 
     private enum CodingKeys: String, CodingKey, Decodable {
         case type
@@ -32,11 +32,11 @@ struct CatalogObjectSummary: Decodable {
     }
 }
 
-// Image Reference
-struct ImageReference: Decodable {
-    let imageUrlPath: String                        // image url path
-    let imageWidth: String                          // image width string (example: "50px")
-    let imageHeight: String                         // image height string (example: "50px")
+// Object Image Reference
+struct ObjectImageReference: Decodable {
+    let imageUrlPath: String                             // image url path
+    let imageWidth: String                              // image width string (example: "50px")
+    let imageHeight: String                             // image height string (example: "50px")
     
     private enum CodingKeys: String, CodingKey, Decodable {
         case imageUrlPath = "url"
@@ -51,8 +51,8 @@ struct ImageReference: Decodable {
 
 // Catalog Object
 class CatalogObject: Decodable  {
-    let objectIdentifier: String                         // object identifier
-    let objectSummary: CatalogObjectSummary              // object summary dictionary
+    let objectIdentifier: String                            // object identifier
+    let objectSummary: CatalogObjectSummary                 // object summary dictionary
 
     enum CatalogObjectdentifier: String {
         case car
@@ -77,11 +77,11 @@ class CatalogObject: Decodable  {
     }
 }
 
-// Pet Catalog Item
+// Pet Catalog Object
 class PetCatalogObject: CatalogObject {
-    let petImage: ImageReference?                   // pet image
-    let petAge: String                              // pet age
-    let favoriteToy: String                         // pet favorite toy
+    let petImage: ObjectImageReference?                           // pet image
+    let petAge: String                                      // pet age
+    let favoriteToy: String                                 // pet favorite toy
     
     private enum CodingKeys: String, CodingKey, Decodable {
         case petImage = "image"
@@ -91,7 +91,7 @@ class PetCatalogObject: CatalogObject {
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.petImage = try container.decode(ImageReference.self, forKey: .petImage)
+        self.petImage = try container.decode(ObjectImageReference.self, forKey: .petImage)
         self.petAge = try container.decode(String.self, forKey: .petAge)
         self.favoriteToy = try container.decode(String.self, forKey: .favoriteToy)
         try super.init(from: decoder)
