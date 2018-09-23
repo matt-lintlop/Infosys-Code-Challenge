@@ -16,7 +16,7 @@ class Catalog {
         
         for (objectIdentifier, objectDict) in objectsDict.enumerated() {
             print("===========================================================================================")
-            print("Catalog: object Identifier: \(objectIdentifier),  object dictionary = \(objectDict)")
+            print("Catalog: object Identifier: \(objectIdentifier)")
         }
     }
 }
