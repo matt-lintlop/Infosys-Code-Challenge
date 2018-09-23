@@ -17,7 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let parser = CatalogParser()
         parser.parseCatalog { (error, catalogItems) in
-            //
+            if let error = error {
+                print("Error Parsing Catalog: \(error)")
+            }
+            else {
+                print("Success Parsing Catalog!")
+            }
         }
         return true
     }

@@ -20,11 +20,14 @@ class CatalogParser {
             print("Error: Coud not load data.")
             return
         }
-        guard let json = try? JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) else {
-            print("Error loading json.")
-            return
+        do {
+            let json = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments)
+            print("Loaded JSON: \(json)")
+            completion(nil, [])
         }
-        print("Loaded JSON: \(json)")
-        completion(nil, [])
+        catch {
+            print("Error loading json: \(error)")
+            completion(error, [])
+        }
     }
 }
