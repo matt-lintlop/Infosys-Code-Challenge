@@ -32,8 +32,8 @@ struct CatalogObjectSummary: Decodable {
     }
 }
 
-// Catalog Item Image
-struct CatalogItemImageReference: Decodable {
+// Image Reference
+struct ImageReference: Decodable {
     let imageUrlPath: String                        // image url path
     let imageWidth: String                          // image width string (example: "50px")
     let imageHeight: String                         // image height string (example: "50px")
@@ -49,7 +49,7 @@ struct CatalogItemImageReference: Decodable {
     }
  }
 
-// Catalog Item
+// Catalog Object
 class CatalogObject: Decodable  {
     var objectIdentifier: String                         // object identifier
     var objectSummary: CatalogObjectSummary              // object summary dictionary
@@ -62,12 +62,14 @@ class CatalogObject: Decodable  {
     }
     
     private enum CodingKeys: String, CodingKey, Decodable {
-        case objectSummaryDict = "object_summary"
+        case objectSummary = "object_summary"
     }
 
     required init(from decoder: Decoder) throws {
-        fatalError("init(from:) has not been implemented")
-    }
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.objectSummary = try container.decode(CatalogObjectSummary.self, forKey: .objectSummary)
+        self.objectIdentifier = ""
+     }
  
     init(objectIdentifier: String, objectSummary: CatalogObjectSummary) {
         self.objectIdentifier = objectIdentifier
@@ -76,10 +78,10 @@ class CatalogObject: Decodable  {
 }
 
 // Pet Catalog Item
-class PetCatalogItem: CatalogObject {
-    var petImage: CatalogItemImageReference?        // pet image
+class PetCatalogObject: CatalogObject {
+    var petImage: ImageReference?                   // pet image
     var petAge: String                              // pet age
-    var favoriteToy: String                         // favorite toy
+    var favoriteToy: String                         // pet favorite toy
     
     private enum CodingKeys: String, CodingKey, Decodable {
         case petImage = "image"
@@ -89,7 +91,7 @@ class PetCatalogItem: CatalogObject {
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.petImage = try container.decode(CatalogItemImageReference.self, forKey: .petImage)
+        self.petImage = try container.decode(ImageReference.self, forKey: .petImage)
         self.petAge = try container.decode(String.self, forKey: .petAge)
         self.favoriteToy = try container.decode(String.self, forKey: .favoriteToy)
         try super.init(from: decoder)
