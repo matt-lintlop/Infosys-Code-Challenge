@@ -9,8 +9,10 @@
 import Foundation
 
 // Catalog Objects
-class CatalogObjects: Decodable {
-    var objectsDict: [String:[CatalogObjectSummary]]    // catalog object summaries
+class CatalogObjects {
+ //   var objectsDict: [String:[CatalogObjectSummary]]    // catalog object summaries
+
+    
 }
 
 // Catalog Object Summary
@@ -28,7 +30,11 @@ struct CatalogObjectSummary: Decodable {
     }
     
     init(from decoder: Decoder) throws {
-        fatalError("init(from:) has not been implemented")
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.type = try container.decode(String.self, forKey:.type)
+        self.name = try container.decode(String.self, forKey:.name)
+        self.color = try container.decode(String.self, forKey:.color)
+        self.description = try container.decode(String.self, forKey:.description)
     }
 }
 
