@@ -8,6 +8,12 @@
 
 import Foundation
 
-func parseCatalog(completion: (Error, [CatalogItem])) {
-    
+func parseCatalog(completion: (Error?, [CatalogItem]?) -> Void) {
+    guard let path = Bundle.main.path(forResource: "data", ofType: "json") else {
+        print("Coud not find data file.")
+        return
+    }
+    let url = URL(fileURLWithPath: path)
+    let jsonData = try? Data(contentsOf: url)
+    completion(nil, [])
 }
