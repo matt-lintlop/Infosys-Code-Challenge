@@ -18,7 +18,7 @@ struct CatalogItemSummary: Decodable {
 }
 
 // Catalog Item Image
-struct CatalogItemImage {
+struct CatalogItemImage: Decodable  {
     let urlPath: String                          // item url path
     let widthString: Int                         // item width string
     let heightString: Int                        // item height string
