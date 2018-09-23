@@ -1,5 +1,5 @@
 //
-//  CatalogObject.swift
+//  Catalog.swift
 //  CodeChallenge
 //
 //  Created by Matt Lintlop on 9/22/18.
@@ -8,11 +8,17 @@
 
 import Foundation
 
-// Catalog Objects
-class CatalogObjects {
- //   var objectsDict: [String:[CatalogObjectSummary]]    // catalog object summaries
+// Catalog
+class Catalog {
+    var catalogObjects: [CatalogObject]?                // catalog objects
 
-    
+    init(withDictionary objectsDict: [String:AnyObject]) {
+        
+        for (objectIdentifier, objectDict) in objectsDict.enumerated() {
+            print("===========================================================================================")
+            print("Catalog: object Identifier: \(objectIdentifier),  object dictionary = \(objectDict)")
+        }
+    }
 }
 
 // Catalog Object Summary

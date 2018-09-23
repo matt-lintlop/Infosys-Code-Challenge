@@ -10,7 +10,7 @@ import Foundation
 
 class CatalogParser {
     
-    func parseCatalog(completion: (Error?, [CatalogObject]?) -> Void) {
+    func parseCatalog(completion: (Error?, Catalog?) -> Void) {
         guard let path = Bundle.main.path(forResource: "data", ofType: "json") else {
             print("Error: data file missing.")
             return
@@ -21,15 +21,18 @@ class CatalogParser {
             return
         }
         do {
-            let json = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as? Dictionary<String, AnyObject>
-            print("Loaded JSON: \(json)")
-  //          print("JSON object count: \(json.count)")
+            guard let catalogDict = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as? [String : AnyObject] else {
+                print("Error: could not de-serialize json")
+                return
+            }
+            let catalog = Catalog(withDictionary: catalogDict)
             
-            completion(nil, [])
+            print("Success! Created catalog.")
+            completion(nil, catalog)
         }
         catch {
             print("Error loading json: \(error)")
-            completion(error, [])
+            completion(error,nil)
         }
     }
 }
