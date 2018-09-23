@@ -25,7 +25,7 @@ class CatalogParser {
                 return
             }
            print("Loaded JSON: \(json)")
-           print("JSON item count: \(json.count)")
+           print("JSON object count: \(json.count)")
             
             completion(nil, [])
         }

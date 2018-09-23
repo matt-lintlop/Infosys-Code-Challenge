@@ -1,5 +1,5 @@
 //
-//  CatalogItem.swift
+//  CatalogObject.swift
 //  CodeChallenge
 //
 //  Created by Matt Lintlop on 9/22/18.
@@ -15,10 +15,10 @@ class CatalogObjects: Decodable {
 
 // Catalog Object Summary
 struct CatalogObjectSummary: Decodable {
-    let type: String                                    // item type
-    let name: String                                    // item name
-    let color: String                                   // item color
-    let description: String                             // item description
+    let type: String                                    // object type
+    let name: String                                    // object name
+    let color: String                                   // object color
+    let description: String                             // object description
 
     private enum CodingKeys: String, CodingKey, Decodable {
         case type
@@ -34,7 +34,7 @@ struct CatalogObjectSummary: Decodable {
 
 // Object Image Reference
 struct ObjectImageReference: Decodable {
-    let imageUrlPath: String                             // image url path
+    let imageUrlPath: String                            // image url path
     let imageWidth: String                              // image width string (example: "50px")
     let imageHeight: String                             // image height string (example: "50px")
     

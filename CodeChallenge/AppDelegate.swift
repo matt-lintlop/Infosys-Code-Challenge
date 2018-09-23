@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         DispatchQueue.global(qos: .background).async {
             let parser = CatalogParser()
-            parser.parseCatalog { (error, catalogItems) in
+            parser.parseCatalog { (error, catalogObjects) in
                 if let error = error {
                     print("Error Parsing Catalog: \(error)")
                 }
