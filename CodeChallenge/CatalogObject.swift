@@ -79,20 +79,20 @@ class CatalogObject: Decodable  {
 
 // Pet Catalog Object
 class PetCatalogObject: CatalogObject {
-    let petImage: ObjectImageReference?                           // pet image
-    let petAge: String                                      // pet age
-    let favoriteToy: String                                 // pet favorite toy
+    let age: String                                     // pet age
+    let imageReference: ObjectImageReference?           // pet image
+    let favoriteToy: String                             // pet favorite toy
     
     private enum CodingKeys: String, CodingKey, Decodable {
-        case petImage = "image"
-        case petAge = "age"
+        case imageReference = "image"
+        case age = "age"
         case favoriteToy = "favorite_toy"
     }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.petImage = try container.decode(ObjectImageReference.self, forKey: .petImage)
-        self.petAge = try container.decode(String.self, forKey: .petAge)
+        self.imageReference = try container.decode(ObjectImageReference.self, forKey: .imageReference)
+        self.age = try container.decode(String.self, forKey: .age)
         self.favoriteToy = try container.decode(String.self, forKey: .favoriteToy)
         try super.init(from: decoder)
     }
