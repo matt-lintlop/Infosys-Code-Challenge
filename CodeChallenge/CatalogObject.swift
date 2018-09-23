@@ -32,8 +32,8 @@ struct CatalogObjectSummary: Decodable {
     }
 }
 
-// Object Image Reference
-struct ObjectImageReference: Decodable {
+// Image Reference
+struct ImageReference: Decodable {
     let imageUrlPath: String                            // image url path
     let imageWidth: String                              // image width string (example: "50px")
     let imageHeight: String                             // image height string (example: "50px")
@@ -45,7 +45,10 @@ struct ObjectImageReference: Decodable {
     }
     
     init(from decoder: Decoder) throws {
-        fatalError("init(from:) has not been implemented")
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.imageUrlPath = try container.decode(String.self, forKey:.imageUrlPath)
+        self.imageWidth = try container.decode(String.self, forKey:.imageWidth)
+        self.imageHeight = try container.decode(String.self, forKey:.imageHeight)
     }
  }
 
@@ -81,7 +84,7 @@ class CatalogObject: Decodable  {
 // Pet Catalog Object
 class PetCatalogObject: CatalogObject {
     let age: String                                     // pet age
-    let imageReference: ObjectImageReference?           // pet image
+    let imageReference: ImageReference?           // pet image
     let favoriteToy: String                             // pet favorite toy
     
     private enum CodingKeys: String, CodingKey, Decodable {
@@ -92,7 +95,7 @@ class PetCatalogObject: CatalogObject {
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.imageReference = try container.decode(ObjectImageReference.self, forKey:.imageReference)
+        self.imageReference = try container.decode(ImageReference.self, forKey:.imageReference)
         self.age = try container.decode(String.self, forKey:.age)
         self.favoriteToy = try container.decode(String.self, forKey:.favoriteToy)
         try super.init(from: decoder)
