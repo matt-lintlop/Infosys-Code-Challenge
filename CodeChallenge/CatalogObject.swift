@@ -51,8 +51,8 @@ struct ImageReference: Decodable {
 
 // Catalog Object
 class CatalogObject: Decodable  {
-    var objectIdentifier: String                         // object identifier
-    var objectSummary: CatalogObjectSummary              // object summary dictionary
+    let objectIdentifier: String                         // object identifier
+    let objectSummary: CatalogObjectSummary              // object summary dictionary
 
     enum CatalogObjectdentifier: String {
         case car
@@ -79,9 +79,9 @@ class CatalogObject: Decodable  {
 
 // Pet Catalog Item
 class PetCatalogObject: CatalogObject {
-    var petImage: ImageReference?                   // pet image
-    var petAge: String                              // pet age
-    var favoriteToy: String                         // pet favorite toy
+    let petImage: ImageReference?                   // pet image
+    let petAge: String                              // pet age
+    let favoriteToy: String                         // pet favorite toy
     
     private enum CodingKeys: String, CodingKey, Decodable {
         case petImage = "image"
@@ -99,7 +99,5 @@ class PetCatalogObject: CatalogObject {
     
     convenience init?(objectIdentifier: String, objectSummary: CatalogObjectSummary, from decoder: Decoder) throws {
         try self.init(from: decoder)
-        self.objectIdentifier = objectIdentifier
-        self.objectSummary = objectSummary
     }
 }
