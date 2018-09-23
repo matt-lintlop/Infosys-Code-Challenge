@@ -8,12 +8,23 @@
 
 import Foundation
 
-func parseCatalog(completion: (Error?, [CatalogItem]?) -> Void) {
-    guard let path = Bundle.main.path(forResource: "data", ofType: "json") else {
-        print("Coud not find data file.")
-        return
+class CatalogParser {
+    
+    func parseCatalog(completion: (Error?, [CatalogItem]?) -> Void) {
+        guard let path = Bundle.main.path(forResource: "data", ofType: "json") else {
+            print("Error: data file missing.")
+            return
+        }
+        let url = URL(fileURLWithPath: path)
+        guard let jsonData = try? Data(contentsOf: url) else {
+            print("Error: Coud not load data.")
+            return
+        }
+        guard let json = try? JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) else {
+            print("Error loading json.")
+            return
+        }
+        print("Loaded JSON: \(json)")
+        completion(nil, [])
     }
-    let url = URL(fileURLWithPath: path)
-    let jsonData = try? Data(contentsOf: url)
-    completion(nil, [])
 }
