@@ -10,7 +10,7 @@ import Foundation
 
 class CatalogParser {
     
-    func parseCatalog(completion: (Error?, [CatalogItem]?) -> Void) {
+    func parseCatalog(completion: (Error?, [CatalogObject]?) -> Void) {
         guard let path = Bundle.main.path(forResource: "data", ofType: "json") else {
             print("Error: data file missing.")
             return
