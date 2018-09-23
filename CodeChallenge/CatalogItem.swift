@@ -22,15 +22,25 @@ enum CatalogItemSummaryKeys: String {
 }
 
 // Catalog Item Image
-struct CatalogItemImageReference: Decodable  {
+struct CatalogItemImageReference {
     let imageUrlPath: String                        // image url path
     let imageWidth: String                          // image width string (example: "50px")
     let imageHeight: String                         // image height string (example: "50px")
     
-    private enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String {
         case imageUrlPath = "url"
         case imageWidth = "width"
         case imageHeight = "height"
+    }
+    
+    init?(withDictionary dict: [String:String]) {
+        guard let imageUrlPath = dict[CodingKeys.imageUrlPath.rawValue], let imageWidth = dict[CodingKeys.imageWidth.rawValue],
+        let imageHeight = dict[CodingKeys.imageHeight.rawValue] else {
+            return nil
+        }
+        self.imageUrlPath = imageUrlPath
+        self.imageWidth = imageWidth
+        self.imageHeight = imageHeight
     }
 }
 
@@ -38,7 +48,6 @@ struct CatalogItemImageReference: Decodable  {
 class CatalogItem: Decodable {
     let itemIdentifier: CatalogItemIdentifier         // item identifier
     let itemSummaryDict: [String:String]              // item summary dictionary
-    let itemContent: [String:String]?                 // item content dictionary
 
     enum CatalogItemIdentifier: String, Decodable {
         case car
@@ -54,6 +63,10 @@ class CatalogItem: Decodable {
     required init(from decoder: Decoder) throws {
         fatalError("init(from:) has not been implemented")
     }
+    
+    init(itemIdentifier: String, itemDictionary: [String:String]) {
+        
+    }
 }
 
 // Pet Catalog Item
@@ -66,7 +79,7 @@ class PetCatalogItem: CatalogItem {
         fatalError("init(from:) has not been implemented")
     }
     
-    required init(itemIdentifier: CatalogItemIdentifier, itemSummaryDict: [String : String]) {
-        fatalError("init(itemIdentifier:itemSummaryDict:) has not been implemented")
+    override init(itemIdentifier: String, itemDictionary: [String:String]) {
+        super.init(itemIdentifier: itemIdentifier, itemDictionary: itemDictionary)
     }
-}
+    }
