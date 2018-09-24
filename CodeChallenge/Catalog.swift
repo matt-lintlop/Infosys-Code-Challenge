@@ -25,8 +25,7 @@ class Catalog {
     }
  
     func parseJSON(completion: @escaping (Error?, [CatalogItem]?) -> Void) {
-        let strongSelf = self
-        DispatchQueue.global(qos: .background).async {  [weak self] in
+        DispatchQueue.global(qos: .background).async {
              do {
                 guard let path = Bundle.main.path(forResource: "data", ofType: "json") else {
                     completion(ParseError.errorParsingJSON, nil)
@@ -56,7 +55,7 @@ class Catalog {
                             completion(ParseError.errorParsingJSON, nil)
                             return
                         }
-                        strongSelf.catalogObjects?.append(carCatalogItem)
+                        self.catalogObjects?.append(carCatalogItem)
                         break;
                         
                     case  CatalogItem.CatalogItemType.hardware.rawValue:
@@ -65,7 +64,7 @@ class Catalog {
                             completion(ParseError.errorParsingJSON, nil)
                            return
                         }
-                        strongSelf.catalogObjects?.append(computerCatalogItem)
+                        self.catalogObjects?.append(computerCatalogItem)
                         break;
                         
                     case  CatalogItem.CatalogItemType.animal.rawValue:
@@ -74,14 +73,14 @@ class Catalog {
                             completion(ParseError.errorParsingJSON, nil)
                             return
                         }
-                        strongSelf.catalogObjects?.append(animalCatalogItem)
+                        self.catalogObjects?.append(animalCatalogItem)
                         break;
                         
                     default:
                         break;
                     }
                 }
-                completion(nil, strongSelf.catalogObjects)
+                completion(nil, self.catalogObjects)
             }
             catch {
                 completion(ParseError.errorParsingJSON, nil)

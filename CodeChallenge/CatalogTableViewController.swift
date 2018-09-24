@@ -10,7 +10,7 @@ import UIKit
 
 class CatalogTableViewController: UITableViewController {
     
-    var catalogObjects: [CatalogItem]?
+    var catalogItems: [CatalogItem]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,8 @@ class CatalogTableViewController: UITableViewController {
                     guard let catalogObjects = catalogObjects else {
                         return
                     }
-                    self.catalogObjects = catalogObjects
+                    self.catalogItems = catalogObjects
+                    self.makeSectionsWithCatalogItems(catalogObjects)
                     self.tableView.reloadData()
                 }
             })
@@ -39,11 +40,15 @@ class CatalogTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func makeSectionsWithCatalogItems(_ catalogItems: [CatalogItem]) {
+        
+    }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        guard let catalogObjects = self.catalogObjects else {
+        guard let catalogObjects = self.catalogItems else {
             return 0
         }
         if (catalogObjects.count >= 1) {
@@ -55,14 +60,14 @@ class CatalogTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let catalogObjects = self.catalogObjects else {
+        guard let catalogObjects = self.catalogItems else {
             return 0
         }
         return catalogObjects.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let catalogItem = self.catalogObjects?[indexPath.row] else {
+        guard let catalogItem = self.catalogItems?[indexPath.row] else {
             return tableView.dequeueReusableCell(withIdentifier: "CatalogItemCell")!
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "CatalogItemCell", for: indexPath)
@@ -71,7 +76,7 @@ class CatalogTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let catalogItem = self.catalogObjects?[indexPath.row] else {
+        guard let catalogItem = self.catalogItems?[indexPath.row] else {
             return
         }
         
