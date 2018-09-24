@@ -1,5 +1,5 @@
 //
-//  Catalog.swift
+//  CatalogItemSummary.swift
 //  CodeChallenge
 //
 //  Created by Matt Lintlop on 9/22/18.
@@ -9,7 +9,7 @@
 import Foundation
 
 // Catalog Object Summary
-struct CatalogObjectSummary {
+struct  CatalogItemSummary {
     let type: String                                    // object type
     let name: String                                    // object name
     let color: String                                   // object color

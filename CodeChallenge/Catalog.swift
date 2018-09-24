@@ -11,9 +11,9 @@ import Foundation
 
 // Catalog
 class Catalog {
-    var catalogObjects: [CatalogObject]?
+    var catalogObjects: [ CatalogItem]?
 
-    enum CatalogObjectType: String {
+    enum  CatalogItemType: String {
         case consumerProduct = "consumer product"
         case hardware
         case animal
@@ -23,7 +23,7 @@ class Catalog {
         self.catalogObjects = []
     }
     
-    func parseJSON(completion: @escaping (Error?, [CatalogObject]?) -> Void) {
+    func parseJSON(completion: @escaping (Error?, [ CatalogItem]?) -> Void) {
         DispatchQueue.global(qos: .background).async {
             guard let path = Bundle.main.path(forResource: "data", ofType: "json") else {
                 return
@@ -36,7 +36,7 @@ class Catalog {
                 guard let catalogDict = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as? [String : AnyObject] else {
                     return
                 }
-                for (objectIdentifier, objectDict) in catalogDict {
+                for (itemIdentifier, objectDict) in catalogDict {
                     guard let objectDict = objectDict as? Dictionary<String, AnyObject> else {
                         return
                     }
@@ -48,28 +48,28 @@ class Catalog {
                     }
                     
                     switch objectType {
-                    case CatalogObjectType.consumerProduct.rawValue:
+                    case  CatalogItemType.consumerProduct.rawValue:
                         // add a Car catalog object to this catalog
-                        guard let carCatalogObject =  CarCatalogObject(objectIdentifier: objectIdentifier, objectDict: objectDict) else {
+                        guard let carCatalogItem =  CarCatalogItem(itemIdentifier: itemIdentifier, objectDict: objectDict) else {
                             continue
                         }
-                        self.catalogObjects?.append(carCatalogObject)
+                        self.catalogObjects?.append(carCatalogItem)
                         break;
                         
-                    case CatalogObjectType.hardware.rawValue:
+                    case  CatalogItemType.hardware.rawValue:
                         // add a Computer catalog object to this catalog
-                        guard let computerCatalogObject =  ComputerCatalogObject(objectIdentifier: objectIdentifier, objectDict: objectDict) else {
+                        guard let computerCatalogItem =  ComputerCatalogItem(itemIdentifier: itemIdentifier, objectDict: objectDict) else {
                             continue
                         }
-                        self.catalogObjects?.append(computerCatalogObject)
+                        self.catalogObjects?.append(computerCatalogItem)
                         break;
                         
-                    case CatalogObjectType.animal.rawValue:
+                    case  CatalogItemType.animal.rawValue:
                         // add an Animal catalog object to this catalog
-                        guard let animalCatalogObject =  PetCatalogObject(objectIdentifier: objectIdentifier, objectDict: objectDict) else {
+                        guard let animalCatalogItem =  PetCatalogItem(itemIdentifier: itemIdentifier, objectDict: objectDict) else {
                             continue
                         }
-                        self.catalogObjects?.append(animalCatalogObject)
+                        self.catalogObjects?.append(animalCatalogItem)
                         break;
                         
                     default:

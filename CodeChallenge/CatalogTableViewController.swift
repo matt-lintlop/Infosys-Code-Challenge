@@ -9,15 +9,28 @@
 import UIKit
 
 class CatalogTableViewController: UITableViewController {
-
+    
+    var catalogObjects: [ CatalogItem]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // parse the catalog json for catalog object
+        let catalog = Catalog()
+        catalog.parseJSON { (error, catalogObjects) in
+            if let error = error {
+                print("Error Parsing Catalog: \(error)")
+            }
+            else {
+                guard let catalogObjects = catalogObjects else {
+                    return
+                }
+                self.catalogObjects = catalogObjects
+                DispatchQueue.main.async(execute: {
+                    self.tableView.reloadData()
+                })
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,24 +41,32 @@ class CatalogTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        guard let catalogObjects = self.catalogObjects else {
+            return 0
+        }
+        if (catalogObjects.count >= 1) {
+            return 1
+        }
+        else {
+            return 0
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        guard let catalogObjects = self.catalogObjects else {
+            return 0
+        }
+        return catalogObjects.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        guard let catalogItem = self.catalogObjects?[indexPath.row] else {
+            return tableView.dequeueReusableCell(withIdentifier: "CatalogItemCell")!
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CatalogItemCell", for: indexPath)
+        cell.textLabel?.text = catalogItem.itemIdentifier
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

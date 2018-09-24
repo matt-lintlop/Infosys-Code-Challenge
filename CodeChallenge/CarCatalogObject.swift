@@ -1,5 +1,5 @@
 //
-//  CarCatalogObject.swift
+//  Car CatalogItem.swift
 //  CodeChallenge
 //
 //  Created by Matt Lintlop on 9/22/18.
@@ -9,7 +9,7 @@
 import Foundation
 
 // Car Catalog Object
-class CarCatalogObject: CatalogObject {
+class CarCatalogItem:  CatalogItem {
     let doors: String
     let price: String
     let milage: String
@@ -20,7 +20,7 @@ class CarCatalogObject: CatalogObject {
         case milage
     }
     
-    override init?(objectIdentifier: String, objectDict: Dictionary<String, AnyObject>) {
+    override init?(itemIdentifier: String, objectDict: Dictionary<String, AnyObject>) {
         guard let doors = objectDict[DictionaryKeys.doors.rawValue] as? String,
               let price = objectDict[DictionaryKeys.price.rawValue] as? String,
               let milage = objectDict[DictionaryKeys.milage.rawValue] as? String else {
@@ -29,6 +29,6 @@ class CarCatalogObject: CatalogObject {
         self.doors = doors
         self.price = price
         self.milage = milage
-        super.init(objectIdentifier: objectIdentifier, objectDict: objectDict)
+        super.init(itemIdentifier: itemIdentifier, objectDict: objectDict)
     }
 }

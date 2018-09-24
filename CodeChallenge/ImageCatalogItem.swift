@@ -1,5 +1,5 @@
 //
-//  ImageCatalogObject.swift
+//  Image CatalogItem.swift
 //  CodeChallenge
 //
 //  Created by Matt Lintlop on 9/22/18.
@@ -9,14 +9,14 @@
 import Foundation
 
 // Catalog Object
-class ImageCatalogObject: CatalogObject  {
+class ImageCatalogItem:  CatalogItem  {
     let imageReference: ImageReference?                 // pet image
     
     private enum DictionaryKeys: String {
         case objectImage = "image"
     }
     
-    override init?(objectIdentifier: String, objectDict: Dictionary<String, AnyObject>) {
+    override init?(itemIdentifier: String, objectDict: Dictionary<String, AnyObject>) {
         guard let imageRefrenceDict = objectDict[DictionaryKeys.objectImage.rawValue] as? Dictionary<String, String> else {
             return nil
         }
@@ -24,6 +24,6 @@ class ImageCatalogObject: CatalogObject  {
             return nil
         }
         self.imageReference = imageReference
-        super.init(objectIdentifier: objectIdentifier, objectDict: objectDict)
+        super.init(itemIdentifier: itemIdentifier, objectDict: objectDict)
    }
 }
