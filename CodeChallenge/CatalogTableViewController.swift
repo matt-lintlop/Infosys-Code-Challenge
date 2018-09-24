@@ -74,44 +74,39 @@ class CatalogTableViewController: UITableViewController {
     }
 
     // get the name of the section at an index path
-    func sectionName(withIndexPath indexPath: IndexPath) -> String {
-        guard indexPath.section < sectionNames.count else {
+    func getSectionName(atSection section: Int) -> String {
+        guard section < sectionNames.count else {
             return ""
         }
-        return sectionNames[indexPath.section]
+        return sectionNames[section]
     }
 
     // get the catalog items in section at an index path
-    func sectionCatalogItems(withIndexPath indexPath: IndexPath) -> [CatalogItem]? {
-        guard indexPath.section < sectionCatalogItems.count else {
+    func getCatalogItem(atIndexPath indexPath: IndexPath) -> CatalogItem? {
+        guard indexPath.section < self.sectionCatalogItems.count else {
             return nil
         }
-        return sectionCatalogItems[indexPath.section]
+        let sectionCatalogItems = self.sectionCatalogItems[indexPath.section]
+        return sectionCatalogItems[indexPath.row]
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        guard let catalogObjects = self.catalogItems else {
-            return 0
-        }
-        if (catalogObjects.count >= 1) {
-            return 1
-        }
-        else {
-            return 0
-        }
+       return sectionNames.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let catalogObjects = self.catalogItems else {
-            return 0
-        }
-        return catalogObjects.count
+        let sectionObjects = sectionCatalogItems[section]
+        return sectionObjects.count
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return getSectionName(atSection: section)
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let catalogItem = self.catalogItems?[indexPath.row] else {
+        guard let catalogItem = getCatalogItem(atIndexPath: indexPath) else {
             return tableView.dequeueReusableCell(withIdentifier: "CatalogItemCell")!
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "CatalogItemCell", for: indexPath)
