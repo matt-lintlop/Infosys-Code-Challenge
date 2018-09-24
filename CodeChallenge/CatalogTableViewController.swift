@@ -10,8 +10,7 @@ import UIKit
 
 class CatalogTableViewController: UITableViewController {
     
-    var catalogObjects: [ CatalogItem]?
-    var selectedIndexPath: IndexPath?
+    var catalogObjects: [CatalogItem]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,36 +75,39 @@ class CatalogTableViewController: UITableViewController {
             return
         }
         
-        self.selectedIndexPath = indexPath
-        
         switch (catalogItem.objectSummary.type) {
             
         case  CatalogItem.CatalogItemType.consumerProduct.rawValue:
-            print("TODO: Show Consumer Product View Controller")
+            showItemViewController(withConsumerProductCatalogItem:catalogItem as! ConsumerProductCatalogItem)
             
         case  CatalogItem.CatalogItemType.hardware.rawValue:
-            print("TODO: Show Hardware View Controller")
-            
+            showViewController(withHardwareCatalogItem: catalogItem as! HardwareCatalogItem)
+
         case  CatalogItem.CatalogItemType.animal.rawValue:
-            print("TODO: Show Animal View Controller")
-            
+            showViewController(withAnimalCatalogItem: catalogItem as! AnimalCatalogItem)
+
         default:
             return
         }
     }
     
-    func showConsumerProductViewController() {
-        
+    func showItemViewController(withConsumerProductCatalogItem: ConsumerProductCatalogItem) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "ConsumerProductViewController")
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    func showHardwareViewController() {
-        
+    func showViewController(withHardwareCatalogItem: HardwareCatalogItem) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "HardwareViewController")
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    func showAnimalViewController() {
-        
+    func showViewController(withAnimalCatalogItem: AnimalCatalogItem) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "AnimalViewController")
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
-
     
     /*
     // Override to support conditional editing of the table view.

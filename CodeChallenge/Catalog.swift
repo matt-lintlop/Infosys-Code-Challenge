@@ -12,8 +12,10 @@ import Foundation
 // Catalog
 class Catalog {
     
-    var catalogObjects: [ CatalogItem]?
-    
+    var catalogObjects: [CatalogItem]?
+    var sectionNames: [String]?
+    var catalogSectionDict: [String:[CatalogItem]]?
+
     enum ParseError: Error {
         case errorParsingJSON
     }

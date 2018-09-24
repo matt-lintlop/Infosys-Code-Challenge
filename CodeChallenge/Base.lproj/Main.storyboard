@@ -56,19 +56,20 @@
                         <viewControllerLayoutGuide type="bottom" id="OlX-Jp-gbg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Xa8-od-Ihg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.24359191710029016" green="1" blue="0.93691594853289717" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UM7-lU-ryn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2670" y="0.0"/>
+            <point key="canvasLocation" x="2670" y="8"/>
         </scene>
-        <!--Consumer Product-->
+        <!--Product-->
         <scene sceneID="zS3-Do-jhQ">
             <objects>
-                <viewController storyboardIdentifier="ConsumerProductViewC0ntroller" title="Consumer Product" id="BgI-mQ-FsA" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConsumerProductViewController" title="Product" id="BgI-mQ-FsA" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4lV-l7-eAt"/>
                         <viewControllerLayoutGuide type="bottom" id="KgF-wi-wwW"/>
@@ -83,19 +84,20 @@
             </objects>
             <point key="canvasLocation" x="3454" y="10"/>
         </scene>
-        <!--View Controller-->
+        <!--Hardware View Controller-->
         <scene sceneID="rLI-JF-2F8">
             <objects>
-                <viewController storyboardIdentifier="HardwareViewController" id="46E-lR-6py" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HardwareViewController" title="Hardware" id="46E-lR-6py" userLabel="Hardware View Controller" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ruY-VE-lcE"/>
                         <viewControllerLayoutGuide type="bottom" id="alr-o1-oGE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="d6x-sj-ocT">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.31130878674379947" green="1" blue="0.47000292149642364" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ixY-gY-0wu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

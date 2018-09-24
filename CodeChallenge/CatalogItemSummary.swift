@@ -10,10 +10,10 @@ import Foundation
 
 // Catalog Object Summary
 struct  CatalogItemSummary {
-    let type: String                                    // object type
-    let name: String                                    // object name
-    let color: String                                   // object color
-    let description: String                             // object description
+    let type: String                                    // item type
+    let name: String                                    // item name
+    let color: String                                   // item color
+    let description: String                             // item description
 
     private enum DictionaryKeys: String {
         case type
