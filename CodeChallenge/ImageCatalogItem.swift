@@ -6,7 +6,7 @@
 //  Copyright © 2018 Matt Lintlop. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 // Catalog Object
 class ImageCatalogItem:  CatalogItem  {
@@ -25,5 +25,10 @@ class ImageCatalogItem:  CatalogItem  {
         }
         self.imageReference = imageReference
         super.init(itemIdentifier: itemIdentifier, objectDict: objectDict)
-   }
+    }
+    
+    
+    func downloadImage(completionHandler: (UIImage?) -> Void) {
+        
+    }
 }

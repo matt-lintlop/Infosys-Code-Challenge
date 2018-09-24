@@ -11,6 +11,7 @@ import UIKit
 class CatalogTableViewController: UITableViewController {
     
     var catalogObjects: [ CatalogItem]?
+    var selectedIndexPath: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +73,9 @@ class CatalogTableViewController: UITableViewController {
         guard let catalogItem = self.catalogObjects?[indexPath.row] else {
             return
         }
+        
+        self.selectedIndexPath = indexPath
+        
         switch (catalogItem.objectSummary.type) {
         case  CatalogItem.CatalogItemType.consumerProduct.rawValue:
             print("TODO: Show Consumer Product View Controller")
