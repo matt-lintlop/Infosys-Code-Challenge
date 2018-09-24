@@ -12,7 +12,7 @@ import Foundation
 class Catalog {
     var catalogObjects: [CatalogObject]?                // catalog objects
 
-    init(withDictionary catalogDict: [String:AnyObject]) {
+    func setCatalogDictionary(_ catalogDict: [String:AnyObject]) {
         for (objectName, value) in catalogDict {
             print("\n\nobject name = \(objectName)")
             guard let objectDict = value as? Dictionary<String, Any> else {
@@ -22,6 +22,31 @@ class Catalog {
             print("# objectDict keys = \(objectDict.keys.count)")
             for key in objectDict.keys {
                 print("\(key)")
+            }
+        }
+    }
+    
+    func parseJSON(completion: @escaping (Error?, [CatalogObject]?) -> Void) {
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            guard let path = Bundle.main.path(forResource: "data", ofType: "json") else {
+                print("Error: data file missing.")
+                return
+            }
+            let url = URL(fileURLWithPath: path)
+            guard let jsonData = try? Data(contentsOf: url) else {
+                print("Error: Coud not load data.")
+                return
+            }
+            do {
+                guard let catalogDict = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as? [String : AnyObject] else {
+                    print("Error: could not de-serialize json")
+                    return
+                }
+                self?.setCatalogDictionary(catalogDict)
+                completion(nil, self?.catalogObjects)
+            }
+            catch {
+                completion(error,nil)
             }
         }
     }

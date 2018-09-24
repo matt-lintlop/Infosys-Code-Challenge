@@ -13,7 +13,6 @@
 		445413192156FF3D00735833 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 445413182156FF3D00735833 /* Assets.xcassets */; };
 		4454131C2156FF3D00735833 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4454131A2156FF3D00735833 /* LaunchScreen.storyboard */; };
 		445413242156FF5A00735833 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 445413232156FF5A00735833 /* data.json */; };
-		4454132621571B8600735833 /* CatalogParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4454132521571B8600735833 /* CatalogParser.swift */; };
 		4454132821571CCD00735833 /* Catalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4454132721571CCD00735833 /* Catalog.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,7 +25,6 @@
 		4454131B2156FF3D00735833 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4454131D2156FF3D00735833 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		445413232156FF5A00735833 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
-		4454132521571B8600735833 /* CatalogParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogParser.swift; sourceTree = "<group>"; };
 		4454132721571CCD00735833 /* Catalog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Catalog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,7 +60,6 @@
 			children = (
 				445413112156FF3D00735833 /* AppDelegate.swift */,
 				445413132156FF3D00735833 /* ViewController.swift */,
-				4454132521571B8600735833 /* CatalogParser.swift */,
 				4454132721571CCD00735833 /* Catalog.swift */,
 				445413152156FF3D00735833 /* Main.storyboard */,
 				445413182156FF3D00735833 /* Assets.xcassets */,
@@ -100,11 +97,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Matt Lintlop";
 				TargetAttributes = {
 					4454130D2156FF3D00735833 = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -149,7 +147,6 @@
 				4454132821571CCD00735833 /* Catalog.swift in Sources */,
 				445413142156FF3D00735833 /* ViewController.swift in Sources */,
 				445413122156FF3D00735833 /* AppDelegate.swift in Sources */,
-				4454132621571B8600735833 /* CatalogParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,15 +181,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -234,15 +239,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -276,7 +289,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattlintlop.CodeChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -288,7 +302,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattlintlop.CodeChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

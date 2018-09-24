@@ -16,19 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        
-        DispatchQueue.global(qos: .background).async {
-            let parser = CatalogParser()
-            parser.parseCatalog { (error, catalogObjects) in
-                if let error = error {
-                    print("Error Parsing Catalog: \(error)")
-                }
-                else {
-                    print("Success Parsing Catalog!")
-                }
+        // parse the catalog json for catalog object
+        let catalog = Catalog()
+        catalog.parseJSON { (error, catalogObjects) in
+            if let error = error {
+                print("Error Parsing Catalog: \(error)")
+            }
+            else {
+                print("Success Parsing Catalog: \(catalogObjects!.count) objects")
             }
         }
-         return true
+        return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
