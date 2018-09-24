@@ -6,7 +6,13 @@
 //  Copyright © 2018 Matt Lintlop. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+// Catalog Item Delegate protocol
+protocol CatalogItemDelegate {
+    func catalogItem(_ catalogItem: CatalogItem, atIndexPath indexPath:(IndexPath),
+                     didLoadImageImage image:UIImage?, withError error:Error?)
+}
 
 // Catalog Object
 class  CatalogItem  {
