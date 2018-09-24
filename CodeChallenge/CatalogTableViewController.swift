@@ -16,21 +16,23 @@ class CatalogTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // parse the catalog json for catalog object
         let catalog = Catalog()
         catalog.parseJSON { (error, catalogObjects) in
-            if let error = error {
-                print("Error Parsing Catalog: \(error)")
-            }
-            else {
-                guard let catalogObjects = catalogObjects else {
-                    return
+            DispatchQueue.main.async(execute: {
+                if let error = error {
+                    let alertController = UIAlertController(title: "Error", message:
+                        "Error Parsing Catalog: \(error)", preferredStyle: UIAlertControllerStyle.alert)
+                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
                 }
-                self.catalogObjects = catalogObjects
-                DispatchQueue.main.async(execute: {
+                else {
+                    guard let catalogObjects = catalogObjects else {
+                        return
+                    }
+                    self.catalogObjects = catalogObjects
                     self.tableView.reloadData()
-                })
-            }
+                }
+            })
         }
     }
 

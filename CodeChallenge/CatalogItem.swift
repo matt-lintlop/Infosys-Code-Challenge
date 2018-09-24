@@ -10,9 +10,10 @@ import Foundation
 
 // Catalog Object
 class  CatalogItem  {
-    var itemIdentifier: String                            // object identifier
-    var objectSummary:  CatalogItemSummary                 // object summary dictionary
- 
+    var itemIdentifier: String                            // catalog item identifier
+    var objectSummary:  CatalogItemSummary                // catalog item summary dictionary
+    var indexPath: IndexPath?                             // index path of associated table view cell
+    
     enum  CatalogItemType: String {
         case consumerProduct = "consumer product"
         case hardware

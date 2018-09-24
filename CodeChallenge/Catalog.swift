@@ -11,69 +11,78 @@ import Foundation
 
 // Catalog
 class Catalog {
+    
     var catalogObjects: [ CatalogItem]?
+    
+    enum ParseError: Error {
+        case errorParsingJSON
+    }
     
     init() {
         self.catalogObjects = []
     }
-    
-    func parseJSON(completion: @escaping (Error?, [ CatalogItem]?) -> Void) {
-        DispatchQueue.global(qos: .background).async {
-            guard let path = Bundle.main.path(forResource: "data", ofType: "json") else {
-                return
-            }
-            let url = URL(fileURLWithPath: path)
-            guard let jsonData = try? Data(contentsOf: url) else {
-                return
-            }
-            do {
-                guard let catalogDict = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as? [String : AnyObject] else {
+ 
+    func parseJSON(completion: @escaping (Error?, [CatalogItem]?) -> Void) {
+        let strongSelf = self
+        DispatchQueue.global(qos: .background).async {  [weak self] in
+             do {
+                guard let path = Bundle.main.path(forResource: "data", ofType: "json") else {
+                    completion(ParseError.errorParsingJSON, nil)
                     return
                 }
+                let url = URL(fileURLWithPath: path)
+                let jsonData = try Data(contentsOf: url)
+                let catalogDict = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as! [String : AnyObject]
                 for (itemIdentifier, objectDict) in catalogDict {
                     guard let objectDict = objectDict as? Dictionary<String, AnyObject> else {
+                        completion(ParseError.errorParsingJSON, nil)
                         return
                     }
                     guard let objectSummaryDict = objectDict["object_summary"] as? [String: String] else {
-                        continue
+                        completion(ParseError.errorParsingJSON, nil)
+                        return
                     }
                     guard let objectType = objectSummaryDict["type"] else {
-                        continue
+                        completion(ParseError.errorParsingJSON, nil)
+                        return
                     }
                     
                     switch objectType {
                     case  CatalogItem.CatalogItemType.consumerProduct.rawValue:
                         // add a Car catalog object to this catalog
                         guard let carCatalogItem =  ConsumerProductCatalogItem(itemIdentifier: itemIdentifier, objectDict: objectDict) else {
-                            continue
+                            completion(ParseError.errorParsingJSON, nil)
+                            return
                         }
-                        self.catalogObjects?.append(carCatalogItem)
+                        strongSelf.catalogObjects?.append(carCatalogItem)
                         break;
                         
                     case  CatalogItem.CatalogItemType.hardware.rawValue:
                         // add a Computer catalog object to this catalog
                         guard let computerCatalogItem =  HardwareCatalogItem(itemIdentifier: itemIdentifier, objectDict: objectDict) else {
-                            continue
+                            completion(ParseError.errorParsingJSON, nil)
+                           return
                         }
-                        self.catalogObjects?.append(computerCatalogItem)
+                        strongSelf.catalogObjects?.append(computerCatalogItem)
                         break;
                         
                     case  CatalogItem.CatalogItemType.animal.rawValue:
                         // add an Animal catalog object to this catalog
                         guard let animalCatalogItem =  AnimalCatalogItem(itemIdentifier: itemIdentifier, objectDict: objectDict) else {
-                            continue
+                            completion(ParseError.errorParsingJSON, nil)
+                            return
                         }
-                        self.catalogObjects?.append(animalCatalogItem)
+                        strongSelf.catalogObjects?.append(animalCatalogItem)
                         break;
                         
                     default:
                         break;
                     }
                 }
-                completion(nil, self.catalogObjects)
+                completion(nil, strongSelf.catalogObjects)
             }
             catch {
-                completion(error,nil)
+                completion(ParseError.errorParsingJSON, nil)
             }
         }
     }

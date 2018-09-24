@@ -10,7 +10,7 @@ import UIKit
 
 // Catalog Object
 class ImageCatalogItem:  CatalogItem  {
-    let imageReference: ImageReference?                 // pet image
+    let imageReference: ImageReference?
     
     private enum DictionaryKeys: String {
         case objectImage = "image"
