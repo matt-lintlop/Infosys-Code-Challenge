@@ -8,8 +8,7 @@
 
 import UIKit
 
-class CatalogTableViewController:UITableViewController {
-    
+class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
     var catalogItems:[CatalogItem]?
     var sectionNames:[String] = []
     var sectionCatalogItems:[[CatalogItem]] = []
@@ -196,5 +195,10 @@ class CatalogTableViewController:UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    // MARK - CatalogItemDelegate
+    
+    func catalogItem(_ catalogItem: CatalogItem, atIndexPath indexPath: (IndexPath), didLoadImageImage image: UIImage?, withError error: Error?) {
+        print("Did finish loading image at index path:\(indexPath) with error:\(error)")
+    }
 }
