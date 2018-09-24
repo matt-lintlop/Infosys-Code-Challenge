@@ -12,11 +12,17 @@ import Foundation
 class Catalog {
     var catalogObjects: [CatalogObject]?                // catalog objects
 
-    init(withDictionary objectsDict: [String:AnyObject]) {
-        
-        for (objectIdentifier, objectDict) in objectsDict.enumerated() {
-            print("===========================================================================================")
-            print("Catalog: object Identifier: \(objectIdentifier)")
+    init(withDictionary catalogDict: [String:AnyObject]) {
+        for (objectName, value) in catalogDict {
+            print("\n\nobject name = \(objectName)")
+            guard let objectDict = value as? Dictionary<String, Any> else {
+                print("Error: could get dictionary")
+                return
+            }
+            print("# objectDict keys = \(objectDict.keys.count)")
+            for key in objectDict.keys {
+                print("\(key)")
+            }
         }
     }
 }

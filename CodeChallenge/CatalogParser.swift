@@ -25,12 +25,7 @@ class CatalogParser {
                 print("Error: could not de-serialize json")
                 return
             }
-            for (name, objectDict) in catalogDict {
-                print("name = \(name)")
-//                print("objectDict = \(objectDict)")
-            }
             let catalog = Catalog(withDictionary: catalogDict)
-            
             print("Success! Created catalog.")
             completion(nil, catalog)
         }
