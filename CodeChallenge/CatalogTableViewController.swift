@@ -115,10 +115,9 @@ class CatalogTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let catalogItem = self.catalogItems?[indexPath.row] else {
+        guard let catalogItem = getCatalogItem(atIndexPath: indexPath) else {
             return
         }
-        
         switch (catalogItem.objectSummary.type) {
             
         case  CatalogItem.CatalogItemType.consumerProduct.rawValue:
