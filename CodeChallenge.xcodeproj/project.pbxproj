@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4410FC0C215892530064F053 /* CatalogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410FC0B215892530064F053 /* CatalogTableViewController.swift */; };
-		4410FC0E2158AECD0064F053 /* ImageView+Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410FC0D2158AECD0064F053 /* ImageView+Download.swift */; };
+		4410FC0E2158AECD0064F053 /* ImageViewEntensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410FC0D2158AECD0064F053 /* ImageViewEntensions.swift */; };
 		445413122156FF3D00735833 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445413112156FF3D00735833 /* AppDelegate.swift */; };
 		445413172156FF3D00735833 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 445413152156FF3D00735833 /* Main.storyboard */; };
 		445413192156FF3D00735833 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 445413182156FF3D00735833 /* Assets.xcassets */; };
@@ -17,16 +17,16 @@
 		4454132821571CCD00735833 /* Catalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4454132721571CCD00735833 /* Catalog.swift */; };
 		44E9CCE0215871B200A7A597 /* ImageReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E9CCDA215871B100A7A597 /* ImageReference.swift */; };
 		44E9CCE2215871B200A7A597 /* CatalogItemSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E9CCDC215871B200A7A597 /* CatalogItemSummary.swift */; };
-		44E9CCE3215871B200A7A597 /* ComputerCatalogObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E9CCDD215871B200A7A597 /* ComputerCatalogObject.swift */; };
-		44E9CCE4215871B200A7A597 /* PetCatalogObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E9CCDE215871B200A7A597 /* PetCatalogObject.swift */; };
+		44E9CCE3215871B200A7A597 /* HardwareCatalogItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E9CCDD215871B200A7A597 /* HardwareCatalogItem.swift */; };
+		44E9CCE4215871B200A7A597 /* AnimalCatalogObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E9CCDE215871B200A7A597 /* AnimalCatalogObject.swift */; };
 		44E9CCE5215871B200A7A597 /* CatalogItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E9CCDF215871B200A7A597 /* CatalogItem.swift */; };
-		44E9CCE72158779500A7A597 /* CarCatalogObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E9CCE62158779500A7A597 /* CarCatalogObject.swift */; };
+		44E9CCE72158779500A7A597 /* ConsumerProductCatalogObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E9CCE62158779500A7A597 /* ConsumerProductCatalogObject.swift */; };
 		44E9CCE921587F0F00A7A597 /* ImageCatalogItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E9CCE821587F0F00A7A597 /* ImageCatalogItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4410FC0B215892530064F053 /* CatalogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTableViewController.swift; sourceTree = "<group>"; };
-		4410FC0D2158AECD0064F053 /* ImageView+Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+Download.swift"; sourceTree = "<group>"; };
+		4410FC0D2158AECD0064F053 /* ImageViewEntensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewEntensions.swift; sourceTree = "<group>"; };
 		4454130E2156FF3D00735833 /* CodeChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		445413112156FF3D00735833 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		445413162156FF3D00735833 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -37,10 +37,10 @@
 		4454132721571CCD00735833 /* Catalog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Catalog.swift; sourceTree = "<group>"; };
 		44E9CCDA215871B100A7A597 /* ImageReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageReference.swift; sourceTree = "<group>"; };
 		44E9CCDC215871B200A7A597 /* CatalogItemSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogItemSummary.swift; sourceTree = "<group>"; };
-		44E9CCDD215871B200A7A597 /* ComputerCatalogObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputerCatalogObject.swift; sourceTree = "<group>"; };
-		44E9CCDE215871B200A7A597 /* PetCatalogObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetCatalogObject.swift; sourceTree = "<group>"; };
+		44E9CCDD215871B200A7A597 /* HardwareCatalogItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HardwareCatalogItem.swift; sourceTree = "<group>"; };
+		44E9CCDE215871B200A7A597 /* AnimalCatalogObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalCatalogObject.swift; sourceTree = "<group>"; };
 		44E9CCDF215871B200A7A597 /* CatalogItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogItem.swift; sourceTree = "<group>"; };
-		44E9CCE62158779500A7A597 /* CarCatalogObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarCatalogObject.swift; sourceTree = "<group>"; };
+		44E9CCE62158779500A7A597 /* ConsumerProductCatalogObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsumerProductCatalogObject.swift; sourceTree = "<group>"; };
 		44E9CCE821587F0F00A7A597 /* ImageCatalogItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCatalogItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,10 +81,10 @@
 				44E9CCDC215871B200A7A597 /* CatalogItemSummary.swift */,
 				44E9CCDF215871B200A7A597 /* CatalogItem.swift */,
 				44E9CCE821587F0F00A7A597 /* ImageCatalogItem.swift */,
-				4410FC0D2158AECD0064F053 /* ImageView+Download.swift */,
-				44E9CCDD215871B200A7A597 /* ComputerCatalogObject.swift */,
-				44E9CCDE215871B200A7A597 /* PetCatalogObject.swift */,
-				44E9CCE62158779500A7A597 /* CarCatalogObject.swift */,
+				4410FC0D2158AECD0064F053 /* ImageViewEntensions.swift */,
+				44E9CCDD215871B200A7A597 /* HardwareCatalogItem.swift */,
+				44E9CCDE215871B200A7A597 /* AnimalCatalogObject.swift */,
+				44E9CCE62158779500A7A597 /* ConsumerProductCatalogObject.swift */,
 				445413152156FF3D00735833 /* Main.storyboard */,
 				445413182156FF3D00735833 /* Assets.xcassets */,
 				445413232156FF5A00735833 /* data.json */,
@@ -169,15 +169,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				4410FC0C215892530064F053 /* CatalogTableViewController.swift in Sources */,
-				4410FC0E2158AECD0064F053 /* ImageView+Download.swift in Sources */,
+				4410FC0E2158AECD0064F053 /* ImageViewEntensions.swift in Sources */,
 				44E9CCE5215871B200A7A597 /* CatalogItem.swift in Sources */,
 				44E9CCE2215871B200A7A597 /* CatalogItemSummary.swift in Sources */,
 				4454132821571CCD00735833 /* Catalog.swift in Sources */,
 				44E9CCE0215871B200A7A597 /* ImageReference.swift in Sources */,
-				44E9CCE4215871B200A7A597 /* PetCatalogObject.swift in Sources */,
-				44E9CCE72158779500A7A597 /* CarCatalogObject.swift in Sources */,
+				44E9CCE4215871B200A7A597 /* AnimalCatalogObject.swift in Sources */,
+				44E9CCE72158779500A7A597 /* ConsumerProductCatalogObject.swift in Sources */,
 				44E9CCE921587F0F00A7A597 /* ImageCatalogItem.swift in Sources */,
-				44E9CCE3215871B200A7A597 /* ComputerCatalogObject.swift in Sources */,
+				44E9CCE3215871B200A7A597 /* HardwareCatalogItem.swift in Sources */,
 				445413122156FF3D00735833 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

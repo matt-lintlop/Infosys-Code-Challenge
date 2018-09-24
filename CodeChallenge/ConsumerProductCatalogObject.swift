@@ -1,5 +1,5 @@
 //
-//  Car CatalogItem.swift
+//  ConsumerProductCatalogObject.swift
 //  CodeChallenge
 //
 //  Created by Matt Lintlop on 9/22/18.
@@ -9,7 +9,7 @@
 import Foundation
 
 // Car Catalog Object
-class CarCatalogItem:  CatalogItem {
+class ConsumerProductCatalogItem:  CatalogItem {
     let doors: String
     let price: String
     let milage: String

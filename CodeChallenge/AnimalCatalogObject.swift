@@ -1,5 +1,5 @@
 //
-//  Pet CatalogItem.swift
+//  AnimalCatalogItem.swift
 //  CodeChallenge
 //
 //  Created by Matt Lintlop on 9/22/18.
@@ -9,7 +9,7 @@
 import Foundation
 
 // Pet Catalog Object
-class PetCatalogItem: ImageCatalogItem {
+class AnimalCatalogItem: ImageCatalogItem {
     let age: String                                     // pet age
     let favoriteToy: String                             // pet favorite toy
     

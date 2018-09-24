@@ -77,16 +77,33 @@ class CatalogTableViewController: UITableViewController {
         self.selectedIndexPath = indexPath
         
         switch (catalogItem.objectSummary.type) {
+            
         case  CatalogItem.CatalogItemType.consumerProduct.rawValue:
             print("TODO: Show Consumer Product View Controller")
+            
         case  CatalogItem.CatalogItemType.hardware.rawValue:
             print("TODO: Show Hardware View Controller")
+            
         case  CatalogItem.CatalogItemType.animal.rawValue:
             print("TODO: Show Animal View Controller")
+            
         default:
             return
         }
     }
+    
+    func showConsumerProductViewController() {
+        
+    }
+    
+    func showHardwareViewController() {
+        
+    }
+    
+    func showAnimalViewController() {
+        
+    }
+
     
     /*
     // Override to support conditional editing of the table view.

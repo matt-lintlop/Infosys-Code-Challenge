@@ -1,5 +1,5 @@
 //
-//  ImageView+Download.swift
+//  ImageViewEntensions.swift
 //  CodeChallenge
 //
 //  Created by Matt Lintlop on 9/23/18.

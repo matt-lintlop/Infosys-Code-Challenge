@@ -44,7 +44,7 @@ class Catalog {
                     switch objectType {
                     case  CatalogItem.CatalogItemType.consumerProduct.rawValue:
                         // add a Car catalog object to this catalog
-                        guard let carCatalogItem =  CarCatalogItem(itemIdentifier: itemIdentifier, objectDict: objectDict) else {
+                        guard let carCatalogItem =  ConsumerProductCatalogItem(itemIdentifier: itemIdentifier, objectDict: objectDict) else {
                             continue
                         }
                         self.catalogObjects?.append(carCatalogItem)
@@ -52,7 +52,7 @@ class Catalog {
                         
                     case  CatalogItem.CatalogItemType.hardware.rawValue:
                         // add a Computer catalog object to this catalog
-                        guard let computerCatalogItem =  ComputerCatalogItem(itemIdentifier: itemIdentifier, objectDict: objectDict) else {
+                        guard let computerCatalogItem =  HardwareCatalogItem(itemIdentifier: itemIdentifier, objectDict: objectDict) else {
                             continue
                         }
                         self.catalogObjects?.append(computerCatalogItem)
@@ -60,7 +60,7 @@ class Catalog {
                         
                     case  CatalogItem.CatalogItemType.animal.rawValue:
                         // add an Animal catalog object to this catalog
-                        guard let animalCatalogItem =  PetCatalogItem(itemIdentifier: itemIdentifier, objectDict: objectDict) else {
+                        guard let animalCatalogItem =  AnimalCatalogItem(itemIdentifier: itemIdentifier, objectDict: objectDict) else {
                             continue
                         }
                         self.catalogObjects?.append(animalCatalogItem)

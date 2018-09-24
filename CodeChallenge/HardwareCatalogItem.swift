@@ -1,5 +1,5 @@
 //
-//  Computer CatalogItem.swift
+//  HardwareCatalogItem.swift
 //  CodeChallenge
 //
 //  Created by Matt Lintlop on 9/22/18.
@@ -9,7 +9,7 @@
 import Foundation
 
 // Computer Catalog Object
-class ComputerCatalogItem: ImageCatalogItem {
+class HardwareCatalogItem: ImageCatalogItem {
     let purchaseDate: String
     
     private enum DictionaryKeys: String {
