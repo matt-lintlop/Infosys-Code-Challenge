@@ -9,30 +9,29 @@
 import Foundation
 
 // Catalog Object
-class CatalogObject: Decodable  {
+class CatalogObject  {
     var objectIdentifier: String                            // object identifier
     var objectSummary: CatalogObjectSummary                 // object summary dictionary
 
-    enum CatalogObjectdentifier: String {
+    enum Objectdentifier: String {
         case car
         case computer
         case cat
         case dog
     }
     
-    private enum CodingKeys: String, CodingKey, Decodable {
+    private enum Keys: String {
         case objectSummary = "object_summary"
     }
-
-    required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.objectSummary = try container.decode(CatalogObjectSummary.self, forKey:.objectSummary)
-        self.objectIdentifier = ""
-     }
- 
-    convenience init?(objectIdentifier: String, objectSummary: CatalogObjectSummary, from decoder: Decoder) throws {
-        try self.init(from: decoder)
+    
+    init?(objectIdentifier: String, objectDict: Dictionary<String, AnyObject>) {
         self.objectIdentifier = objectIdentifier
-        self.objectSummary = objectSummary
-    }
+        guard let objectSummaryDict = objectDict[Keys.objectSummary.rawValue] as? Dictionary<String, String> else {
+            return nil
+        }
+        guard let summary =  CatalogObjectSummary(withDictionary: objectSummaryDict) else {
+            return nil
+        }
+        self.objectSummary = summary
+   }
 }

@@ -9,9 +9,8 @@
 import Foundation
 
 // Pet Catalog Object
-class PetCatalogObject: CatalogObject {
+class PetCatalogObject: ImageCatalogObject {
     let age: String                                     // pet age
-    let imageReference: ImageReference?                 // pet image
     let favoriteToy: String                             // pet favorite toy
     
     private enum CodingKeys: String, CodingKey, Decodable {
@@ -22,7 +21,6 @@ class PetCatalogObject: CatalogObject {
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.imageReference = try container.decode(ImageReference.self, forKey:.imageReference)
         self.age = try container.decode(String.self, forKey:.age)
         self.favoriteToy = try container.decode(String.self, forKey:.favoriteToy)
         try super.init(from: decoder)

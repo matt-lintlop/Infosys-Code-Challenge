@@ -14,23 +14,20 @@ class CarCatalogObject: CatalogObject {
     let price: String
     let milage: String
     
-    private enum CodingKeys: String, CodingKey, Decodable {
+    private enum Keys: String {
         case doors
         case price
         case milage
     }
-    
-    required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.doors = try container.decode(String.self, forKey:.doors)
-        self.price = try container.decode(String.self, forKey:.price)
-        self.milage = try container.decode(String.self, forKey:.milage)
-        try super.init(from: decoder)
-    }
-    
-    convenience init?(objectIdentifier: String, objectSummary: CatalogObjectSummary, from decoder: Decoder) throws {
-        try self.init(from: decoder)
-        self.objectIdentifier = objectIdentifier
-        self.objectSummary = objectSummary
+    override init?(objectIdentifier: String, objectDict: Dictionary<String, AnyObject>) {
+        guard let doors = objectDict[Keys.doors.rawValue] as? String,
+              let price = objectDict[Keys.price.rawValue] as? String,
+              let milage = objectDict[Keys.milage.rawValue] as? String else {
+            return nil
+        }
+        self.doors = doors
+        self.price = price
+        self.milage = milage
+        super.init(objectIdentifier: objectIdentifier, objectDict: objectDict)
     }
 }

@@ -9,24 +9,28 @@
 import Foundation
 
 // Catalog Object Summary
-struct CatalogObjectSummary: Decodable {
+struct CatalogObjectSummary {
     let type: String                                    // object type
     let name: String                                    // object name
     let color: String                                   // object color
     let description: String                             // object description
 
-    private enum CodingKeys: String, CodingKey, Decodable {
+    private enum Keys: String {
         case type
         case name
         case color
         case description
     }
     
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.type = try container.decode(String.self, forKey:.type)
-        self.name = try container.decode(String.self, forKey:.name)
-        self.color = try container.decode(String.self, forKey:.color)
-        self.description = try container.decode(String.self, forKey:.description)
+    init?(withDictionary objectSummaryDict: Dictionary<String, String>) {
+        guard let type = objectSummaryDict[Keys.type.rawValue], let name = objectSummaryDict[Keys.name.rawValue],
+            let color = objectSummaryDict[Keys.color.rawValue], let description = objectSummaryDict[Keys.description.rawValue]
+            else {
+                return nil
+        }
+        self.type = type
+        self.name = name
+        self.color = color
+        self.description = description
     }
 }

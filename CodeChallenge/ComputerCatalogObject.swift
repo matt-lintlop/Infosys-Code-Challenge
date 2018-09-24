@@ -9,7 +9,7 @@
 import Foundation
 
 // Computer Catalog Object
-class ComputerCatalogObject: CatalogObject {
+class ComputerCatalogObject: ImageCatalogObject {
     let purchaseDate: String
     
     private enum CodingKeys: String, CodingKey, Decodable {

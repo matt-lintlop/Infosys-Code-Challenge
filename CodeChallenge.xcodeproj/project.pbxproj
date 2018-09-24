@@ -20,6 +20,7 @@
 		44E9CCE4215871B200A7A597 /* PetCatalogObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E9CCDE215871B200A7A597 /* PetCatalogObject.swift */; };
 		44E9CCE5215871B200A7A597 /* CatalogObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E9CCDF215871B200A7A597 /* CatalogObject.swift */; };
 		44E9CCE72158779500A7A597 /* CarCatalogObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E9CCE62158779500A7A597 /* CarCatalogObject.swift */; };
+		44E9CCE921587F0F00A7A597 /* ImageCatalogObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E9CCE821587F0F00A7A597 /* ImageCatalogObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		44E9CCDE215871B200A7A597 /* PetCatalogObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetCatalogObject.swift; sourceTree = "<group>"; };
 		44E9CCDF215871B200A7A597 /* CatalogObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogObject.swift; sourceTree = "<group>"; };
 		44E9CCE62158779500A7A597 /* CarCatalogObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarCatalogObject.swift; sourceTree = "<group>"; };
+		44E9CCE821587F0F00A7A597 /* ImageCatalogObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCatalogObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				445413132156FF3D00735833 /* ViewController.swift */,
 				4454132721571CCD00735833 /* Catalog.swift */,
 				44E9CCDC215871B200A7A597 /* CatalogObjectSummary.swift */,
+				44E9CCE821587F0F00A7A597 /* ImageCatalogObject.swift */,
 				44E9CCDF215871B200A7A597 /* CatalogObject.swift */,
 				44E9CCE62158779500A7A597 /* CarCatalogObject.swift */,
 				44E9CCDE215871B200A7A597 /* PetCatalogObject.swift */,
@@ -168,6 +171,7 @@
 				44E9CCE0215871B200A7A597 /* ImageReference.swift in Sources */,
 				44E9CCE4215871B200A7A597 /* PetCatalogObject.swift in Sources */,
 				44E9CCE72158779500A7A597 /* CarCatalogObject.swift in Sources */,
+				44E9CCE921587F0F00A7A597 /* ImageCatalogObject.swift in Sources */,
 				44E9CCE3215871B200A7A597 /* ComputerCatalogObject.swift in Sources */,
 				445413142156FF3D00735833 /* ViewController.swift in Sources */,
 				445413122156FF3D00735833 /* AppDelegate.swift in Sources */,
