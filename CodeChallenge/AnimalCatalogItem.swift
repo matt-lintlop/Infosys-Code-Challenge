@@ -9,22 +9,22 @@
 import Foundation
 
 // Pet Catalog Object
-class AnimalCatalogItem: ImageCatalogItem {
-    let age: String                                     // pet age
-    let favoriteToy: String                             // pet favorite toy
+class AnimalCatalogItem:ImageCatalogItem {
+    let age:String                                     // pet age
+    let favoriteToy:String                             // pet favorite toy
     
-    private enum DictionaryKeys: String {
+    private enum DictionaryKeys:String {
         case age = "age"
         case favoriteToy = "favorite_toy"
     }
     
-    override init?(itemIdentifier: String, objectDict: Dictionary<String, AnyObject>) {
+    override init?(itemIdentifier:String, objectDict:Dictionary<String, AnyObject>) {
         guard let age = objectDict[DictionaryKeys.age.rawValue] as? String,
             let favoriteToy = objectDict[DictionaryKeys.favoriteToy.rawValue] as? String else {
                 return nil
         }
         self.age = age
         self.favoriteToy = favoriteToy
-        super.init(itemIdentifier: itemIdentifier, objectDict: objectDict)
+        super.init(itemIdentifier:itemIdentifier, objectDict:objectDict)
     }
 }

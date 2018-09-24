@@ -9,18 +9,18 @@
 import Foundation
 
 // Computer Catalog Object
-class HardwareCatalogItem: ImageCatalogItem {
-    let purchaseDate: String
+class HardwareCatalogItem:ImageCatalogItem {
+    let purchaseDate:String
     
-    private enum DictionaryKeys: String {
+    private enum DictionaryKeys:String {
         case purchaseDate = "purchase_date"
     }
    
-    override init?(itemIdentifier: String, objectDict: Dictionary<String, AnyObject>) {
+    override init?(itemIdentifier:String, objectDict:Dictionary<String, AnyObject>) {
         guard let purchaseDate = objectDict[DictionaryKeys.purchaseDate.rawValue] as? String else {
                 return nil
         }
         self.purchaseDate = purchaseDate
-        super.init(itemIdentifier: itemIdentifier, objectDict: objectDict)
+        super.init(itemIdentifier:itemIdentifier, objectDict:objectDict)
     }
 }

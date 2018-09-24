@@ -9,18 +9,18 @@
 import Foundation
 
 // Car Catalog Object
-class ConsumerProductCatalogItem:  CatalogItem {
-    let doors: String
-    let price: String
-    let milage: String
+class ConsumerProductCatalogItem:CatalogItem {
+    let doors:String
+    let price:String
+    let milage:String
     
-    private enum DictionaryKeys: String {
+    private enum DictionaryKeys:String {
         case doors
         case price
         case milage
     }
     
-    override init?(itemIdentifier: String, objectDict: Dictionary<String, AnyObject>) {
+    override init?(itemIdentifier:String, objectDict:Dictionary<String, AnyObject>) {
         guard let doors = objectDict[DictionaryKeys.doors.rawValue] as? String,
               let price = objectDict[DictionaryKeys.price.rawValue] as? String,
               let milage = objectDict[DictionaryKeys.milage.rawValue] as? String else {
@@ -29,6 +29,6 @@ class ConsumerProductCatalogItem:  CatalogItem {
         self.doors = doors
         self.price = price
         self.milage = milage
-        super.init(itemIdentifier: itemIdentifier, objectDict: objectDict)
+        super.init(itemIdentifier:itemIdentifier, objectDict:objectDict)
     }
 }

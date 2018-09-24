@@ -10,32 +10,33 @@ import UIKit
 
 // Catalog Item Delegate protocol
 protocol CatalogItemDelegate {
-    func catalogItem(_ catalogItem: CatalogItem, atIndexPath indexPath:(IndexPath),
+    func catalogItem(_ catalogItem:CatalogItem, atIndexPath indexPath:(IndexPath),
                      didLoadImageImage image:UIImage?, withError error:Error?)
 }
 
 // Catalog Object
 class  CatalogItem  {
-    var itemIdentifier: String                            // catalog item identifier
-    var objectSummary:  CatalogItemSummary                // catalog item summary dictionary
-    var indexPath: IndexPath?                             // index path of associated table view cell
+    var itemIdentifier:String                           // catalog item identifier
+    var objectSummary:CatalogItemSummary                // catalog item summary dictionary
+    var indexPath:IndexPath?                            // index path of associated table view cell
+    var delegate:CatalogItemDelegate?                   // delegate
     
-    enum  CatalogItemType: String {
+    enum  CatalogItemType:String {
         case consumerProduct = "consumer product"
         case hardware
         case animal
     }
 
-    private enum DictionaryKeys: String {
+    private enum DictionaryKeys:String {
         case objectSummary = "object_summary"
     }
     
-    init?(itemIdentifier: String, objectDict: Dictionary<String, AnyObject>) {
+    init?(itemIdentifier:String, objectDict:Dictionary<String, AnyObject>) {
         self.itemIdentifier = itemIdentifier
         guard let objectSummaryDict = objectDict[DictionaryKeys.objectSummary.rawValue] as? Dictionary<String, String> else {
             return nil
         }
-        guard let summary =   CatalogItemSummary(withDictionary: objectSummaryDict) else {
+        guard let summary =   CatalogItemSummary(withDictionary:objectSummaryDict) else {
             return nil
         }
         self.objectSummary = summary

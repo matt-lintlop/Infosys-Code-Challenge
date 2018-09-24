@@ -10,17 +10,17 @@ import Foundation
 
 // Image Reference
 struct ImageReference {
-    let imageUrlPath: String                            // image url path
-    let imageWidth: String                              // image width string (example: "50px")
-    let imageHeight: String                             // image height string (example: "50px")
+    let imageUrlPath:String                            // image url path
+    let imageWidth:String                              // image width string (example:"50px")
+    let imageHeight:String                             // image height string (example:"50px")
     
-    private enum DictionaryKeys: String {
+    private enum DictionaryKeys:String {
         case imageUrlPath = "url"
         case imageWidth = "width"
         case imageHeight = "height"
     }
     
-    init?(withDictionary imageReferenceDict: Dictionary<String, String>) {
+    init?(withDictionary imageReferenceDict:Dictionary<String, String>) {
         guard let urlPath = imageReferenceDict[DictionaryKeys.imageUrlPath.rawValue],
               let imageWidth = imageReferenceDict[DictionaryKeys.imageWidth.rawValue],
               let imageHeight = imageReferenceDict[DictionaryKeys.imageHeight.rawValue]

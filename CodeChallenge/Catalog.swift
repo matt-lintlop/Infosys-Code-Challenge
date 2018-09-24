@@ -12,11 +12,11 @@ import Foundation
 // Catalog
 class Catalog {
     
-    var catalogObjects: [CatalogItem]?
-    var sectionNames: [String]?
-    var catalogSectionDict: [String:[CatalogItem]]?
+    var catalogObjects:[CatalogItem]?
+    var sectionNames:[String]?
+    var catalogSectionDict:[String:[CatalogItem]]?
 
-    enum ParseError: Error {
+    enum ParseError:Error {
         case errorParsingJSON
     }
     
@@ -24,22 +24,22 @@ class Catalog {
         self.catalogObjects = []
     }
  
-    func parseJSON(completion: @escaping (Error?, [CatalogItem]?) -> Void) {
-        DispatchQueue.global(qos: .background).async {
+    func parseJSON(completion:@escaping (Error?, [CatalogItem]?) -> Void) {
+        DispatchQueue.global(qos:.background).async {
              do {
-                guard let path = Bundle.main.path(forResource: "data", ofType: "json") else {
+                guard let path = Bundle.main.path(forResource:"data", ofType:"json") else {
                     completion(ParseError.errorParsingJSON, nil)
                     return
                 }
-                let url = URL(fileURLWithPath: path)
-                let jsonData = try Data(contentsOf: url)
-                let catalogDict = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as! [String : AnyObject]
+                let url = URL(fileURLWithPath:path)
+                let jsonData = try Data(contentsOf:url)
+                let catalogDict = try JSONSerialization.jsonObject(with:jsonData, options:.allowFragments) as! [String :AnyObject]
                 for (itemIdentifier, objectDict) in catalogDict {
                     guard let objectDict = objectDict as? Dictionary<String, AnyObject> else {
                         completion(ParseError.errorParsingJSON, nil)
                         return
                     }
-                    guard let objectSummaryDict = objectDict["object_summary"] as? [String: String] else {
+                    guard let objectSummaryDict = objectDict["object_summary"] as? [String:String] else {
                         completion(ParseError.errorParsingJSON, nil)
                         return
                     }
@@ -51,7 +51,7 @@ class Catalog {
                     switch objectType {
                     case  CatalogItem.CatalogItemType.consumerProduct.rawValue:
                         // add a Car catalog object to this catalog
-                        guard let carCatalogItem =  ConsumerProductCatalogItem(itemIdentifier: itemIdentifier, objectDict: objectDict) else {
+                        guard let carCatalogItem =  ConsumerProductCatalogItem(itemIdentifier:itemIdentifier, objectDict:objectDict) else {
                             completion(ParseError.errorParsingJSON, nil)
                             return
                         }
@@ -60,7 +60,7 @@ class Catalog {
                         
                     case  CatalogItem.CatalogItemType.hardware.rawValue:
                         // add a Computer catalog object to this catalog
-                        guard let computerCatalogItem =  HardwareCatalogItem(itemIdentifier: itemIdentifier, objectDict: objectDict) else {
+                        guard let computerCatalogItem =  HardwareCatalogItem(itemIdentifier:itemIdentifier, objectDict:objectDict) else {
                             completion(ParseError.errorParsingJSON, nil)
                            return
                         }
@@ -69,7 +69,7 @@ class Catalog {
                         
                     case  CatalogItem.CatalogItemType.animal.rawValue:
                         // add an Animal catalog object to this catalog
-                        guard let animalCatalogItem =  AnimalCatalogItem(itemIdentifier: itemIdentifier, objectDict: objectDict) else {
+                        guard let animalCatalogItem =  AnimalCatalogItem(itemIdentifier:itemIdentifier, objectDict:objectDict) else {
                             completion(ParseError.errorParsingJSON, nil)
                             return
                         }

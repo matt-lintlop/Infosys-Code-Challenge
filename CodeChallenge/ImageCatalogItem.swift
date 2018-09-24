@@ -9,26 +9,26 @@
 import UIKit
 
 // Catalog Object
-class ImageCatalogItem:  CatalogItem  {
-    let imageReference: ImageReference?
+class ImageCatalogItem: CatalogItem  {
+    let imageReference:ImageReference?
     
-    private enum DictionaryKeys: String {
+    private enum DictionaryKeys:String {
         case objectImage = "image"
     }
     
-    override init?(itemIdentifier: String, objectDict: Dictionary<String, AnyObject>) {
+    override init?(itemIdentifier:String, objectDict:Dictionary<String, AnyObject>) {
         guard let imageRefrenceDict = objectDict[DictionaryKeys.objectImage.rawValue] as? Dictionary<String, String> else {
             return nil
         }
-        guard let imageReference =  ImageReference(withDictionary: imageRefrenceDict) else {
+        guard let imageReference =  ImageReference(withDictionary:imageRefrenceDict) else {
             return nil
         }
         self.imageReference = imageReference
-        super.init(itemIdentifier: itemIdentifier, objectDict: objectDict)
+        super.init(itemIdentifier:itemIdentifier, objectDict:objectDict)
     }
     
     
-    func downloadImage(completionHandler: (UIImage?) -> Void) {
+    func downloadImage(completionHandler:(UIImage?) -> Void) {
         
     }
 }
