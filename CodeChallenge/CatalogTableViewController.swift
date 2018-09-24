@@ -11,6 +11,8 @@ import UIKit
 class CatalogTableViewController: UITableViewController {
     
     var catalogItems: [CatalogItem]?
+    var sectionNames: [String]?
+    var sectionCatalogItems: [[CatalogItem]]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +45,47 @@ class CatalogTableViewController: UITableViewController {
     
     func makeSectionsWithCatalogItems(_ catalogItems: [CatalogItem]) {
         
+        var sectionsDict: [String:[CatalogItem]] = [:]
+        self.sectionNames = []
+        self.sectionCatalogItems = []
+
+        for catalogItem in catalogItems {
+            let type = catalogItem.objectSummary.type
+            if var sectionCatalogItems = sectionsDict[type] {
+                sectionCatalogItems.append(catalogItem)
+                sectionsDict[type] = sectionCatalogItems
+            }
+            else {
+                sectionsDict[type] = [catalogItem]
+            }
+        }
+        
+        for (sectionName, sectionCatalogItems) in sectionsDict {
+            self.sectionNames?.append(sectionName)
+            self.sectionCatalogItems?.append(sectionCatalogItems)
+        }
+    }
+
+    // get the name of the section at an index path
+    func sectionName(withIndexPath indexPath: IndexPath) -> String {
+        guard let sectionNames = self.sectionNames else {
+            return ""
+        }
+        guard indexPath.section < sectionNames.count else {
+            return ""
+        }
+        return sectionNames[indexPath.section]
+    }
+
+    // get the catalog items in section at an index path
+    func sectionCatalogItems(withIndexPath indexPath: IndexPath) -> [CatalogItem]? {
+        guard let sectionCatalogItems = self.sectionCatalogItems else {
+            return nil
+        }
+        guard indexPath.section < sectionCatalogItems.count else {
+            return nil
+        }
+        return sectionCatalogItems[indexPath.section]
     }
 
     // MARK: - Table view data source
