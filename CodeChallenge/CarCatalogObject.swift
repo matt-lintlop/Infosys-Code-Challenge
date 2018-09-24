@@ -14,15 +14,16 @@ class CarCatalogObject: CatalogObject {
     let price: String
     let milage: String
     
-    private enum Keys: String {
+    private enum DictionaryKeys: String {
         case doors
         case price
         case milage
     }
+    
     override init?(objectIdentifier: String, objectDict: Dictionary<String, AnyObject>) {
-        guard let doors = objectDict[Keys.doors.rawValue] as? String,
-              let price = objectDict[Keys.price.rawValue] as? String,
-              let milage = objectDict[Keys.milage.rawValue] as? String else {
+        guard let doors = objectDict[DictionaryKeys.doors.rawValue] as? String,
+              let price = objectDict[DictionaryKeys.price.rawValue] as? String,
+              let milage = objectDict[DictionaryKeys.milage.rawValue] as? String else {
             return nil
         }
         self.doors = doors

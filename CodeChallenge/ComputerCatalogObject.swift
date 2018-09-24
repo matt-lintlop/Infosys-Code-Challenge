@@ -12,19 +12,15 @@ import Foundation
 class ComputerCatalogObject: ImageCatalogObject {
     let purchaseDate: String
     
-    private enum CodingKeys: String, CodingKey, Decodable {
+    private enum DictionaryKeys: String {
         case purchaseDate = "purchase_date"
     }
-    
-    required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.purchaseDate = try container.decode(String.self, forKey:. purchaseDate)
-        try super.init(from: decoder)
-    }
-    
-    convenience init?(objectIdentifier: String, objectSummary: CatalogObjectSummary, from decoder: Decoder) throws {
-        try self.init(from: decoder)
-        self.objectIdentifier = objectIdentifier
-        self.objectSummary = objectSummary
+   
+    override init?(objectIdentifier: String, objectDict: Dictionary<String, AnyObject>) {
+        guard let purchaseDate = objectDict[DictionaryKeys.purchaseDate.rawValue] as? String else {
+                return nil
+        }
+        self.purchaseDate = purchaseDate
+        super.init(objectIdentifier: objectIdentifier, objectDict: objectDict)
     }
 }

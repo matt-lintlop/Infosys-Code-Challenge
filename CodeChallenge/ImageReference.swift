@@ -14,16 +14,16 @@ struct ImageReference {
     let imageWidth: String                              // image width string (example: "50px")
     let imageHeight: String                             // image height string (example: "50px")
     
-    private enum Keys: String {
+    private enum DictionaryKeys: String {
         case imageUrlPath = "url"
         case imageWidth = "width"
         case imageHeight = "height"
     }
     
     init?(withDictionary imageReferenceDict: Dictionary<String, String>) {
-        guard let urlPath = imageReferenceDict[Keys.imageUrlPath.rawValue],
-              let imageWidth = imageReferenceDict[Keys.imageWidth.rawValue],
-              let imageHeight = imageReferenceDict[Keys.imageHeight.rawValue]
+        guard let urlPath = imageReferenceDict[DictionaryKeys.imageUrlPath.rawValue],
+              let imageWidth = imageReferenceDict[DictionaryKeys.imageWidth.rawValue],
+              let imageHeight = imageReferenceDict[DictionaryKeys.imageHeight.rawValue]
         else {
             return nil
         }

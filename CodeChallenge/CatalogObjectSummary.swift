@@ -15,7 +15,7 @@ struct CatalogObjectSummary {
     let color: String                                   // object color
     let description: String                             // object description
 
-    private enum Keys: String {
+    private enum DictionaryKeys: String {
         case type
         case name
         case color
@@ -23,8 +23,8 @@ struct CatalogObjectSummary {
     }
     
     init?(withDictionary objectSummaryDict: Dictionary<String, String>) {
-        guard let type = objectSummaryDict[Keys.type.rawValue], let name = objectSummaryDict[Keys.name.rawValue],
-            let color = objectSummaryDict[Keys.color.rawValue], let description = objectSummaryDict[Keys.description.rawValue]
+        guard let type = objectSummaryDict[DictionaryKeys.type.rawValue], let name = objectSummaryDict[DictionaryKeys.name.rawValue],
+            let color = objectSummaryDict[DictionaryKeys.color.rawValue], let description = objectSummaryDict[DictionaryKeys.description.rawValue]
             else {
                 return nil
         }

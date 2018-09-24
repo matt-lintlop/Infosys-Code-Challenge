@@ -20,13 +20,13 @@ class CatalogObject  {
         case dog
     }
     
-    private enum Keys: String {
+    private enum DictionaryKeys: String {
         case objectSummary = "object_summary"
     }
     
     init?(objectIdentifier: String, objectDict: Dictionary<String, AnyObject>) {
         self.objectIdentifier = objectIdentifier
-        guard let objectSummaryDict = objectDict[Keys.objectSummary.rawValue] as? Dictionary<String, String> else {
+        guard let objectSummaryDict = objectDict[DictionaryKeys.objectSummary.rawValue] as? Dictionary<String, String> else {
             return nil
         }
         guard let summary =  CatalogObjectSummary(withDictionary: objectSummaryDict) else {

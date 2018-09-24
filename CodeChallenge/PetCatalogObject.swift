@@ -13,22 +13,18 @@ class PetCatalogObject: ImageCatalogObject {
     let age: String                                     // pet age
     let favoriteToy: String                             // pet favorite toy
     
-    private enum CodingKeys: String, CodingKey, Decodable {
-        case imageReference = "image"
+    private enum DictionaryKeys: String {
         case age = "age"
         case favoriteToy = "favorite_toy"
     }
     
-    required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.age = try container.decode(String.self, forKey:.age)
-        self.favoriteToy = try container.decode(String.self, forKey:.favoriteToy)
-        try super.init(from: decoder)
+    override init?(objectIdentifier: String, objectDict: Dictionary<String, AnyObject>) {
+        guard let age = objectDict[DictionaryKeys.age.rawValue] as? String,
+            let favoriteToy = objectDict[DictionaryKeys.favoriteToy.rawValue] as? String else {
+                return nil
+        }
+        self.age = age
+        self.favoriteToy = favoriteToy
+        super.init(objectIdentifier: objectIdentifier, objectDict: objectDict)
     }
-    
-    convenience init?(objectIdentifier: String, objectSummary: CatalogObjectSummary, from decoder: Decoder) throws {
-        try self.init(from: decoder)
-        self.objectIdentifier = objectIdentifier
-        self.objectSummary = objectSummary
-   }
 }
