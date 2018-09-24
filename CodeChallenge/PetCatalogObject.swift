@@ -1,5 +1,5 @@
 //
-//  Catalog.swift
+//  PetCatalogObject.swift
 //  CodeChallenge
 //
 //  Created by Matt Lintlop on 9/22/18.
@@ -11,7 +11,7 @@ import Foundation
 // Pet Catalog Object
 class PetCatalogObject: CatalogObject {
     let age: String                                     // pet age
-    let imageReference: ImageReference?           // pet image
+    let imageReference: ImageReference?                 // pet image
     let favoriteToy: String                             // pet favorite toy
     
     private enum CodingKeys: String, CodingKey, Decodable {

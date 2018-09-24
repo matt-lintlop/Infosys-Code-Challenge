@@ -1,5 +1,5 @@
 //
-//  Catalog.swift
+//  ComputerCatalogObject.swift
 //  CodeChallenge
 //
 //  Created by Matt Lintlop on 9/22/18.

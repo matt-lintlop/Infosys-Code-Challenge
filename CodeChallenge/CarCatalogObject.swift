@@ -1,5 +1,5 @@
 //
-//  CatalogObject.swift
+//  CarCatalogObject.swift
 //  CodeChallenge
 //
 //  Created by Matt Lintlop on 9/22/18.
@@ -8,28 +8,26 @@
 
 import Foundation
 
-// Catalog Object
-class CatalogObject: Decodable  {
-    var objectIdentifier: String                            // object identifier
-    var objectSummary: CatalogObjectSummary                 // object summary dictionary
-
-    enum CatalogObjectdentifier: String {
-        case car
-        case computer
-        case cat
-        case dog
-    }
+// Car Catalog Object
+class CarCatalogObject: CatalogObject {
+    let doors: String
+    let price: String
+    let milage: String
     
     private enum CodingKeys: String, CodingKey, Decodable {
-        case objectSummary = "object_summary"
+        case doors
+        case price
+        case milage
     }
-
+    
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.objectSummary = try container.decode(CatalogObjectSummary.self, forKey:.objectSummary)
-        self.objectIdentifier = ""
-     }
- 
+        self.doors = try container.decode(String.self, forKey:.doors)
+        self.price = try container.decode(String.self, forKey:.price)
+        self.milage = try container.decode(String.self, forKey:.milage)
+        try super.init(from: decoder)
+    }
+    
     convenience init?(objectIdentifier: String, objectSummary: CatalogObjectSummary, from decoder: Decoder) throws {
         try self.init(from: decoder)
         self.objectIdentifier = objectIdentifier
