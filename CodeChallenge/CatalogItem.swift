@@ -12,7 +12,13 @@ import Foundation
 class  CatalogItem  {
     var itemIdentifier: String                            // object identifier
     var objectSummary:  CatalogItemSummary                 // object summary dictionary
-   
+ 
+    enum  CatalogItemType: String {
+        case consumerProduct = "consumer product"
+        case hardware
+        case animal
+    }
+
     private enum DictionaryKeys: String {
         case objectSummary = "object_summary"
     }

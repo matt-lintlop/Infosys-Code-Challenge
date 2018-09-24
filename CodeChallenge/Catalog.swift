@@ -12,12 +12,6 @@ import Foundation
 // Catalog
 class Catalog {
     var catalogObjects: [ CatalogItem]?
-
-    enum  CatalogItemType: String {
-        case consumerProduct = "consumer product"
-        case hardware
-        case animal
-    }
     
     init() {
         self.catalogObjects = []
@@ -48,7 +42,7 @@ class Catalog {
                     }
                     
                     switch objectType {
-                    case  CatalogItemType.consumerProduct.rawValue:
+                    case  CatalogItem.CatalogItemType.consumerProduct.rawValue:
                         // add a Car catalog object to this catalog
                         guard let carCatalogItem =  CarCatalogItem(itemIdentifier: itemIdentifier, objectDict: objectDict) else {
                             continue
@@ -56,7 +50,7 @@ class Catalog {
                         self.catalogObjects?.append(carCatalogItem)
                         break;
                         
-                    case  CatalogItemType.hardware.rawValue:
+                    case  CatalogItem.CatalogItemType.hardware.rawValue:
                         // add a Computer catalog object to this catalog
                         guard let computerCatalogItem =  ComputerCatalogItem(itemIdentifier: itemIdentifier, objectDict: objectDict) else {
                             continue
@@ -64,7 +58,7 @@ class Catalog {
                         self.catalogObjects?.append(computerCatalogItem)
                         break;
                         
-                    case  CatalogItemType.animal.rawValue:
+                    case  CatalogItem.CatalogItemType.animal.rawValue:
                         // add an Animal catalog object to this catalog
                         guard let animalCatalogItem =  PetCatalogItem(itemIdentifier: itemIdentifier, objectDict: objectDict) else {
                             continue

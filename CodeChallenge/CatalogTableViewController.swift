@@ -68,6 +68,22 @@ class CatalogTableViewController: UITableViewController {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let catalogItem = self.catalogObjects?[indexPath.row] else {
+            return
+        }
+        switch (catalogItem.objectSummary.type) {
+        case  CatalogItem.CatalogItemType.consumerProduct.rawValue:
+            print("TODO: Show Consumer Product View Controller")
+        case  CatalogItem.CatalogItemType.hardware.rawValue:
+            print("TODO: Show Hardware View Controller")
+        case  CatalogItem.CatalogItemType.animal.rawValue:
+            print("TODO: Show Animal View Controller")
+        default:
+            return
+        }
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
