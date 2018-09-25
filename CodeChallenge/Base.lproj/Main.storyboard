@@ -50,7 +50,7 @@
         <!--Animal-->
         <scene sceneID="0FC-Ay-wit">
             <objects>
-                <viewController storyboardIdentifier="AnimalViewController" title="Animal" id="4r5-0T-zZ6" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AnimalViewController" title="Animal" id="4r5-0T-zZ6" customClass="AnimalViewController" customModule="CodeChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1KX-7k-A3J"/>
                         <viewControllerLayoutGuide type="bottom" id="OlX-Jp-gbg"/>
@@ -69,7 +69,7 @@
         <!--Consumer Product-->
         <scene sceneID="zS3-Do-jhQ">
             <objects>
-                <viewController storyboardIdentifier="ConsumerProductViewController" title="Consumer Product" id="BgI-mQ-FsA" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConsumerProductViewController" title="Consumer Product" id="BgI-mQ-FsA" customClass="ConsumerProductViewController" customModule="CodeChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4lV-l7-eAt"/>
                         <viewControllerLayoutGuide type="bottom" id="KgF-wi-wwW"/>
@@ -88,7 +88,7 @@
         <!--Hardware View Controller-->
         <scene sceneID="rLI-JF-2F8">
             <objects>
-                <viewController storyboardIdentifier="HardwareViewController" title="Hardware" id="46E-lR-6py" userLabel="Hardware View Controller" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HardwareViewController" title="Hardware" id="46E-lR-6py" userLabel="Hardware View Controller" customClass="HardwareViewController" customModule="CodeChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ruY-VE-lcE"/>
                         <viewControllerLayoutGuide type="bottom" id="alr-o1-oGE"/>

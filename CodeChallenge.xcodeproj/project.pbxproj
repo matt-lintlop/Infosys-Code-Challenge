@@ -14,6 +14,9 @@
 		4454131C2156FF3D00735833 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4454131A2156FF3D00735833 /* LaunchScreen.storyboard */; };
 		445413242156FF5A00735833 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 445413232156FF5A00735833 /* data.json */; };
 		4454132821571CCD00735833 /* Catalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4454132721571CCD00735833 /* Catalog.swift */; };
+		44DC7C582159EED100A7E922 /* AnimalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DC7C572159EED100A7E922 /* AnimalViewController.swift */; };
+		44DC7C5A2159EEE800A7E922 /* HardwareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DC7C592159EEE800A7E922 /* HardwareViewController.swift */; };
+		44DC7C5C2159EF0B00A7E922 /* ConsumerProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DC7C5B2159EF0B00A7E922 /* ConsumerProductViewController.swift */; };
 		44E9CCE0215871B200A7A597 /* ImageReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E9CCDA215871B100A7A597 /* ImageReference.swift */; };
 		44E9CCE2215871B200A7A597 /* CatalogItemSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E9CCDC215871B200A7A597 /* CatalogItemSummary.swift */; };
 		44E9CCE3215871B200A7A597 /* HardwareCatalogItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E9CCDD215871B200A7A597 /* HardwareCatalogItem.swift */; };
@@ -33,6 +36,9 @@
 		4454131D2156FF3D00735833 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		445413232156FF5A00735833 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		4454132721571CCD00735833 /* Catalog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Catalog.swift; sourceTree = "<group>"; };
+		44DC7C572159EED100A7E922 /* AnimalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalViewController.swift; sourceTree = "<group>"; };
+		44DC7C592159EEE800A7E922 /* HardwareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardwareViewController.swift; sourceTree = "<group>"; };
+		44DC7C5B2159EF0B00A7E922 /* ConsumerProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerProductViewController.swift; sourceTree = "<group>"; };
 		44E9CCDA215871B100A7A597 /* ImageReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageReference.swift; sourceTree = "<group>"; };
 		44E9CCDC215871B200A7A597 /* CatalogItemSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogItemSummary.swift; sourceTree = "<group>"; };
 		44E9CCDD215871B200A7A597 /* HardwareCatalogItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HardwareCatalogItem.swift; sourceTree = "<group>"; };
@@ -73,6 +79,9 @@
 			isa = PBXGroup;
 			children = (
 				4410FC0B215892530064F053 /* CatalogTableViewController.swift */,
+				44DC7C592159EEE800A7E922 /* HardwareViewController.swift */,
+				44DC7C572159EED100A7E922 /* AnimalViewController.swift */,
+				44DC7C5B2159EF0B00A7E922 /* ConsumerProductViewController.swift */,
 				445413112156FF3D00735833 /* AppDelegate.swift */,
 				44E9CCDA215871B100A7A597 /* ImageReference.swift */,
 				4454132721571CCD00735833 /* Catalog.swift */,
@@ -165,13 +174,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44DC7C5A2159EEE800A7E922 /* HardwareViewController.swift in Sources */,
 				4410FC0C215892530064F053 /* CatalogTableViewController.swift in Sources */,
 				44E9CCE5215871B200A7A597 /* CatalogItem.swift in Sources */,
 				44E9CCE2215871B200A7A597 /* CatalogItemSummary.swift in Sources */,
 				4454132821571CCD00735833 /* Catalog.swift in Sources */,
 				44E9CCE0215871B200A7A597 /* ImageReference.swift in Sources */,
 				44E9CCE4215871B200A7A597 /* AnimalCatalogItem.swift in Sources */,
+				44DC7C582159EED100A7E922 /* AnimalViewController.swift in Sources */,
 				44E9CCE72158779500A7A597 /* ConsumerProductCatalogItem.swift in Sources */,
+				44DC7C5C2159EF0B00A7E922 /* ConsumerProductViewController.swift in Sources */,
 				44E9CCE921587F0F00A7A597 /* VisualCatalogItem.swift in Sources */,
 				44E9CCE3215871B200A7A597 /* HardwareCatalogItem.swift in Sources */,
 				445413122156FF3D00735833 /* AppDelegate.swift in Sources */,
