@@ -20,7 +20,7 @@ class HardwareCatalogItem:VisualCatalogItem {
         guard let purchaseDate = objectDict[DictionaryKeys.purchaseDate.rawValue] as? String else {
                 return nil
         }
-        self.purchaseDate = purchaseDate
+        self.purchaseDate = purchaseDate.capitalized
         super.init(itemIdentifier:itemIdentifier, objectDict:objectDict)
     }
 }

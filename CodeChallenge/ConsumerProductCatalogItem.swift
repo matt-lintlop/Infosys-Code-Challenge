@@ -27,9 +27,9 @@ class ConsumerProductCatalogItem:CatalogItem {
               let milage = objectDict[DictionaryKeys.milage.rawValue] as? String else {
             return nil
         }
-        self.doors = doors
-        self.price = price
-        self.milage = milage
+        self.doors = doors.capitalized
+        self.price = price.capitalized
+        self.milage = milage.capitalized
         super.init(itemIdentifier:itemIdentifier, objectDict:objectDict)
     }
 }
