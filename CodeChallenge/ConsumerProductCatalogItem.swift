@@ -18,7 +18,8 @@ class ConsumerProductCatalogItem:CatalogItem {
         case doors
         case price
         case milage
-    }
+        case objectImage = "image"
+  }
     
     override init?(itemIdentifier:String, objectDict:Dictionary<String, AnyObject>) {
         guard let doors = objectDict[DictionaryKeys.doors.rawValue] as? String,

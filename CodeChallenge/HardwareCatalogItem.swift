@@ -9,7 +9,7 @@
 import Foundation
 
 // Computer Catalog Object
-class HardwareCatalogItem:ImageCatalogItem {
+class HardwareCatalogItem:VisualCatalogItem {
     let purchaseDate:String
     
     private enum DictionaryKeys:String {

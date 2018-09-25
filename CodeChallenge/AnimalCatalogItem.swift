@@ -9,7 +9,7 @@
 import Foundation
 
 // Pet Catalog Object
-class AnimalCatalogItem:ImageCatalogItem {
+class AnimalCatalogItem:VisualCatalogItem {
     let age:String                                     // pet age
     let favoriteToy:String                             // pet favorite toy
     

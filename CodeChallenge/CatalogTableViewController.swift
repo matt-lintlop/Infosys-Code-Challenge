@@ -111,6 +111,10 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
         }
         let cell = tableView.dequeueReusableCell(withIdentifier:"CatalogItemCell", for:indexPath)
         cell.textLabel?.text = catalogItem.itemIdentifier
+        
+        if let visualCatalogItem = catalogItem as? VisualCatalogItem {
+            cell.imageView?.image = visualCatalogItem.image
+        }
         return cell
     }
 
@@ -204,10 +208,7 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
         }
         DispatchQueue.main.async(execute:{
             let tableViewCell = self.tableView.cellForRow(at:indexPath)
-            if (tableViewCell != nil) {
-                tableViewCell!.imageView!.image = image
-                print("$$$ Did finish loading image at index path:\(catalogItem.indexPath) with error:\(error)")
-            }
-        })
+            self.tableView.reloadRows(at: [indexPath], with: .none)
+         })
      }
 }

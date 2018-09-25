@@ -1,5 +1,5 @@
 //
-//  ImageCatalogItem.swift
+//  VisualCatalogItem.swift
 //  CodeChallenge
 //
 //  Created by Matt Lintlop on 9/22/18.
@@ -9,7 +9,7 @@
 import UIKit
 
 // Catalog Object
-class ImageCatalogItem: CatalogItem  {
+class VisualCatalogItem: CatalogItem  {
     let imageReference:ImageReference?
     var image:UIImage?
     
@@ -47,6 +47,7 @@ class ImageCatalogItem: CatalogItem  {
                     self.delegate?.catalogItem(self, didLoadImageImage:nil, withError:DownloadError.errorDownloadingFile)
                     return
             }
+            self.image = image
             self.delegate?.catalogItem(self, didLoadImageImage:image, withError:nil)
             }.resume()
     }
