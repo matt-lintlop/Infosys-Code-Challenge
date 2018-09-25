@@ -128,7 +128,7 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
             showViewController(withtCatalogItem:catalogItem as! HardwareCatalogItem)
 
         case  CatalogItem.CatalogItemType.animal.rawValue:
-            showViewController(withAnimalCatalogItem:catalogItem as! AnimalCatalogItem)
+            showViewController(withtCatalogItem:catalogItem as! AnimalCatalogItem)
         default:
             return
         }
@@ -146,12 +146,14 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
     func showViewController(withtCatalogItem catalogItem:HardwareCatalogItem) {
         let storyboard = UIStoryboard(name:"Main", bundle:nil)
         let viewController = storyboard.instantiateViewController(withIdentifier:"HardwareViewController")
+        viewController.title = catalogItem.itemIdentifier
         self.navigationController?.pushViewController(viewController, animated:true)
     }
     
-    func showViewController(withAnimalCatalogItem:AnimalCatalogItem) {
+    func showViewController(withtCatalogItem catalogItem:AnimalCatalogItem) {
         let storyboard = UIStoryboard(name:"Main", bundle:nil)
         let viewController = storyboard.instantiateViewController(withIdentifier:"AnimalViewController")
+        viewController.title = catalogItem.itemIdentifier
         self.navigationController?.pushViewController(viewController, animated:true)
     }
     
