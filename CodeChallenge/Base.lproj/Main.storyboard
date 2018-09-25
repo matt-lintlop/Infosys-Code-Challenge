@@ -80,7 +80,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="x6e-eC-3F1">
-                                <rect key="frame" x="21" y="106" width="338" height="477"/>
+                                <rect key="frame" x="21" y="120" width="338" height="463"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -92,26 +92,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLN-VE-iid">
-                                <rect key="frame" x="66" y="51" width="41.5" height="19.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLN-VE-iid">
+                                <rect key="frame" x="21" y="58" width="46" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="place best price here..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7pN-VB-jre">
-                                <rect key="frame" x="117.5" y="51" width="241.5" height="19.5"/>
+                                <rect key="frame" x="75" y="58" width="284" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Milage:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBh-as-iTV">
-                                <rect key="frame" x="55" y="78.5" width="52.5" height="19.5"/>
+                                <rect key="frame" x="21" y="85.5" width="52.5" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="place milage here..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKu-U5-uN1">
-                                <rect key="frame" x="117.5" y="78.5" width="241.5" height="19.5"/>
+                                <rect key="frame" x="83.5" y="85.5" width="275.5" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -119,19 +119,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="fBh-as-iTV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Egf-N2-c40" secondAttribute="leading" constant="20" symbolic="YES" id="0on-Tc-EEU"/>
-                            <constraint firstItem="BKu-U5-uN1" firstAttribute="leading" secondItem="7pN-VB-jre" secondAttribute="leading" id="4M0-Bb-xoI"/>
+                            <constraint firstItem="BKu-U5-uN1" firstAttribute="leading" secondItem="7pN-VB-jre" secondAttribute="leading" constant="8.5" id="4M0-Bb-xoI"/>
                             <constraint firstItem="x6e-eC-3F1" firstAttribute="leading" secondItem="Egf-N2-c40" secondAttribute="leadingMargin" constant="5" id="9bW-sh-J1v"/>
-                            <constraint firstItem="7pN-VB-jre" firstAttribute="leading" secondItem="LLN-VE-iid" secondAttribute="trailing" constant="10" id="AoO-dg-KJe"/>
-                            <constraint firstItem="LLN-VE-iid" firstAttribute="leading" secondItem="Egf-N2-c40" secondAttribute="leadingMargin" constant="50" id="FHb-IF-4OF"/>
+                            <constraint firstItem="LLN-VE-iid" firstAttribute="leading" secondItem="fBh-as-iTV" secondAttribute="leading" id="9sw-Xz-XK4"/>
+                            <constraint firstItem="7pN-VB-jre" firstAttribute="leading" secondItem="LLN-VE-iid" secondAttribute="trailing" constant="8" id="AoO-dg-KJe"/>
+                            <constraint firstItem="LLN-VE-iid" firstAttribute="leading" secondItem="Egf-N2-c40" secondAttribute="leadingMargin" constant="5" id="FHb-IF-4OF"/>
                             <constraint firstItem="fBh-as-iTV" firstAttribute="top" secondItem="BKu-U5-uN1" secondAttribute="top" id="I1r-ft-W6S"/>
-                            <constraint firstItem="7pN-VB-jre" firstAttribute="top" secondItem="4Xr-pw-mLi" secondAttribute="bottom" constant="8" id="Iod-bw-exK"/>
+                            <constraint firstItem="7pN-VB-jre" firstAttribute="top" secondItem="4Xr-pw-mLi" secondAttribute="bottom" constant="15" id="Iod-bw-exK"/>
+                            <constraint firstItem="fBh-as-iTV" firstAttribute="leading" secondItem="x6e-eC-3F1" secondAttribute="leading" id="KoT-lF-n7f"/>
                             <constraint firstItem="7pN-VB-jre" firstAttribute="trailing" secondItem="Egf-N2-c40" secondAttribute="trailingMargin" id="Nfs-sA-afS"/>
                             <constraint firstItem="KgF-wi-wwW" firstAttribute="top" secondItem="x6e-eC-3F1" secondAttribute="bottom" constant="20" id="OjJ-1C-LZg"/>
                             <constraint firstItem="4Xr-pw-mLi" firstAttribute="top" secondItem="4lV-l7-eAt" secondAttribute="bottom" constant="20" id="Up6-nA-4Jo"/>
                             <constraint firstItem="LLN-VE-iid" firstAttribute="top" secondItem="7pN-VB-jre" secondAttribute="top" id="gAb-VP-T9M"/>
-                            <constraint firstItem="fBh-as-iTV" firstAttribute="trailing" secondItem="LLN-VE-iid" secondAttribute="trailing" id="jyh-iU-pNK"/>
-                            <constraint firstItem="x6e-eC-3F1" firstAttribute="top" secondItem="fBh-as-iTV" secondAttribute="bottom" constant="8" id="l3t-y8-bv9"/>
+                            <constraint firstItem="fBh-as-iTV" firstAttribute="trailing" secondItem="LLN-VE-iid" secondAttribute="trailing" constant="6.5" id="jyh-iU-pNK"/>
+                            <constraint firstItem="x6e-eC-3F1" firstAttribute="top" secondItem="fBh-as-iTV" secondAttribute="bottom" constant="15" id="l3t-y8-bv9"/>
                             <constraint firstItem="4Xr-pw-mLi" firstAttribute="trailing" secondItem="Egf-N2-c40" secondAttribute="trailingMargin" id="mV2-92-2DJ"/>
                             <constraint firstItem="BKu-U5-uN1" firstAttribute="trailing" secondItem="7pN-VB-jre" secondAttribute="trailing" id="pKl-BA-y6F"/>
                             <constraint firstItem="x6e-eC-3F1" firstAttribute="trailing" secondItem="Egf-N2-c40" secondAttribute="trailingMargin" id="snv-VE-oWO"/>

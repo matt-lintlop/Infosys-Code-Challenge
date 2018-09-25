@@ -150,7 +150,7 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
         viewController.milageLabel.text = consumerProductCatalogItem.milage
         viewController.descreptionTextView.text = consumerProductCatalogItem.objectSummary.description
         viewController.priceLabel.text = consumerProductCatalogItem.price
-        viewController.headerLabel.text = "\(consumerProductCatalogItem.objectSummary.color) \(consumerProductCatalogItem.doors.capitalized)-Door  \(consumerProductCatalogItem.objectSummary.name.capitalized) \(consumerProductCatalogItem.itemIdentifier.capitalized)"
+        viewController.headerLabel.text = "\(consumerProductCatalogItem.objectSummary.color) \(consumerProductCatalogItem.doors.capitalized)-Door  \(consumerProductCatalogItem.objectSummary.name.capitalized)"
         self.navigationController?.pushViewController(viewController, animated:true)
     }
    
