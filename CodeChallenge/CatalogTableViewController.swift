@@ -138,6 +138,8 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
         }
     }
     
+    // MARK:- Catalog Item View Controllers
+    
     func showItemViewController(withConsumerProductCatalogItem:ConsumerProductCatalogItem) {
         let storyboard = UIStoryboard(name:"Main", bundle:nil)
         let viewController = storyboard.instantiateViewController(withIdentifier:"ConsumerProductViewController")
@@ -156,6 +158,16 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
         self.navigationController?.pushViewController(viewController, animated:true)
     }
     
+    // MARK - CatalogItemDelegate
+    func catalogItem(_ catalogItem: CatalogItem, didLoadImageImage image: UIImage?, withError error: Error?) {
+        guard let indexPath = catalogItem.indexPath, error == nil else {
+            return
+        }
+        DispatchQueue.main.async(execute:{
+            self.tableView.reloadRows(at: [indexPath], with: .none)
+        })
+    }
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView:UITableView, canEditRowAt indexPath:IndexPath) -> Bool {
@@ -200,15 +212,4 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-    
-    // MARK - CatalogItemDelegate
-    func catalogItem(_ catalogItem: CatalogItem, didLoadImageImage image: UIImage?, withError error: Error?) {
-        guard let image = image, let indexPath = catalogItem.indexPath, error == nil else {
-            return
-        }
-        DispatchQueue.main.async(execute:{
-            let tableViewCell = self.tableView.cellForRow(at:indexPath)
-            self.tableView.reloadRows(at: [indexPath], with: .none)
-         })
-     }
-}
+ }
