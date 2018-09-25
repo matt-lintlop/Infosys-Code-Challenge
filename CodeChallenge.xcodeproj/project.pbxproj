@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4410FC0C215892530064F053 /* CatalogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410FC0B215892530064F053 /* CatalogTableViewController.swift */; };
-		4410FC0E2158AECD0064F053 /* ImageViewEntensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410FC0D2158AECD0064F053 /* ImageViewEntensions.swift */; };
 		445413122156FF3D00735833 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445413112156FF3D00735833 /* AppDelegate.swift */; };
 		445413172156FF3D00735833 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 445413152156FF3D00735833 /* Main.storyboard */; };
 		445413192156FF3D00735833 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 445413182156FF3D00735833 /* Assets.xcassets */; };
@@ -26,7 +25,6 @@
 
 /* Begin PBXFileReference section */
 		4410FC0B215892530064F053 /* CatalogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTableViewController.swift; sourceTree = "<group>"; };
-		4410FC0D2158AECD0064F053 /* ImageViewEntensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewEntensions.swift; sourceTree = "<group>"; };
 		4454130E2156FF3D00735833 /* CodeChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		445413112156FF3D00735833 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		445413162156FF3D00735833 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -80,7 +78,6 @@
 				4454132721571CCD00735833 /* Catalog.swift */,
 				44E9CCDC215871B200A7A597 /* CatalogItemSummary.swift */,
 				44E9CCDF215871B200A7A597 /* CatalogItem.swift */,
-				4410FC0D2158AECD0064F053 /* ImageViewEntensions.swift */,
 				44E9CCDD215871B200A7A597 /* HardwareCatalogItem.swift */,
 				44E9CCDE215871B200A7A597 /* AnimalCatalogItem.swift */,
 				44E9CCE821587F0F00A7A597 /* ImageCatalogItem.swift */,
@@ -169,7 +166,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4410FC0C215892530064F053 /* CatalogTableViewController.swift in Sources */,
-				4410FC0E2158AECD0064F053 /* ImageViewEntensions.swift in Sources */,
 				44E9CCE5215871B200A7A597 /* CatalogItem.swift in Sources */,
 				44E9CCE2215871B200A7A597 /* CatalogItemSummary.swift in Sources */,
 				4454132821571CCD00735833 /* Catalog.swift in Sources */,
