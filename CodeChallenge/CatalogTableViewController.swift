@@ -37,6 +37,10 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
         }
     }
 
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder:aDecoder)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -136,13 +140,17 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
     
     // MARK:- Catalog Item View Controllers
     
-    func showViewController(withtCatalogItem catalogItem:ConsumerProductCatalogItem) {
+    func showViewController(withtCatalogItem consumerProductCatalogItem:ConsumerProductCatalogItem) {
         let storyboard = UIStoryboard(name:"Main", bundle:nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier:"ConsumerProductViewController")
-        viewController.title = catalogItem.itemIdentifier
-        self.navigationController?.pushViewController(viewController, animated:true)
+        guard let viewController:ConsumerProductViewController = storyboard.instantiateViewController(withIdentifier:"ConsumerProductViewController") as? ConsumerProductViewController else {
+            return
+        }
+//        viewController.title = consumerProductCatalogItem.itemIdentifier
+//        viewController.descreptionTextView.text = consumerProductCatalogItem.objectSummary.description
+//        viewController.priceLabel.text = consumerProductCatalogItem.price
+//        self.navigationController?.pushViewController(viewController, animated:true)
     }
-    
+   
     func showViewController(withtCatalogItem catalogItem:HardwareCatalogItem) {
         let storyboard = UIStoryboard(name:"Main", bundle:nil)
         let viewController = storyboard.instantiateViewController(withIdentifier:"HardwareViewController")

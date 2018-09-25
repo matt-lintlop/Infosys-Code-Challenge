@@ -21,6 +21,10 @@ class AnimalViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
 /*    // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
