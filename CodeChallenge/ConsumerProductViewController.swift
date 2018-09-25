@@ -12,6 +12,8 @@ class ConsumerProductViewController: UIViewController {
 
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var descreptionTextView: UITextView!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var milageLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
