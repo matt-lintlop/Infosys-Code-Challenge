@@ -145,22 +145,30 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
         guard let viewController:ConsumerProductViewController = storyboard.instantiateViewController(withIdentifier:"ConsumerProductViewController") as? ConsumerProductViewController else {
             return
         }
-//        viewController.title = consumerProductCatalogItem.itemIdentifier
-//        viewController.descreptionTextView.text = consumerProductCatalogItem.objectSummary.description
-//        viewController.priceLabel.text = consumerProductCatalogItem.price
-//        self.navigationController?.pushViewController(viewController, animated:true)
+        viewController.loadViewIfNeeded()
+        viewController.title = consumerProductCatalogItem.itemIdentifier
+        viewController.milageLabel.text = consumerProductCatalogItem.milage
+        viewController.descreptionTextView.text = consumerProductCatalogItem.objectSummary.description
+        viewController.priceLabel.text = consumerProductCatalogItem.price
+        viewController.headerLabel.text = "\(consumerProductCatalogItem.objectSummary.color) \(consumerProductCatalogItem.doors.capitalized)-Door  \(consumerProductCatalogItem.objectSummary.name.capitalized) \(consumerProductCatalogItem.itemIdentifier.capitalized)"
+        self.navigationController?.pushViewController(viewController, animated:true)
     }
    
     func showViewController(withtCatalogItem catalogItem:HardwareCatalogItem) {
         let storyboard = UIStoryboard(name:"Main", bundle:nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier:"HardwareViewController")
+        guard let viewController = storyboard.instantiateViewController(withIdentifier:"HardwareViewController") as? HardwareViewController else {
+            return
+        }
+        viewController.loadViewIfNeeded()
         viewController.title = catalogItem.itemIdentifier
         self.navigationController?.pushViewController(viewController, animated:true)
     }
     
     func showViewController(withtCatalogItem catalogItem:AnimalCatalogItem) {
         let storyboard = UIStoryboard(name:"Main", bundle:nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier:"AnimalViewController")
+        guard let viewController = storyboard.instantiateViewController(withIdentifier:"AnimalViewController") as? AnimalViewController else {
+            return
+        }
         viewController.title = catalogItem.itemIdentifier
         self.navigationController?.pushViewController(viewController, animated:true)
     }
