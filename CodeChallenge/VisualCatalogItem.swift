@@ -16,7 +16,6 @@ class VisualCatalogItem: CatalogItem  {
     private enum DictionaryKeys:String {
         case objectImage = "image"
     }
-    
     override init?(itemIdentifier:String, objectDict:Dictionary<String, AnyObject>) {
         guard let imageRefrenceDict = objectDict[DictionaryKeys.objectImage.rawValue] as? Dictionary<String, String> else {
             return nil
