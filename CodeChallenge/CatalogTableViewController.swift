@@ -49,6 +49,7 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
         self.sectionCatalogItems = []
 
         for catalogItem in catalogItems {
+            catalogItem.delegate = self
             let type = catalogItem.objectSummary.type
             if var sectionCatalogItems = sectionsDict[type] {
                 sectionCatalogItems.append(catalogItem)

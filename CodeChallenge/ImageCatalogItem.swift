@@ -11,6 +11,7 @@ import UIKit
 // Catalog Object
 class ImageCatalogItem: CatalogItem  {
     let imageReference:ImageReference?
+    var image:UIImage?
     
     private enum DictionaryKeys:String {
         case objectImage = "image"
@@ -30,5 +31,31 @@ class ImageCatalogItem: CatalogItem  {
     
     func downloadImage(completionHandler:(UIImage?) -> Void) {
         
+    }
+    
+    func downloadedImage(completion:(UIImage?, Error?) -> Void) {
+        
+        enum DownloadError:Error {
+            case errorDownloadingFile
+        }
+
+        guard let imageUrlPath = self.imageReference?.imageUrlPath, let url = URL(string: imageUrlPath) else {
+            completion(nil, DownloadError.errorDownloadingFile)
+            return
+        }
+
+        URLSession.shared.dataTask(with:url) { data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data:data)
+                else {
+                    return
+            }
+            
+            DispatchQueue.main.async() {
+            }
+            }.resume()
     }
 }
