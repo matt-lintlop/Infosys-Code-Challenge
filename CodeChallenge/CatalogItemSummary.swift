@@ -28,9 +28,9 @@ struct  CatalogItemSummary {
             else {
                 return nil
         }
-        self.type = type
-        self.name = name
-        self.color = color
+        self.type = type.capitalized
+        self.name = name.capitalized
+        self.color = color.capitalized
         self.description = description
     }
 }

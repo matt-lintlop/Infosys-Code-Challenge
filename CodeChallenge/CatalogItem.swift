@@ -31,7 +31,7 @@ class  CatalogItem  {
     }
     
     init?(itemIdentifier:String, objectDict:Dictionary<String, AnyObject>) {
-        self.itemIdentifier = itemIdentifier
+        self.itemIdentifier = itemIdentifier.capitalized
         guard let objectSummaryDict = objectDict[DictionaryKeys.objectSummary.rawValue] as? Dictionary<String, String> else {
             return nil
         }
