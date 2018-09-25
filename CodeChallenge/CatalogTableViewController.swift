@@ -201,8 +201,7 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
         return true
     }
     */
-
-    /*
+/*
     // MARK:- Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -210,5 +209,5 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+ */
  }
