@@ -26,36 +26,28 @@ class ImageCatalogItem: CatalogItem  {
         }
         self.imageReference = imageReference
         super.init(itemIdentifier:itemIdentifier, objectDict:objectDict)
+        self.downloadedImage()
     }
-    
-    
-    func downloadImage(completionHandler:(UIImage?) -> Void) {
-        
-    }
-    
-    func downloadedImage(completion:(UIImage?, Error?) -> Void) {
-        
+   
+    func downloadedImage() {
         enum DownloadError:Error {
             case errorDownloadingFile
         }
-
-        guard let imageUrlPath = self.imageReference?.imageUrlPath, let url = URL(string: imageUrlPath) else {
-            completion(nil, DownloadError.errorDownloadingFile)
+        guard let imageUrlPath = self.imageReference?.imageUrlPath,
+            let url = URL(string: imageUrlPath) else {
+            self.delegate?.catalogItem(self, didLoadImageImage:nil, withError:DownloadError.errorDownloadingFile)
             return
         }
-
         URLSession.shared.dataTask(with:url) { data, response, error in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+            guard let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
                 let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
                 let data = data, error == nil,
                 let image = UIImage(data:data)
                 else {
+                    self.delegate?.catalogItem(self, didLoadImageImage:nil, withError:DownloadError.errorDownloadingFile)
                     return
             }
-            
-            DispatchQueue.main.async() {
-            }
+            self.delegate?.catalogItem(self, didLoadImageImage:image, withError:nil)
             }.resume()
     }
 }

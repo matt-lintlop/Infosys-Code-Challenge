@@ -198,8 +198,7 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
     */
     
     // MARK - CatalogItemDelegate
-    
-    func catalogItem(_ catalogItem: CatalogItem, atIndexPath indexPath: (IndexPath), didLoadImageImage image: UIImage?, withError error: Error?) {
-        print("Did finish loading image at index path:\(indexPath) with error:\(error)")
+    func catalogItem(_ catalogItem: CatalogItem, didLoadImageImage image: UIImage?, withError error: Error?) {
+        print("Did finish loading image at index path:\(catalogItem.indexPath) with error:\(error)")
     }
 }
