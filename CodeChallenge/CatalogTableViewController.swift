@@ -43,7 +43,6 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
     }
     
     func makeSectionsWithCatalogItems(_ catalogItems:[CatalogItem]) {
-        
         var sectionsDict:[String:[CatalogItem]] = [:]
         self.sectionNames = []
         self.sectionCatalogItems = []
@@ -59,12 +58,11 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
                 sectionsDict[type] = [catalogItem]
             }
         }
-        
-        for (sectionName, sectionCatalogItems) in sectionsDict {
+        let sortedSectionNames = sectionsDict.keys.sorted()
+        for sectionName in sortedSectionNames {
             self.sectionNames.append(sectionName)
-            self.sectionCatalogItems.append(sectionCatalogItems)
+            self.sectionCatalogItems.append(sectionsDict[sectionName]!)
         }
-        
         for (sectionNunber, _) in self.sectionNames.enumerated() {
             let sectionCatalogObjects = self.sectionCatalogItems[sectionNunber]
             for (rowNumber, catalogObject) in sectionCatalogObjects.enumerated() {
@@ -123,16 +121,14 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
             return
         }
         switch (catalogItem.objectSummary.type) {
-            
         case  CatalogItem.CatalogItemType.consumerProduct.rawValue:
-            showItemViewController(withConsumerProductCatalogItem:catalogItem as! ConsumerProductCatalogItem)
+            showViewController(withtCatalogItem:catalogItem as! ConsumerProductCatalogItem)
             
         case  CatalogItem.CatalogItemType.hardware.rawValue:
-            showViewController(withHardwareCatalogItem:catalogItem as! HardwareCatalogItem)
+            showViewController(withtCatalogItem:catalogItem as! HardwareCatalogItem)
 
         case  CatalogItem.CatalogItemType.animal.rawValue:
             showViewController(withAnimalCatalogItem:catalogItem as! AnimalCatalogItem)
-
         default:
             return
         }
@@ -140,13 +136,14 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
     
     // MARK:- Catalog Item View Controllers
     
-    func showItemViewController(withConsumerProductCatalogItem:ConsumerProductCatalogItem) {
+    func showViewController(withtCatalogItem catalogItem:ConsumerProductCatalogItem) {
         let storyboard = UIStoryboard(name:"Main", bundle:nil)
         let viewController = storyboard.instantiateViewController(withIdentifier:"ConsumerProductViewController")
+        viewController.title = catalogItem.itemIdentifier
         self.navigationController?.pushViewController(viewController, animated:true)
     }
     
-    func showViewController(withHardwareCatalogItem:HardwareCatalogItem) {
+    func showViewController(withtCatalogItem catalogItem:HardwareCatalogItem) {
         let storyboard = UIStoryboard(name:"Main", bundle:nil)
         let viewController = storyboard.instantiateViewController(withIdentifier:"HardwareViewController")
         self.navigationController?.pushViewController(viewController, animated:true)
