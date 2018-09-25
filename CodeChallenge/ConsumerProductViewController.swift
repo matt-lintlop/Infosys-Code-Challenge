@@ -10,6 +10,9 @@ import UIKit
 
 class ConsumerProductViewController: UIViewController {
 
+    @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var descreptionTextView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
