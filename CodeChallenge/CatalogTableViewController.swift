@@ -61,7 +61,7 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
         }
         
         for (sectionName, sectionCatalogItems) in sectionsDict {
-            self.sectionNames.append(sectionName)
+            self.sectionNames.append(sectionName.capitalized)
             self.sectionCatalogItems.append(sectionCatalogItems)
         }
         
@@ -110,7 +110,7 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
             return tableView.dequeueReusableCell(withIdentifier:"CatalogItemCell")!
         }
         let cell = tableView.dequeueReusableCell(withIdentifier:"CatalogItemCell", for:indexPath)
-        cell.textLabel?.text = catalogItem.itemIdentifier
+        cell.textLabel?.text = catalogItem.itemIdentifier.capitalized
         
         if let visualCatalogItem = catalogItem as? VisualCatalogItem {
             cell.imageView?.image = visualCatalogItem.image

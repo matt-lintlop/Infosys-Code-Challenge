@@ -40,4 +40,4 @@ class  CatalogItem  {
         }
         self.objectSummary = summary
    }
-}
+ }

@@ -51,4 +51,4 @@ class VisualCatalogItem: CatalogItem  {
             self.delegate?.catalogItem(self, didLoadImageImage:image, withError:nil)
             }.resume()
     }
-}
+ }

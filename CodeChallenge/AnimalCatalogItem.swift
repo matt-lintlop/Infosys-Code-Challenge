@@ -6,12 +6,12 @@
 //  Copyright © 2018 Matt Lintlop. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 // Pet Catalog Object
 class AnimalCatalogItem:VisualCatalogItem {
-    let age:String                                     // pet age
-    let favoriteToy:String                             // pet favorite toy
+    let age:String
+    let favoriteToy:String              
     
     private enum DictionaryKeys:String {
         case age = "age"
@@ -23,8 +23,8 @@ class AnimalCatalogItem:VisualCatalogItem {
             let favoriteToy = objectDict[DictionaryKeys.favoriteToy.rawValue] as? String else {
                 return nil
         }
-        self.age = age
-        self.favoriteToy = favoriteToy
+        self.age = age.capitalized
+        self.favoriteToy = favoriteToy.capitalized
         super.init(itemIdentifier:itemIdentifier, objectDict:objectDict)
     }
-}
+ }
