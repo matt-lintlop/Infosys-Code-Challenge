@@ -38,6 +38,7 @@ class ConsumerProductViewController: UIViewController {
         self.priceLabel.text = catalogItem.price
         self.headerLabel.text = "\(catalogItem.objectSummary.color) \(catalogItem.doors.capitalized)-Door  \(catalogItem.objectSummary.name.capitalized)  \(catalogItem.itemIdentifier.capitalized)"
         self.descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
+        self.descriptionTextView.setNeedsDisplay()
     }
         
 /*

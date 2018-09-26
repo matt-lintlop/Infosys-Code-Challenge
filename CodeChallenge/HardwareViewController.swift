@@ -42,7 +42,7 @@ class HardwareViewController: UIViewController {
             self.imageView.image = image
         }
         self.descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
-   }
+        self.descriptionTextView.setNeedsDisplay()   }
     
 /*    // MARK: - Navigation
 
