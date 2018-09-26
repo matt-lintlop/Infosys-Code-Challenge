@@ -15,6 +15,7 @@ class AnimalViewController: UIViewController {
     @IBOutlet weak var favoriteToyLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var colorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,8 @@ class AnimalViewController: UIViewController {
         self.ageLabel.text = catalogItem.age
         self.favoriteToyLabel.text = catalogItem.favoriteToy
         self.descriptionTextView.text = catalogItem.objectSummary.description
+        self.colorLabel.text = catalogItem.objectSummary.color
+        self.headerLabel.text = "\(catalogItem.objectSummary.name.capitalized) The \(catalogItem.itemIdentifier.capitalized)"
         if let image = catalogItem.image {
             self.imageView.image = image
         }

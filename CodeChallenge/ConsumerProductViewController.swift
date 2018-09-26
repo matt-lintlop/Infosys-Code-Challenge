@@ -36,7 +36,7 @@ class ConsumerProductViewController: UIViewController {
         self.milageLabel.text = catalogItem.milage
         self.descreptionTextView.text = catalogItem.objectSummary.description
         self.priceLabel.text = catalogItem.price
-        self.headerLabel.text = "\(catalogItem.objectSummary.color) \(catalogItem.doors.capitalized)-Door  \(catalogItem.objectSummary.name.capitalized)"
+        self.headerLabel.text = "\(catalogItem.objectSummary.color) \(catalogItem.doors.capitalized)-Door  \(catalogItem.objectSummary.name.capitalized)  \(catalogItem.itemIdentifier.capitalized)"
     }
         
 /*
