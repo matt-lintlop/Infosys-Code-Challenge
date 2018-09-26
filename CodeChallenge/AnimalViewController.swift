@@ -48,8 +48,7 @@ class AnimalViewController: UIViewController {
         
         if let image = catalogItem.image {
             self.imageView.alpha = 0.0
-            UIView.animate(withDuration: 0.5
-                , animations: {
+            UIView.animate(withDuration: 0.5, animations: {
                     self.imageView.image = image
                     self.imageView.alpha = 1.0
             })
