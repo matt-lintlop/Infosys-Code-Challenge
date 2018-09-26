@@ -65,7 +65,11 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
         let sortedSectionNames = sectionsDict.keys.sorted()
         for sectionName in sortedSectionNames {
             self.sectionNames.append(sectionName)
-            self.sectionCatalogItems.append(sectionsDict[sectionName]!)
+            let unsortedSectionCatalogItems = sectionsDict[sectionName]!
+            let sortedSectionCatalogItems = unsortedSectionCatalogItems.sorted { (catalogItem1, catalogItem2) -> Bool in
+                return catalogItem1.itemIdentifier < catalogItem2.itemIdentifier
+            }
+            self.sectionCatalogItems.append(sortedSectionCatalogItems)
         }
         for (sectionNunber, _) in self.sectionNames.enumerated() {
             let sectionCatalogObjects = self.sectionCatalogItems[sectionNunber]
