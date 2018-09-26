@@ -8,7 +8,7 @@
 
 import Foundation
 
-// Catalog Object Summary
+// Catalog Item Summary
 struct  CatalogItemSummary {
     let type:String                                    // item type
     let name:String                                    // item name
@@ -22,9 +22,9 @@ struct  CatalogItemSummary {
         case description
     }
     
-    init?(withDictionary objectSummaryDict:Dictionary<String, String>) {
-        guard let type = objectSummaryDict[DictionaryKeys.type.rawValue], let name = objectSummaryDict[DictionaryKeys.name.rawValue],
-            let color = objectSummaryDict[DictionaryKeys.color.rawValue], let description = objectSummaryDict[DictionaryKeys.description.rawValue]
+    init?(withDictionary itemSummaryDict:Dictionary<String, String>) {
+        guard let type = itemSummaryDict[DictionaryKeys.type.rawValue], let name = itemSummaryDict[DictionaryKeys.name.rawValue],
+            let color = itemSummaryDict[DictionaryKeys.color.rawValue], let description = itemSummaryDict[DictionaryKeys.description.rawValue]
             else {
                 return nil
         }

@@ -34,20 +34,10 @@ class ConsumerProductViewController: UIViewController {
         self.loadViewIfNeeded()
         self.title = catalogItem.itemIdentifier
         self.milageLabel.text = catalogItem.milage
-        self.descriptionTextView.text = catalogItem.objectSummary.description
+        self.descriptionTextView.text = catalogItem.itemSummary.description
         self.priceLabel.text = catalogItem.price
-        self.headerLabel.text = "\(catalogItem.objectSummary.color) \(catalogItem.doors.capitalized)-Door  \(catalogItem.objectSummary.name.capitalized)  \(catalogItem.itemIdentifier.capitalized)"
+        self.headerLabel.text = "\(catalogItem.itemSummary.color) \(catalogItem.doors.capitalized)-Door  \(catalogItem.itemSummary.name.capitalized)  \(catalogItem.itemIdentifier.capitalized)"
         self.descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
         self.descriptionTextView.setNeedsDisplay()
     }
-        
-/*
- // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
- */
 }

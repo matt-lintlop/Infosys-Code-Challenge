@@ -13,10 +13,10 @@ protocol CatalogItemDelegate {
     func catalogItem(_ catalogItem:CatalogItem, didLoadImageImage image:UIImage?, withError error:Error?)
 }
 
-// Catalog Object
+// Catalog Item class
 class  CatalogItem  {
     var itemIdentifier:String                           // catalog item identifier
-    var objectSummary:CatalogItemSummary                // catalog item summary dictionary
+    var itemSummary:CatalogItemSummary                  // catalog item summary dictionary
     var indexPath:IndexPath?                            // index path of associated table view cell
     var delegate:CatalogItemDelegate?                   // delegate
     
@@ -27,17 +27,17 @@ class  CatalogItem  {
     }
 
     private enum DictionaryKeys:String {
-        case objectSummary = "object_summary"
+        case itemSummary = "object_summary"
     }
     
     init?(itemIdentifier:String, objectDict:Dictionary<String, AnyObject>) {
         self.itemIdentifier = itemIdentifier.capitalized
-        guard let objectSummaryDict = objectDict[DictionaryKeys.objectSummary.rawValue] as? Dictionary<String, String> else {
+        guard let itemSummaryDict = objectDict[DictionaryKeys.itemSummary.rawValue] as? Dictionary<String, String> else {
             return nil
         }
-        guard let summary =   CatalogItemSummary(withDictionary:objectSummaryDict) else {
+        guard let summary =   CatalogItemSummary(withDictionary:itemSummaryDict) else {
             return nil
         }
-        self.objectSummary = summary
+        self.itemSummary = summary
    }
  }

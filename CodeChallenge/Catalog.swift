@@ -38,11 +38,11 @@ class Catalog {
                         completion(ParseError.errorParsingJSON, nil)
                         return
                     }
-                    guard let objectSummaryDict = objectDict["object_summary"] as? [String:String] else {
+                    guard let itemSummaryDict = objectDict["object_summary"] as? [String:String] else {
                         completion(ParseError.errorParsingJSON, nil)
                         return
                     }
-                    guard let objectType = objectSummaryDict["type"] else {
+                    guard let objectType = itemSummaryDict["type"] else {
                         completion(ParseError.errorParsingJSON, nil)
                         return
                     }

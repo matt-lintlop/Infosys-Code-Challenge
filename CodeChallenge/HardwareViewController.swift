@@ -35,9 +35,9 @@ class HardwareViewController: UIViewController {
         self.loadViewIfNeeded()
         self.title = catalogItem.itemIdentifier
         self.purchaseDateLabel.text = catalogItem.purchaseDate
-        self.descriptionTextView.text = catalogItem.objectSummary.description
-        self.colorLabel.text = catalogItem.objectSummary.color
-        self.headerLabel.text = "\(catalogItem.objectSummary.name.capitalized) The \(catalogItem.itemIdentifier.capitalized)"
+        self.descriptionTextView.text = catalogItem.itemSummary.description
+        self.colorLabel.text = catalogItem.itemSummary.color
+        self.headerLabel.text = "\(catalogItem.itemSummary.name.capitalized) The \(catalogItem.itemIdentifier.capitalized)"
         self.descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
         self.descriptionTextView.setNeedsDisplay()
         if let image = catalogItem.image {
@@ -48,13 +48,4 @@ class HardwareViewController: UIViewController {
           })
         }
     }
-    
-/*    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
- */
 }
