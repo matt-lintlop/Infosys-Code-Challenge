@@ -10,6 +10,12 @@ import UIKit
 
 class HardwareViewController: UIViewController {
 
+    @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var purchaseDateLabel: UILabel!
+    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var colorLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,18 +26,25 @@ class HardwareViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-  
+    
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder:aDecoder)
+        super.init(coder: aDecoder)
     }
 
     func setupViewController(with catalogItem:HardwareCatalogItem) {
         self.loadViewIfNeeded()
         self.title = catalogItem.itemIdentifier
-    }
+        self.purchaseDateLabel.text = catalogItem.purchaseDate
+        self.descriptionTextView.text = catalogItem.objectSummary.description
+        self.colorLabel.text = catalogItem.objectSummary.color
+        self.headerLabel.text = "\(catalogItem.objectSummary.name.capitalized) The \(catalogItem.itemIdentifier.capitalized)"
+        if let image = catalogItem.image {
+            self.imageView.image = image
+        }
+        self.descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
+   }
     
-/*
- // MARK: - Navigation
+/*    // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
