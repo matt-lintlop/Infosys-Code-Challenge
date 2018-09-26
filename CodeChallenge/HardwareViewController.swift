@@ -38,11 +38,17 @@ class HardwareViewController: UIViewController {
         self.descriptionTextView.text = catalogItem.objectSummary.description
         self.colorLabel.text = catalogItem.objectSummary.color
         self.headerLabel.text = "\(catalogItem.objectSummary.name.capitalized) The \(catalogItem.itemIdentifier.capitalized)"
-        if let image = catalogItem.image {
-            self.imageView.image = image
-        }
         self.descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
-        self.descriptionTextView.setNeedsDisplay()   }
+        self.descriptionTextView.setNeedsDisplay()
+        if let image = catalogItem.image {
+            self.imageView.alpha = 0.0
+            UIView.animate(withDuration: 0.5
+                , animations: {
+                    self.imageView.image = image
+                    self.imageView.alpha = 1.0
+          })
+        }
+    }
     
 /*    // MARK: - Navigation
 
