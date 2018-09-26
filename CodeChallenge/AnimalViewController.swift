@@ -40,8 +40,12 @@ class AnimalViewController: UIViewController {
         self.descriptionTextView.text = catalogItem.objectSummary.description
         self.colorLabel.text = catalogItem.objectSummary.color
         self.headerLabel.text = "\(catalogItem.objectSummary.name.capitalized) The \(catalogItem.itemIdentifier.capitalized)"
+       
         self.descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
         self.descriptionTextView.setNeedsDisplay()
+        self.descriptionTextView.setNeedsLayout()
+        self.descriptionTextView.layoutIfNeeded()
+        
         if let image = catalogItem.image {
             self.imageView.alpha = 0.0
             UIView.animate(withDuration: 0.5
