@@ -24,6 +24,12 @@ class HardwareViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
     }
+
+    func setupViewController(with catalogItem:HardwareCatalogItem) {
+        self.loadViewIfNeeded()
+        self.title = catalogItem.itemIdentifier
+    }
+    
 /*
  // MARK: - Navigation
 

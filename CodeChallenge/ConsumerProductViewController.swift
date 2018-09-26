@@ -29,7 +29,16 @@ class ConsumerProductViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+        
+    func setupViewController(with catalogItem:ConsumerProductCatalogItem) {
+        self.loadViewIfNeeded()
+        self.title = catalogItem.itemIdentifier
+        self.milageLabel.text = catalogItem.milage
+        self.descreptionTextView.text = catalogItem.objectSummary.description
+        self.priceLabel.text = catalogItem.price
+        self.headerLabel.text = "\(catalogItem.objectSummary.color) \(catalogItem.doors.capitalized)-Door  \(catalogItem.objectSummary.name.capitalized)"
+    }
+        
 /*
  // MARK: - Navigation
 

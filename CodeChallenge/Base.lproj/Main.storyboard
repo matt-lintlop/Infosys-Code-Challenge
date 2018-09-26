@@ -90,7 +90,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="place milage here..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FoW-7K-Tw4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="place a toy here..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FoW-7K-Tw4">
                                 <rect key="frame" x="120" y="94" width="239" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
@@ -138,6 +138,13 @@
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="ageLabel" destination="odj-Wz-aFp" id="6OF-6y-GEM"/>
+                        <outlet property="descriptionTextView" destination="tia-gU-8fn" id="ngM-Bo-zRW"/>
+                        <outlet property="favoriteToyLabel" destination="FoW-7K-Tw4" id="ke1-1W-idl"/>
+                        <outlet property="headerLabel" destination="cu0-cn-XRW" id="hgS-ez-rl6"/>
+                        <outlet property="imageView" destination="twv-DD-1Ju" id="KIn-V8-YOY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UM7-lU-ryn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

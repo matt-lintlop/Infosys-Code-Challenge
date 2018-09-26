@@ -10,6 +10,12 @@ import UIKit
 
 class AnimalViewController: UIViewController {
 
+    @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var ageLabel: UILabel!
+    @IBOutlet weak var favoriteToyLabel: UILabel!
+    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var imageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,6 +31,17 @@ class AnimalViewController: UIViewController {
         super.init(coder: aDecoder)
     }
 
+    func setupViewController(with catalogItem:AnimalCatalogItem) {
+        self.loadViewIfNeeded()
+        self.title = catalogItem.itemIdentifier
+        self.ageLabel.text = catalogItem.age
+        self.favoriteToyLabel.text = catalogItem.favoriteToy
+        self.descriptionTextView.text = catalogItem.objectSummary.description
+        if let image = catalogItem.image {
+            self.imageView.image = image
+        }
+    }
+    
 /*    // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

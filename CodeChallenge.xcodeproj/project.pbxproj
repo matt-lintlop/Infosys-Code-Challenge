@@ -78,24 +78,24 @@
 		445413102156FF3D00735833 /* CodeChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				4410FC0B215892530064F053 /* CatalogTableViewController.swift */,
 				44DC7C592159EEE800A7E922 /* HardwareViewController.swift */,
-				44E9CCDD215871B200A7A597 /* HardwareCatalogItem.swift */,
 				44DC7C572159EED100A7E922 /* AnimalViewController.swift */,
-				44E9CCDE215871B200A7A597 /* AnimalCatalogItem.swift */,
 				44DC7C5B2159EF0B00A7E922 /* ConsumerProductViewController.swift */,
-				44E9CCE62158779500A7A597 /* ConsumerProductCatalogItem.swift */,
+				4410FC0B215892530064F053 /* CatalogTableViewController.swift */,
+				44E9CCDD215871B200A7A597 /* HardwareCatalogItem.swift */,
+				44E9CCDE215871B200A7A597 /* AnimalCatalogItem.swift */,
 				445413112156FF3D00735833 /* AppDelegate.swift */,
 				44E9CCDA215871B100A7A597 /* ImageReference.swift */,
+				44E9CCE62158779500A7A597 /* ConsumerProductCatalogItem.swift */,
 				4454132721571CCD00735833 /* Catalog.swift */,
 				44E9CCDC215871B200A7A597 /* CatalogItemSummary.swift */,
 				44E9CCDF215871B200A7A597 /* CatalogItem.swift */,
 				44E9CCE821587F0F00A7A597 /* VisualCatalogItem.swift */,
 				445413152156FF3D00735833 /* Main.storyboard */,
-				445413182156FF3D00735833 /* Assets.xcassets */,
-				445413232156FF5A00735833 /* data.json */,
 				4454131A2156FF3D00735833 /* LaunchScreen.storyboard */,
+				445413182156FF3D00735833 /* Assets.xcassets */,
 				4454131D2156FF3D00735833 /* Info.plist */,
+				445413232156FF5A00735833 /* data.json */,
 			);
 			path = CodeChallenge;
 			sourceTree = "<group>";
@@ -132,6 +132,7 @@
 				TargetAttributes = {
 					4454130D2156FF3D00735833 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = US5DTPYQ6L;
 						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 					};
@@ -325,6 +326,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = US5DTPYQ6L;
 				INFOPLIST_FILE = CodeChallenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattlintlop.CodeChallenge;
@@ -338,6 +340,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = US5DTPYQ6L;
 				INFOPLIST_FILE = CodeChallenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattlintlop.CodeChallenge;
