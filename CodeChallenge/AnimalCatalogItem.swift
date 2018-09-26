@@ -8,7 +8,7 @@
 
 import UIKit
 
-// Pet Catalog Object
+// Animal Catalog Object
 class AnimalCatalogItem:VisualCatalogItem {
     let age:String
     let favoriteToy:String              
