@@ -16,6 +16,7 @@ class AnimalViewController: UIViewController {
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var colorLabel: UILabel!
+    var showStartOfText = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,5 +54,17 @@ class AnimalViewController: UIViewController {
                     self.imageView.alpha = 1.0
             })
         }
- }
+        self.showStartOfText = true
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if (self.showStartOfText) {
+            self.showStartOfText = false
+            self.descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
+            self.descriptionTextView.setNeedsDisplay()
+            self.descriptionTextView.setNeedsLayout()
+            self.descriptionTextView.layoutIfNeeded()
+        }
+    }
 }

@@ -14,7 +14,8 @@ class ConsumerProductViewController: UIViewController {
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var milageLabel: UILabel!
-    
+    var showStartOfText = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,5 +40,6 @@ class ConsumerProductViewController: UIViewController {
         self.headerLabel.text = "\(catalogItem.itemSummary.color) \(catalogItem.doors.capitalized)-Door  \(catalogItem.itemSummary.name.capitalized)  \(catalogItem.itemIdentifier.capitalized)"
         self.descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
         self.descriptionTextView.setNeedsDisplay()
-    }
+        self.showStartOfText = true
+   }
 }

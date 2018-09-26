@@ -15,7 +15,8 @@ class HardwareViewController: UIViewController {
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var colorLabel: UILabel!
-    
+    var showStartOfText = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,12 +41,24 @@ class HardwareViewController: UIViewController {
         self.headerLabel.text = "\(catalogItem.itemSummary.name.capitalized) The \(catalogItem.itemIdentifier.capitalized)"
         self.descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
         self.descriptionTextView.setNeedsDisplay()
+        self.showStartOfText = true
         if let image = catalogItem.image {
             self.imageView.alpha = 0.0
             UIView.animate(withDuration: 0.5, animations: {
                     self.imageView.image = image
                     self.imageView.alpha = 1.0
           })
+        }
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if (self.showStartOfText) {
+            self.showStartOfText = false
+            self.descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
+            self.descriptionTextView.setNeedsDisplay()
+            self.descriptionTextView.setNeedsLayout()
+            self.descriptionTextView.layoutIfNeeded()
         }
     }
 }
