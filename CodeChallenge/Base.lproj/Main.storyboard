@@ -84,9 +84,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="twv-DD-1Ju">
-                                <rect key="frame" x="16" y="45" width="343" height="191"/>
+                                <rect key="frame" x="16" y="45" width="343" height="172"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="twv-DD-1Ju" secondAttribute="height" multiplier="343:191" id="TE6-gJ-Xik"/>
+                                    <constraint firstAttribute="width" secondItem="twv-DD-1Ju" secondAttribute="height" multiplier="343:191" constant="34.12041884816756" id="TE6-gJ-Xik"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odj-Wz-aFp">
@@ -150,9 +150,9 @@
                             <constraint firstItem="caE-Wa-LxZ" firstAttribute="trailing" secondItem="CiY-8w-S3R" secondAttribute="trailing" constant="50" id="kmd-S1-WB9"/>
                             <constraint firstItem="xjI-zV-aPz" firstAttribute="leading" secondItem="XeN-se-b3n" secondAttribute="trailing" constant="10" id="nX6-wY-hFr"/>
                             <constraint firstItem="xjI-zV-aPz" firstAttribute="trailing" secondItem="Xa8-od-Ihg" secondAttribute="trailingMargin" id="sQ5-FB-Rpm"/>
-                            <constraint firstItem="CiY-8w-S3R" firstAttribute="top" secondItem="twv-DD-1Ju" secondAttribute="bottom" constant="14" id="tre-Ep-sJm"/>
+                            <constraint firstItem="CiY-8w-S3R" firstAttribute="top" secondItem="twv-DD-1Ju" secondAttribute="bottom" constant="33" id="tre-Ep-sJm"/>
                             <constraint firstItem="FoW-7K-Tw4" firstAttribute="top" secondItem="odj-Wz-aFp" secondAttribute="bottom" constant="12" id="vDq-pg-1Ea"/>
-                            <constraint firstItem="XeN-se-b3n" firstAttribute="top" secondItem="twv-DD-1Ju" secondAttribute="bottom" constant="14" id="xlU-Uq-RZ3"/>
+                            <constraint firstItem="XeN-se-b3n" firstAttribute="top" secondItem="twv-DD-1Ju" secondAttribute="bottom" constant="33" id="xlU-Uq-RZ3"/>
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
@@ -256,7 +256,6 @@
         <!--Hardware View Controller-->
         <scene sceneID="rLI-JF-2F8">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ixY-gY-0wu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="HardwareViewController" title="Hardware" id="46E-lR-6py" userLabel="Hardware View Controller" customClass="HardwareViewController" customModule="CodeChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ruY-VE-lcE"/>
@@ -351,6 +350,7 @@
                         <outlet property="purchaseDateLabel" destination="r3M-81-rAL" id="Vve-en-o6T"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ixY-gY-0wu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4512.8000000000002" y="35.532233883058474"/>
         </scene>
