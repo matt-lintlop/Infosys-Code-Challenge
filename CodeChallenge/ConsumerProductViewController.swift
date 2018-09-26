@@ -11,7 +11,7 @@ import UIKit
 class ConsumerProductViewController: UIViewController {
 
     @IBOutlet weak var headerLabel: UILabel!
-    @IBOutlet weak var descreptionTextView: UITextView!
+    @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var milageLabel: UILabel!
     
@@ -34,9 +34,10 @@ class ConsumerProductViewController: UIViewController {
         self.loadViewIfNeeded()
         self.title = catalogItem.itemIdentifier
         self.milageLabel.text = catalogItem.milage
-        self.descreptionTextView.text = catalogItem.objectSummary.description
+        self.descriptionTextView.text = catalogItem.objectSummary.description
         self.priceLabel.text = catalogItem.price
         self.headerLabel.text = "\(catalogItem.objectSummary.color) \(catalogItem.doors.capitalized)-Door  \(catalogItem.objectSummary.name.capitalized)  \(catalogItem.itemIdentifier.capitalized)"
+        self.descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
     }
         
 /*

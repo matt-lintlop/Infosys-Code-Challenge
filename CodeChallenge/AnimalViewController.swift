@@ -43,7 +43,8 @@ class AnimalViewController: UIViewController {
         if let image = catalogItem.image {
             self.imageView.image = image
         }
-    }
+        self.descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
+   }
     
 /*    // MARK: - Navigation
 

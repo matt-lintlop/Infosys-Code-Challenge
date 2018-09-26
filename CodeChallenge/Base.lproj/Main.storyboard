@@ -262,6 +262,7 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
+                        <outlet property="descriptionTextView" destination="Wd7-Io-dm0" id="3FA-Pu-KOn"/>
                         <outlet property="headerLabel" destination="4Xr-pw-mLi" id="klc-rG-phh"/>
                         <outlet property="milageLabel" destination="BKu-U5-uN1" id="cp1-Vt-uRg"/>
                         <outlet property="priceLabel" destination="7pN-VB-jre" id="56U-Lm-dyG"/>
@@ -282,6 +283,7 @@
                     <view key="view" contentMode="scaleToFill" id="d6x-sj-ocT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </viewController>
