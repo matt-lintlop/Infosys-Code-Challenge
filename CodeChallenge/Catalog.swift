@@ -38,7 +38,7 @@ class Catalog {
                    print("Found the Menu Dictionary: \(menuDict) that is of type \(type(of:menuDict))")
 
                 for pizzaSection in menuDict where pizzaSection is [String:AnyObject] {
-                     print("Found Pizza Section =  \(pizzaSection) that is of type \(type(of:pizzaSection))")
+  //                   print("Found Pizza Section =  \(pizzaSection) that is of type \(type(of:pizzaSection))")
                     for sectionName in pizzaSection.keyEnumerator() where sectionName is String {
                         print("section name = \(sectionName)")
                         guard let sectionPizzas = pizzaSection[sectionName] as? [AnyObject] else {
@@ -46,9 +46,9 @@ class Catalog {
                         }
                         print("section pizzas = has \(sectionPizzas.count) pizzas")
                         
-                        for pizza in sectionPizzas {
-                            print("Found A Pizza: \(pizza)")
-                        }
+//                        for pizza in sectionPizzas {
+//                            print("Found A Pizza: \(pizza)")
+//                        }
                     }
   /**
                     guard let objectDict = objectDict as? Dictionary<String, AnyObject> else {
