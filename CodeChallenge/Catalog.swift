@@ -26,14 +26,22 @@ class Catalog {
     func parseJSON(completion:@escaping (Error?, [CatalogItem]?) -> Void) {
         DispatchQueue.global(qos:.background).async {
              do {
-                guard let path = Bundle.main.path(forResource:"data", ofType:"json") else {
+                // TODO: Testing load the pizza data
+                guard let path = Bundle.main.path(forResource:"pizza", ofType:"json") else {
                     completion(ParseError.errorParsingJSON, nil)
                     return
                 }
                 let url = URL(fileURLWithPath:path)
                 let jsonData = try Data(contentsOf:url)
-                let catalogDict = try JSONSerialization.jsonObject(with:jsonData, options:.allowFragments) as! [String :AnyObject]
-                for (itemIdentifier, objectDict) in catalogDict {
+                let pizzasDict = try JSONSerialization.jsonObject(with:jsonData, options:.allowFragments) as! [AnyObject]
+
+                print("Found the Pizzas Dictionary: \(pizzasDict)")
+
+                for pizza in pizzasDict {
+                    
+                    print("Found a Pizza: \(pizza)")
+                    
+  /**
                     guard let objectDict = objectDict as? Dictionary<String, AnyObject> else {
                         completion(ParseError.errorParsingJSON, nil)
                         return
@@ -78,6 +86,7 @@ class Catalog {
                     default:
                         break;
                     }
+                    */
                 }
                 completion(nil, self.catalogObjects)
             }
