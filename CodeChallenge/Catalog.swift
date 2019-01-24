@@ -35,7 +35,7 @@ class Catalog {
                 let jsonData = try Data(contentsOf:url)
                 let menuDict = try JSONSerialization.jsonObject(with:jsonData, options:.allowFragments) as! [AnyObject]
 
-                   print("Found the Menu Dictionary: \(menuDict) that is of type \(type(of:menuDict))")
+//                   print("Found the Menu Dictionary: \(menuDict) that is of type \(type(of:menuDict))")
 
                 for pizzaSection in menuDict where pizzaSection is [String:AnyObject] {
   //                   print("Found Pizza Section =  \(pizzaSection) that is of type \(type(of:pizzaSection))")
@@ -45,10 +45,13 @@ class Catalog {
                             continue
                         }
                         print("section pizzas = has \(sectionPizzas.count) pizzas")
-                        
-//                        for pizza in sectionPizzas {
-//                            print("Found A Pizza: \(pizza)")
-//                        }
+                    
+                        guard let pizza = sectionPizzas[0] as? [String:AnyObject] else {
+                            print("no pizzas in the section")
+                            continue
+                        }
+                        print("1st pizza in section named \(sectionName) is:\n\(pizza)\n")
+                        print("\n***********************************************************\n")
                     }
   /**
                     guard let objectDict = objectDict as? Dictionary<String, AnyObject> else {
