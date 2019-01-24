@@ -33,13 +33,13 @@ class Catalog {
                 }
                 let url = URL(fileURLWithPath:path)
                 let jsonData = try Data(contentsOf:url)
-                let pizzasDict = try JSONSerialization.jsonObject(with:jsonData, options:.allowFragments) as! [AnyObject]
+                let menuDict = try JSONSerialization.jsonObject(with:jsonData, options:.allowFragments) as! [AnyObject]
 
-                print("Found the Pizzas Dictionary: \(pizzasDict)")
+                   print("Found the Menu Dictionary: \(menuDict) that is of type \(type(of:menuDict))")
 
-                for pizza in pizzasDict {
+                for pizzaSection in menuDict {
+                     print("Found Pizza Section =  \(pizzaSection) that is of type \(type(of:pizzaSection))")
                     
-                    print("Found a Pizza: \(pizza)")
                     
   /**
                     guard let objectDict = objectDict as? Dictionary<String, AnyObject> else {
