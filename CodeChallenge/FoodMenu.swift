@@ -15,38 +15,38 @@ class FoodMenu {
     var sectionNames:[String]?
     var pizzaSectionDict:[String:[Pizza]]?
     var error:Error?
-    
     let pizzaDataURLPath = "https://api.myjson.com/bins/snyji"
 
-    enum ParseError:Error {
-        case errorParsingJSON
+    enum ParseFoodMenuError:Error {
+        case errorParsingFoodMenuJSON
     }
     
     init() {
         self.pizzas = []
     }
  
-    func downloadedPizzaJSON(completion:@escaping (Error?, [Pizza]?) -> Void)  {
-        enum DownloadError:Error {
-            case errorDownloadingFile
+    func downloadAndParsePizzaJSON(completion:@escaping (Error?, [Pizza]?) -> Void)  {
+        enum FoodMenuError:Error {
+            case errorParsingFoodMenuJSON       // thrown if there is an error parsing the food menu json
+            case errorDownloadingFoodMenuJSON   // thrown if there is an error downloading the food menu json
         }
         
         guard let url = URL(string: pizzaDataURLPath) else {
-            completion(DownloadError.errorDownloadingFile, nil)
+            completion(FoodMenuError.errorDownloadingFoodMenuJSON, nil)
             return
         }
         URLSession.shared.dataTask(with:url) { jsonData, response, error in
             guard let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
                 let jsonData = jsonData, error == nil
                 else {
-                    completion(DownloadError.errorDownloadingFile, nil)
+                    completion(FoodMenuError.errorDownloadingFoodMenuJSON, nil)
                     return
             }
             // TODO: do something with the data
             print("Downloaded the data: \(jsonData.count) bytes")
 
             guard let menuDict = try? JSONSerialization.jsonObject(with:jsonData, options:.allowFragments) as! [AnyObject] else {
-                completion(DownloadError.errorDownloadingFile, nil)
+                completion(FoodMenuError.errorParsingFoodMenuJSON, nil)
                 return
             }
             for pizzaSection in menuDict where pizzaSection is [String:AnyObject] {
@@ -76,7 +76,7 @@ class FoodMenu {
              do {
                 // TODO: Testing load the pizza data
                 guard let path = Bundle.main.path(forResource:"pizza", ofType:"json") else {
-                    completion(ParseError.errorParsingJSON, nil)
+                    completion(ParseFoodMenuError.errorParsingFoodMenuJSON, nil)
                     return
                 }
                 let url = URL(fileURLWithPath:path)
@@ -151,7 +151,7 @@ class FoodMenu {
                 completion(nil, self.pizzas)
             }
             catch {
-                completion(ParseError.errorParsingJSON, nil)
+                completion(ParseFoodMenuError.errorParsingFoodMenuJSON, nil)
             }
         }
     }

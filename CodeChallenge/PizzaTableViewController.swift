@@ -17,7 +17,7 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
         super.viewDidLoad()
 
         let foodMenu = FoodMenu()
-        foodMenu.downloadedPizzaJSON() { (error, pizzas) in
+        foodMenu.downloadAndParsePizzaJSON() { (error, pizzas) in
             DispatchQueue.main.async(execute:{
                 if let error = error {
                     let alertController = UIAlertController(title:"Error", message:
