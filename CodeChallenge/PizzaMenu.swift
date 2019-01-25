@@ -27,7 +27,7 @@ class PizzaMenu {
         self.pizzaSectionDict = [:]
     }
  
-    func downloadAndParsePizzaJSON(completion:@escaping (Error?, [Pizza]?) -> Void)  {
+    func downloadAndParsePizzaJSON(completion:@escaping (Error?, [[String:AnyObject]]?) -> Void)  {
         enum FoodMenuError:Error {
             case errorParsingFoodMenuJSON       // thrown if there is an error parsing the food menu json
             case errorDownloadingFoodMenuJSON   // thrown if there is an error downloading the food menu json
@@ -66,7 +66,7 @@ class PizzaMenu {
                     print("\n***********************************************************\n")
                 }
                 
-                completion(nil, nil)      // testing
+                completion(nil, pizzaMenu)      // testing
             }
           }.resume()
     }

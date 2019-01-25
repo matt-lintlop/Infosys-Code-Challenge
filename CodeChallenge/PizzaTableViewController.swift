@@ -17,13 +17,13 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
         super.viewDidLoad()
 
         let pizzaMenu = PizzaMenu()
-        pizzaMenu.downloadAndParsePizzaJSON() { (error, pizzas) in
+        pizzaMenu.downloadAndParsePizzaJSON() { (error, pizzaMenu) in
             
             if let error = error {
                 print("Error in downloadAndParsePizzaJSON(): \(error.localizedDescription)")
             }
             else {
-                print("Success in downloadAndParsePizzaJSON() : pizzas = \(String(describing: pizzas))")
+                print("Success in downloadAndParsePizzaJSON() : pizzaMenu = \(String(describing: pizzaMenu))")
             }
             
             DispatchQueue.main.async(execute:{
@@ -34,7 +34,7 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
                     self.present(alertController, animated:true, completion:nil)
                 }
                 else {
-                    guard let pizzas = pizzas else {
+                    guard let pizzas = self.pizzas else {
                         return
                     }
                     self.pizzas = pizzas

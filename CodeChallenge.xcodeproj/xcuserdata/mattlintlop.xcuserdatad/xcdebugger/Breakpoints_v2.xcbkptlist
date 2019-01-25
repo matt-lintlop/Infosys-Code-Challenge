@@ -10,13 +10,77 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CodeChallenge/PizzaTableViewController.swift"
-            timestampString = "570092430.66444"
+            timestampString = "570092764.772416"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
             endingLineNumber = "26"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CodeChallenge/PizzaTableViewController.swift"
+            timestampString = "570092764.773309"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "makeSectionsWithPizzas(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CodeChallenge/PizzaTableViewController.swift"
+            timestampString = "570092767.729609"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, Swift.Optional&lt;Swift.Array&lt;Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;&gt;&gt;) -&gt; () in CodeChallenge.PizzaTableViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "CodeChallenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mattlintlop/Xcode%20Projects/Infosys-Code-Challenge/CodeChallenge/PizzaTableViewController.swift"
+                  timestampString = "570092767.960711"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "1350">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (Swift.Optional&lt;Swift.Error&gt;, Swift.Optional&lt;Swift.Array&lt;Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;&gt;&gt;) -&gt; () in CodeChallenge.PizzaTableViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "CodeChallenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mattlintlop/Xcode%20Projects/Infosys-Code-Challenge/CodeChallenge/PizzaTableViewController.swift"
+                  timestampString = "570092767.964021"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "53">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
