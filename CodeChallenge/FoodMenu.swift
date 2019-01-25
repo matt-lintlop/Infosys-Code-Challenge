@@ -1,19 +1,19 @@
 //
 //  Catalog.swift
-//  CodeChallenge
+//  Zume-Code-Challenge
 //
 //  Created by Matt Lintlop on 9/22/18.
-//  Copyright © 2018 Matt Lintlop. All rights reserved.
+//  Copyright © 2019 Matt Lintlop. All rights reserved.
 //
 
 import Foundation
 
 
 // Catalog
-class PizzaMenu {
-    var pizzas:[PizzaItem]?
+class FoodMenu {
+    var pizzas:[Pizza]?
     var sectionNames:[String]?
-    var pizzaSectionDict:[String:[PizzaItem]]?
+    var pizzaSectionDict:[String:[Pizza]]?
     var error:Error?
     
     let pizzaDataURLPath = "https://api.myjson.com/bins/snyji"
@@ -26,7 +26,7 @@ class PizzaMenu {
         self.pizzas = []
     }
  
-    func downloadedPizzaJSON(completion:@escaping (Error?, [PizzaItem]?) -> Void)  {
+    func downloadedPizzaJSON(completion:@escaping (Error?, [Pizza]?) -> Void)  {
         enum DownloadError:Error {
             case errorDownloadingFile
         }
@@ -71,7 +71,7 @@ class PizzaMenu {
           }.resume()
     }
 
-    func parseJSON(completion:@escaping (Error?, [PizzaItem]?) -> Void) {
+    func parseJSON(completion:@escaping (Error?, [Pizza]?) -> Void) {
         DispatchQueue.global(qos:.background).async {
              do {
                 // TODO: Testing load the pizza data

@@ -1,24 +1,24 @@
 //
 //  CatalogItem.swift
-//  CodeChallenge
+//  Zume-Code-Challenge
 //
 //  Created by Matt Lintlop on 9/22/18.
-//  Copyright © 2018 Matt Lintlop. All rights reserved.
+//  Copyright © 2019 Matt Lintlop. All rights reserved.
 //
 
 import UIKit
 
 // Catalog Item Delegate protocol
-protocol CatalogItemDelegate {
-    func pizza(_ pizza:PizzaItem, didLoadImageImage image:UIImage?, withError error:Error?)
+protocol PizzaDelegate {
+    func pizza(_ pizza:Pizza, didLoadImageImage image:UIImage?, withError error:Error?)
 }
 
 // Catalog Item class
-class  PizzaItem  {
+class  Pizza  {
     var itemIdentifier:String                           // catalog item identifier
     var itemSummary:CatalogItemSummary                  // catalog item summary dictionary
     var indexPath:IndexPath?                            // index path of associated table view cell
-    var delegate:CatalogItemDelegate?                   // delegate
+    var delegate:PizzaDelegate?                   // delegate
     
     enum  CatalogItemType:String {
         case consumerProduct = "consumer product"

@@ -1,9 +1,9 @@
 //
 //  CatalogItemSummary.swift
-//  CodeChallenge
+//  Zume-Code-Challenge
 //
 //  Created by Matt Lintlop on 9/22/18.
-//  Copyright © 2018 Matt Lintlop. All rights reserved.
+//  Copyright © 2019 Matt Lintlop. All rights reserved.
 //
 
 import Foundation

@@ -1,23 +1,23 @@
 //
-//  CatalogTableViewController.swift
-//  CodeChallenge
+//  PizzaTableViewController.swift
+//  Zume-Code-Challenge
 //
-//  Created by Matt Lintlop on 9/23/18.
-//  Copyright © 2018 Matt Lintlop. All rights reserved.
+//  Created by Matt Lintlop on 1/24/19.
+//  Copyright © 2019 Matt Lintlop. All rights reserved.
 //
 
 import UIKit
 
-class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
-    var pizzas:[PizzaItem]?
+class PizzaTableViewController:UITableViewController, PizzaDelegate {
+    var pizzas:[Pizza]?
     var sectionNames:[String] = []
-    var sectionPizzas:[[PizzaItem]] = []
+    var sectionPizzas:[[Pizza]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let pizzaMenu = PizzaMenu()
-        pizzaMenu.downloadedPizzaJSON() { (error, pizzas) in
+        let foodMenu = FoodMenu()
+        foodMenu.downloadedPizzaJSON() { (error, pizzas) in
             DispatchQueue.main.async(execute:{
                 if let error = error {
                     let alertController = UIAlertController(title:"Error", message:
@@ -46,8 +46,8 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func makeSectionsWithPizzas(_ pizzas:[PizzaItem]) {
-        var sectionsDict:[String:[PizzaItem]] = [:]
+    func makeSectionsWithPizzas(_ pizzas:[Pizza]) {
+        var sectionsDict:[String:[Pizza]] = [:]
         self.sectionNames = []
         self.sectionPizzas = []
 
@@ -88,7 +88,7 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
     }
 
     // get the catalog items in section at an index path
-    func getCatalogItem(atIndexPath indexPath:IndexPath) -> PizzaItem? {
+    func getCatalogItem(atIndexPath indexPath:IndexPath) -> Pizza? {
         guard indexPath.section < self.sectionPizzas.count else {
             return nil
         }
@@ -129,13 +129,13 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
             return
         }
         switch (pizza.itemSummary.type) {
-        case  PizzaItem.CatalogItemType.consumerProduct.rawValue:
+        case  Pizza.CatalogItemType.consumerProduct.rawValue:
             showViewController(withtCatalogItem:pizza as! ConsumerProductCatalogItem)
             
-        case  PizzaItem.CatalogItemType.hardware.rawValue:
+        case  Pizza.CatalogItemType.hardware.rawValue:
             showViewController(withtCatalogItem:pizza as! HardwareCatalogItem)
 
-        case  PizzaItem.CatalogItemType.animal.rawValue:
+        case  Pizza.CatalogItemType.animal.rawValue:
             showViewController(withtCatalogItem:pizza as! AnimalCatalogItem)
         default:
             return
@@ -172,7 +172,7 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
     }
     
     // MARK - CatalogItemDelegate
-    func pizza(_ pizza: PizzaItem, didLoadImageImage image: UIImage?, withError error: Error?) {
+    func pizza(_ pizza: Pizza, didLoadImageImage image: UIImage?, withError error: Error?) {
         guard let indexPath = pizza.indexPath, error == nil else {
             return
         }
