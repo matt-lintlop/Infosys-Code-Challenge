@@ -32,17 +32,17 @@ class HardwareViewController: UIViewController {
         super.init(coder: aDecoder)
     }
 
-    func setupViewController(with catalogItem:HardwareCatalogItem) {
+    func setupViewController(with pizza:HardwareCatalogItem) {
         self.loadViewIfNeeded()
-        self.title = catalogItem.itemIdentifier
-        self.purchaseDateLabel.text = catalogItem.purchaseDate
-        self.descriptionTextView.text = catalogItem.itemSummary.description
-        self.colorLabel.text = catalogItem.itemSummary.color
-        self.headerLabel.text = "\(catalogItem.itemSummary.name.capitalized) The \(catalogItem.itemIdentifier.capitalized)"
+        self.title = pizza.itemIdentifier
+        self.purchaseDateLabel.text = pizza.purchaseDate
+        self.descriptionTextView.text = pizza.itemSummary.description
+        self.colorLabel.text = pizza.itemSummary.color
+        self.headerLabel.text = "\(pizza.itemSummary.name.capitalized) The \(pizza.itemIdentifier.capitalized)"
         self.descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
         self.descriptionTextView.setNeedsDisplay()
         self.showStartOfText = true
-        if let image = catalogItem.image {
+        if let image = pizza.image {
             self.imageView.alpha = 0.0
             UIView.animate(withDuration: 0.5, animations: {
                     self.imageView.image = image

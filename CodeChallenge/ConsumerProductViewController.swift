@@ -31,13 +31,13 @@ class ConsumerProductViewController: UIViewController {
         super.init(coder: aDecoder)
     }
         
-    func setupViewController(with catalogItem:ConsumerProductCatalogItem) {
+    func setupViewController(with pizza:ConsumerProductCatalogItem) {
         self.loadViewIfNeeded()
-        self.title = catalogItem.itemIdentifier
-        self.milageLabel.text = catalogItem.milage
-        self.descriptionTextView.text = catalogItem.itemSummary.description
-        self.priceLabel.text = catalogItem.price
-        self.headerLabel.text = "\(catalogItem.itemSummary.color) \(catalogItem.doors.capitalized)-Door  \(catalogItem.itemSummary.name.capitalized)  \(catalogItem.itemIdentifier.capitalized)"
+        self.title = pizza.itemIdentifier
+        self.milageLabel.text = pizza.milage
+        self.descriptionTextView.text = pizza.itemSummary.description
+        self.priceLabel.text = pizza.price
+        self.headerLabel.text = "\(pizza.itemSummary.color) \(pizza.doors.capitalized)-Door  \(pizza.itemSummary.name.capitalized)  \(pizza.itemIdentifier.capitalized)"
         self.descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
         self.descriptionTextView.setNeedsDisplay()
         self.showStartOfText = true

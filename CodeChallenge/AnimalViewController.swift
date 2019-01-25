@@ -33,21 +33,21 @@ class AnimalViewController: UIViewController {
         super.init(coder: aDecoder)
     }
 
-    func setupViewController(with catalogItem:AnimalCatalogItem) {
+    func setupViewController(with pizza:AnimalCatalogItem) {
         self.loadViewIfNeeded()
-        self.title = catalogItem.itemIdentifier
-        self.ageLabel.text = catalogItem.age
-        self.favoriteToyLabel.text = catalogItem.favoriteToy
-        self.descriptionTextView.text = catalogItem.itemSummary.description
-        self.colorLabel.text = catalogItem.itemSummary.color
-        self.headerLabel.text = "\(catalogItem.itemSummary.name.capitalized) The \(catalogItem.itemIdentifier.capitalized)"
+        self.title = pizza.itemIdentifier
+        self.ageLabel.text = pizza.age
+        self.favoriteToyLabel.text = pizza.favoriteToy
+        self.descriptionTextView.text = pizza.itemSummary.description
+        self.colorLabel.text = pizza.itemSummary.color
+        self.headerLabel.text = "\(pizza.itemSummary.name.capitalized) The \(pizza.itemIdentifier.capitalized)"
        
         self.descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
         self.descriptionTextView.setNeedsDisplay()
         self.descriptionTextView.setNeedsLayout()
         self.descriptionTextView.layoutIfNeeded()
         
-        if let image = catalogItem.image {
+        if let image = pizza.image {
             self.imageView.alpha = 0.0
             UIView.animate(withDuration: 0.5, animations: {
                     self.imageView.image = image

@@ -122,7 +122,7 @@ class PizzaMenu {
                             completion(ParseError.errorParsingJSON, nil)
                             return
                         }
-                        self.catalogObjects?.append(carCatalogItem)
+                        self.pizzas?.append(carCatalogItem)
                         break;
                         
                     case  CatalogItem.CatalogItemType.hardware.rawValue:
@@ -131,7 +131,7 @@ class PizzaMenu {
                             completion(ParseError.errorParsingJSON, nil)
                            return
                         }
-                        self.catalogObjects?.append(computerCatalogItem)
+                        self.pizzas?.append(computerCatalogItem)
                         break;
                         
                     case  CatalogItem.CatalogItemType.animal.rawValue:
@@ -140,7 +140,7 @@ class PizzaMenu {
                             completion(ParseError.errorParsingJSON, nil)
                             return
                         }
-                        self.catalogObjects?.append(animalCatalogItem)
+                        self.pizzas?.append(animalCatalogItem)
                         break;
                         
                     default:

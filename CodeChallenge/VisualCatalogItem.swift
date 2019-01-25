@@ -34,7 +34,7 @@ class VisualCatalogItem: PizzaItem  {
         }
         guard let imageUrlPath = self.imageReference?.imageUrlPath,
             let url = URL(string: imageUrlPath) else {
-            self.delegate?.catalogItem(self, didLoadImageImage:nil, withError:DownloadError.errorDownloadingFile)
+            self.delegate?.pizza(self, didLoadImageImage:nil, withError:DownloadError.errorDownloadingFile)
             return
         }
         URLSession.shared.dataTask(with:url) { data, response, error in
@@ -43,11 +43,11 @@ class VisualCatalogItem: PizzaItem  {
                 let data = data, error == nil,
                 let image = UIImage(data:data)
                 else {
-                    self.delegate?.catalogItem(self, didLoadImageImage:nil, withError:DownloadError.errorDownloadingFile)
+                    self.delegate?.pizza(self, didLoadImageImage:nil, withError:DownloadError.errorDownloadingFile)
                     return
             }
             self.image = image
-            self.delegate?.catalogItem(self, didLoadImageImage:image, withError:nil)
+            self.delegate?.pizza(self, didLoadImageImage:image, withError:nil)
             }.resume()
     }
  }

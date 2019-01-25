@@ -9,15 +9,15 @@
 import UIKit
 
 class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
-    var catalogItems:[PizzaItem]?
+    var pizzas:[PizzaItem]?
     var sectionNames:[String] = []
-    var sectionCatalogItems:[[PizzaItem]] = []
+    var sectionPizzas:[[PizzaItem]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let pizzaMenu = PizzaMenu()
-        pizzaMenu.downloadedPizzaJSON() { (error, catalogObjects) in
+        pizzaMenu.downloadedPizzaJSON() { (error, pizzas) in
             DispatchQueue.main.async(execute:{
                 if let error = error {
                     let alertController = UIAlertController(title:"Error", message:
@@ -26,11 +26,11 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
                     self.present(alertController, animated:true, completion:nil)
                 }
                 else {
-                    guard let pizzas = catalogObjects else {
+                    guard let pizzas = pizzas else {
                         return
                     }
-                    self.catalogItems = pizzas
-                    self.makeSectionsWithCatalogItems(pizzas)
+                    self.pizzas = pizzas
+                    self.makeSectionsWithPizzas(pizzas)
                     self.tableView.reloadData()
                 }
             })
@@ -46,34 +46,34 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func makeSectionsWithCatalogItems(_ catalogItems:[PizzaItem]) {
+    func makeSectionsWithPizzas(_ pizzas:[PizzaItem]) {
         var sectionsDict:[String:[PizzaItem]] = [:]
         self.sectionNames = []
-        self.sectionCatalogItems = []
+        self.sectionPizzas = []
 
-        for catalogItem in catalogItems {
-            catalogItem.delegate = self
-            let type = catalogItem.itemSummary.type.capitalized
-            if var sectionCatalogItems = sectionsDict[type] {
-                sectionCatalogItems.append(catalogItem)
-                sectionsDict[type] = sectionCatalogItems
+        for pizza in pizzas {
+            pizza.delegate = self
+            let type = pizza.itemSummary.type.capitalized
+            if var sectionPizzas = sectionsDict[type] {
+                sectionPizzas.append(pizza)
+                sectionsDict[type] = sectionPizzas
             }
             else {
-                sectionsDict[type] = [catalogItem]
+                sectionsDict[type] = [pizza]
             }
         }
         let sortedSectionNames = sectionsDict.keys.sorted()
         for sectionName in sortedSectionNames {
             self.sectionNames.append(sectionName)
-            let unsortedSectionCatalogItems = sectionsDict[sectionName]!
-            let sortedSectionCatalogItems = unsortedSectionCatalogItems.sorted { (catalogItem1, catalogItem2) -> Bool in
-                return catalogItem1.itemIdentifier < catalogItem2.itemIdentifier
+            let unsortedSectionPizzas = sectionsDict[sectionName]!
+            let sortedSectionPizzas = unsortedSectionPizzas.sorted { (pizza1, pizza2) -> Bool in
+                return pizza1.itemIdentifier < pizza2.itemIdentifier
             }
-            self.sectionCatalogItems.append(sortedSectionCatalogItems)
+            self.sectionPizzas.append(sortedSectionPizzas)
         }
         for (sectionNunber, _) in self.sectionNames.enumerated() {
-            let sectionCatalogObjects = self.sectionCatalogItems[sectionNunber]
-            for (rowNumber, catalogObject) in sectionCatalogObjects.enumerated() {
+            let sectionpizzas = self.sectionPizzas[sectionNunber]
+            for (rowNumber, catalogObject) in sectionpizzas.enumerated() {
                 catalogObject.indexPath = IndexPath(row:rowNumber, section:sectionNunber)
             }
         }
@@ -89,11 +89,11 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
 
     // get the catalog items in section at an index path
     func getCatalogItem(atIndexPath indexPath:IndexPath) -> PizzaItem? {
-        guard indexPath.section < self.sectionCatalogItems.count else {
+        guard indexPath.section < self.sectionPizzas.count else {
             return nil
         }
-        let sectionCatalogItems = self.sectionCatalogItems[indexPath.section]
-        return sectionCatalogItems[indexPath.row]
+        let sectionPizzas = self.sectionPizzas[indexPath.section]
+        return sectionPizzas[indexPath.row]
     }
 
     // MARK:- Table view data source
@@ -103,7 +103,7 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
     }
 
     override func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int) -> Int {
-        let sectionObjects = sectionCatalogItems[section]
+        let sectionObjects = sectionPizzas[section]
         return sectionObjects.count
     }
     
@@ -112,31 +112,31 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
     }
 
     override func tableView(_ tableView:UITableView, cellForRowAt indexPath:IndexPath) -> UITableViewCell {
-        guard let catalogItem = getCatalogItem(atIndexPath:indexPath) else {
+        guard let pizza = getCatalogItem(atIndexPath:indexPath) else {
             return tableView.dequeueReusableCell(withIdentifier:"CatalogItemCell")!
         }
         let cell = tableView.dequeueReusableCell(withIdentifier:"CatalogItemCell", for:indexPath)
-        cell.textLabel?.text = catalogItem.itemIdentifier
+        cell.textLabel?.text = pizza.itemIdentifier
         
-        if let visualCatalogItem = catalogItem as? VisualCatalogItem {
+        if let visualCatalogItem = pizza as? VisualCatalogItem {
             cell.imageView?.image = visualCatalogItem.image
         }
         return cell
     }
 
     override func tableView(_ tableView:UITableView, didSelectRowAt indexPath:IndexPath) {
-        guard let catalogItem = getCatalogItem(atIndexPath:indexPath) else {
+        guard let pizza = getCatalogItem(atIndexPath:indexPath) else {
             return
         }
-        switch (catalogItem.itemSummary.type) {
+        switch (pizza.itemSummary.type) {
         case  PizzaItem.CatalogItemType.consumerProduct.rawValue:
-            showViewController(withtCatalogItem:catalogItem as! ConsumerProductCatalogItem)
+            showViewController(withtCatalogItem:pizza as! ConsumerProductCatalogItem)
             
         case  PizzaItem.CatalogItemType.hardware.rawValue:
-            showViewController(withtCatalogItem:catalogItem as! HardwareCatalogItem)
+            showViewController(withtCatalogItem:pizza as! HardwareCatalogItem)
 
         case  PizzaItem.CatalogItemType.animal.rawValue:
-            showViewController(withtCatalogItem:catalogItem as! AnimalCatalogItem)
+            showViewController(withtCatalogItem:pizza as! AnimalCatalogItem)
         default:
             return
         }
@@ -153,27 +153,27 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
         self.navigationController?.pushViewController(viewController, animated:true)
     }
    
-    func showViewController(withtCatalogItem catalogItem:HardwareCatalogItem) {
+    func showViewController(withtCatalogItem pizza:HardwareCatalogItem) {
         let storyboard = UIStoryboard(name:"Main", bundle:nil)
         guard let viewController = storyboard.instantiateViewController(withIdentifier:"HardwareViewController") as? HardwareViewController else {
             return
         }
-        viewController.setupViewController(with:catalogItem)
+        viewController.setupViewController(with:pizza)
         self.navigationController?.pushViewController(viewController, animated:true)
     }
     
-    func showViewController(withtCatalogItem catalogItem:AnimalCatalogItem) {
+    func showViewController(withtCatalogItem pizza:AnimalCatalogItem) {
         let storyboard = UIStoryboard(name:"Main", bundle:nil)
         guard let viewController = storyboard.instantiateViewController(withIdentifier:"AnimalViewController") as? AnimalViewController else {
             return
         }
-        viewController.setupViewController(with:catalogItem)
+        viewController.setupViewController(with:pizza)
         self.navigationController?.pushViewController(viewController, animated:true)
     }
     
     // MARK - CatalogItemDelegate
-    func catalogItem(_ catalogItem: PizzaItem, didLoadImageImage image: UIImage?, withError error: Error?) {
-        guard let indexPath = catalogItem.indexPath, error == nil else {
+    func pizza(_ pizza: PizzaItem, didLoadImageImage image: UIImage?, withError error: Error?) {
+        guard let indexPath = pizza.indexPath, error == nil else {
             return
         }
         DispatchQueue.main.async(execute:{

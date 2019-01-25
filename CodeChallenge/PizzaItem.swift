@@ -10,7 +10,7 @@ import UIKit
 
 // Catalog Item Delegate protocol
 protocol CatalogItemDelegate {
-    func catalogItem(_ catalogItem:PizzaItem, didLoadImageImage image:UIImage?, withError error:Error?)
+    func pizza(_ pizza:PizzaItem, didLoadImageImage image:UIImage?, withError error:Error?)
 }
 
 // Catalog Item class
