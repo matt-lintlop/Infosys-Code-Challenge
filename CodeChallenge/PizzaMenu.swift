@@ -11,7 +11,7 @@ import Foundation
 
 // Catalog
 class PizzaMenu {
-    var pizzaObjects:[PizzaItem]?
+    var pizzas:[PizzaItem]?
     var sectionNames:[String]?
     var pizzaSectionDict:[String:[PizzaItem]]?
     var error:Error?
@@ -23,7 +23,7 @@ class PizzaMenu {
     }
     
     init() {
-        self.pizzaObjects = []
+        self.pizzas = []
     }
  
     func downloadedPizzaJSON(completion:@escaping (Error?, [PizzaItem]?) -> Void)  {
@@ -148,7 +148,7 @@ class PizzaMenu {
                     }
                     */
                 }
-                completion(nil, self.pizzaObjects)
+                completion(nil, self.pizzas)
             }
             catch {
                 completion(ParseError.errorParsingJSON, nil)

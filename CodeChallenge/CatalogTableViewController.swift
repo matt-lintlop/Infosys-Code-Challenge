@@ -26,11 +26,11 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
                     self.present(alertController, animated:true, completion:nil)
                 }
                 else {
-                    guard let catalogObjects = catalogObjects else {
+                    guard let pizzas = catalogObjects else {
                         return
                     }
-                    self.catalogItems = catalogObjects
-                    self.makeSectionsWithCatalogItems(catalogObjects)
+                    self.catalogItems = pizzas
+                    self.makeSectionsWithCatalogItems(pizzas)
                     self.tableView.reloadData()
                 }
             })
