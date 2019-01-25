@@ -16,23 +16,20 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let foodMenu = FoodMenu()
-        foodMenu.downloadAndParsePizzaJSON() { (error, pizzas) in
+        let pizzaMenu = PizzaMenu()
+        pizzaMenu.downloadAndParsePizzaJSON() { (error, pizzas) in
             
             if let error = error {
                 print("Error in downloadAndParsePizzaJSON(): \(error.localizedDescription)")
             }
             else {
-                print("Success in downloadAndParsePizzaJSON()")
-                print("sectionNames: \(self.sectionNames)")
-                print("pizzas: \(String(describing: pizzas))")
-                print("sectionPizzas: \(self.sectionPizzas)")
+                print("Success in downloadAndParsePizzaJSON() : pizzas = \(String(describing: pizzas))")
             }
             
             DispatchQueue.main.async(execute:{
                 if let error = error {
                     let alertController = UIAlertController(title:"Error", message:
-                        "Error Parsing Catalog:\(error)", preferredStyle:UIAlertControllerStyle.alert)
+                        "Error downloading food menu: \(error)", preferredStyle:UIAlertControllerStyle.alert)
                     alertController.addAction(UIAlertAction(title:"Dismiss", style:UIAlertActionStyle.default,handler:nil))
                     self.present(alertController, animated:true, completion:nil)
                 }

@@ -10,7 +10,7 @@ import Foundation
 
 
 // Catalog
-class FoodMenu {
+class PizzaMenu {
     var pizzas:[Pizza]?
     var sectionNames:[String]?
     var pizzaSectionDict:[String:[Pizza]]?
@@ -47,12 +47,12 @@ class FoodMenu {
             // TODO: do something with the data
             print("Downloaded the data: \(jsonData.count) bytes")
 
-            guard let menuList = try? JSONSerialization.jsonObject(with:jsonData, options:.allowFragments) as! [[String:AnyObject]] else {
+            guard let pizzaMenu = try? JSONSerialization.jsonObject(with:jsonData, options:.allowFragments) as! [[String:AnyObject]] else {
                 completion(FoodMenuError.errorParsingFoodMenuJSON, nil)
                 return
             }
-            for menuDict in menuList {
-                for (sectionName, sectionPizzas) in menuDict {
+            for pizzaSection in pizzaMenu {
+                for (sectionName, sectionPizzas) in pizzaSection {
                     //                   print("Found Pizza Section =  \(pizzaSection) that is of type \(type(of:pizzaSection))")
                     self.self.sectionNames?.append(sectionName)
                     print("section name = \(sectionName)")
