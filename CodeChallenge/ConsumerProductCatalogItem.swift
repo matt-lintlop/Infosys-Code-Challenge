@@ -9,7 +9,7 @@
 import Foundation
 
 // Car Catalog Object
-class ConsumerProductCatalogItem:CatalogItem {
+class ConsumerProductCatalogItem:PizzaItem {
     let doors:String
     let price:String
     let milage:String

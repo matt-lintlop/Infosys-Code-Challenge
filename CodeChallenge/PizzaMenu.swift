@@ -10,20 +10,20 @@ import Foundation
 
 
 // Catalog
-class Catalog {
-    var catalogObjects:[CatalogItem]?
+class PizzaMenu {
+    var pizzaObjects:[PizzaItem]?
     var sectionNames:[String]?
-    var catalogSectionDict:[String:[CatalogItem]]?
+    var pizzaSectionDict:[String:[PizzaItem]]?
 
     enum ParseError:Error {
         case errorParsingJSON
     }
     
     init() {
-        self.catalogObjects = []
+        self.pizzaObjects = []
     }
  
-    func parseJSON(completion:@escaping (Error?, [CatalogItem]?) -> Void) {
+    func parseJSON(completion:@escaping (Error?, [PizzaItem]?) -> Void) {
         DispatchQueue.global(qos:.background).async {
              do {
                 // TODO: Testing load the pizza data
@@ -100,7 +100,7 @@ class Catalog {
                     }
                     */
                 }
-                completion(nil, self.catalogObjects)
+                completion(nil, self.pizzaObjects)
             }
             catch {
                 completion(ParseError.errorParsingJSON, nil)

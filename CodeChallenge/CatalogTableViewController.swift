@@ -9,14 +9,14 @@
 import UIKit
 
 class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
-    var catalogItems:[CatalogItem]?
+    var catalogItems:[PizzaItem]?
     var sectionNames:[String] = []
-    var sectionCatalogItems:[[CatalogItem]] = []
+    var sectionCatalogItems:[[PizzaItem]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let catalog = Catalog()
+        let catalog = PizzaMenu()
         catalog.parseJSON { (error, catalogObjects) in
             DispatchQueue.main.async(execute:{
                 if let error = error {
@@ -46,8 +46,8 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func makeSectionsWithCatalogItems(_ catalogItems:[CatalogItem]) {
-        var sectionsDict:[String:[CatalogItem]] = [:]
+    func makeSectionsWithCatalogItems(_ catalogItems:[PizzaItem]) {
+        var sectionsDict:[String:[PizzaItem]] = [:]
         self.sectionNames = []
         self.sectionCatalogItems = []
 
@@ -88,7 +88,7 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
     }
 
     // get the catalog items in section at an index path
-    func getCatalogItem(atIndexPath indexPath:IndexPath) -> CatalogItem? {
+    func getCatalogItem(atIndexPath indexPath:IndexPath) -> PizzaItem? {
         guard indexPath.section < self.sectionCatalogItems.count else {
             return nil
         }
@@ -129,13 +129,13 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
             return
         }
         switch (catalogItem.itemSummary.type) {
-        case  CatalogItem.CatalogItemType.consumerProduct.rawValue:
+        case  PizzaItem.CatalogItemType.consumerProduct.rawValue:
             showViewController(withtCatalogItem:catalogItem as! ConsumerProductCatalogItem)
             
-        case  CatalogItem.CatalogItemType.hardware.rawValue:
+        case  PizzaItem.CatalogItemType.hardware.rawValue:
             showViewController(withtCatalogItem:catalogItem as! HardwareCatalogItem)
 
-        case  CatalogItem.CatalogItemType.animal.rawValue:
+        case  PizzaItem.CatalogItemType.animal.rawValue:
             showViewController(withtCatalogItem:catalogItem as! AnimalCatalogItem)
         default:
             return
@@ -172,7 +172,7 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
     }
     
     // MARK - CatalogItemDelegate
-    func catalogItem(_ catalogItem: CatalogItem, didLoadImageImage image: UIImage?, withError error: Error?) {
+    func catalogItem(_ catalogItem: PizzaItem, didLoadImageImage image: UIImage?, withError error: Error?) {
         guard let indexPath = catalogItem.indexPath, error == nil else {
             return
         }

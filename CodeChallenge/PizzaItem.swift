@@ -10,11 +10,11 @@ import UIKit
 
 // Catalog Item Delegate protocol
 protocol CatalogItemDelegate {
-    func catalogItem(_ catalogItem:CatalogItem, didLoadImageImage image:UIImage?, withError error:Error?)
+    func catalogItem(_ catalogItem:PizzaItem, didLoadImageImage image:UIImage?, withError error:Error?)
 }
 
 // Catalog Item class
-class  CatalogItem  {
+class  PizzaItem  {
     var itemIdentifier:String                           // catalog item identifier
     var itemSummary:CatalogItemSummary                  // catalog item summary dictionary
     var indexPath:IndexPath?                            // index path of associated table view cell

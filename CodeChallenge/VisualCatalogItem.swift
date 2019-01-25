@@ -9,7 +9,7 @@
 import UIKit
 
 // Catalog Object
-class VisualCatalogItem: CatalogItem  {
+class VisualCatalogItem: PizzaItem  {
     let imageReference:ImageReference?
     var image:UIImage?
     
