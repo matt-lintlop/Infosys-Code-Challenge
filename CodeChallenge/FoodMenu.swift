@@ -23,6 +23,8 @@ class FoodMenu {
     
     init() {
         self.pizzas = []
+        self.sectionNames = []
+        self.pizzaSectionDict = [:]
     }
  
     func downloadAndParsePizzaJSON(completion:@escaping (Error?, [Pizza]?) -> Void)  {
@@ -45,18 +47,16 @@ class FoodMenu {
             // TODO: do something with the data
             print("Downloaded the data: \(jsonData.count) bytes")
 
-            guard let menuDict = try? JSONSerialization.jsonObject(with:jsonData, options:.allowFragments) as! [AnyObject] else {
+            guard let menuList = try? JSONSerialization.jsonObject(with:jsonData, options:.allowFragments) as! [[String:AnyObject]] else {
                 completion(FoodMenuError.errorParsingFoodMenuJSON, nil)
                 return
             }
-            for pizzaSection in menuDict where pizzaSection is [String:AnyObject] {
-                //                   print("Found Pizza Section =  \(pizzaSection) that is of type \(type(of:pizzaSection))")
-                for sectionName in pizzaSection.keyEnumerator() where sectionName is String {
+            for menuDict in menuList {
+                for (sectionName, sectionPizzas) in menuDict {
+                    //                   print("Found Pizza Section =  \(pizzaSection) that is of type \(type(of:pizzaSection))")
+                    self.self.sectionNames?.append(sectionName)
                     print("section name = \(sectionName)")
-                    guard let sectionPizzas = pizzaSection[sectionName] as? [AnyObject] else {
-                        continue
-                    }
-                    print("section pizzas = has \(sectionPizzas.count) pizzas")
+                    print("section pizzas = has \(String(describing: sectionPizzas.count)) pizzas")
                     
                     guard let pizza = sectionPizzas[0] as? [String:AnyObject] else {
                         print("no pizzas in the section")
@@ -65,9 +65,9 @@ class FoodMenu {
                     print("1st pizza in section named \(sectionName) is:\n\(pizza)\n")
                     print("\n***********************************************************\n")
                 }
-            }
-
+                
                 completion(nil, nil)      // testing
+            }
           }.resume()
     }
 
