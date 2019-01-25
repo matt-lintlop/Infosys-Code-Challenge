@@ -14,6 +14,9 @@ class PizzaMenu {
     var pizzaObjects:[PizzaItem]?
     var sectionNames:[String]?
     var pizzaSectionDict:[String:[PizzaItem]]?
+    var error:Error?
+    
+    let pizzaDataURLPath = "https://api.myjson.com/bins/snyji"
 
     enum ParseError:Error {
         case errorParsingJSON
@@ -23,6 +26,51 @@ class PizzaMenu {
         self.pizzaObjects = []
     }
  
+    func downloadedPizzaJSON(completion:@escaping (Error?, [PizzaItem]?) -> Void)  {
+        enum DownloadError:Error {
+            case errorDownloadingFile
+        }
+        
+        guard let url = URL(string: pizzaDataURLPath) else {
+            completion(DownloadError.errorDownloadingFile, nil)
+            return
+        }
+        URLSession.shared.dataTask(with:url) { jsonData, response, error in
+            guard let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let jsonData = jsonData, error == nil
+                else {
+                    completion(DownloadError.errorDownloadingFile, nil)
+                    return
+            }
+            // TODO: do something with the data
+            print("Downloaded the data: \(jsonData.count) bytes")
+
+            guard let menuDict = try? JSONSerialization.jsonObject(with:jsonData, options:.allowFragments) as! [AnyObject] else {
+                completion(DownloadError.errorDownloadingFile, nil)
+                return
+            }
+            for pizzaSection in menuDict where pizzaSection is [String:AnyObject] {
+                //                   print("Found Pizza Section =  \(pizzaSection) that is of type \(type(of:pizzaSection))")
+                for sectionName in pizzaSection.keyEnumerator() where sectionName is String {
+                    print("section name = \(sectionName)")
+                    guard let sectionPizzas = pizzaSection[sectionName] as? [AnyObject] else {
+                        continue
+                    }
+                    print("section pizzas = has \(sectionPizzas.count) pizzas")
+                    
+                    guard let pizza = sectionPizzas[0] as? [String:AnyObject] else {
+                        print("no pizzas in the section")
+                        continue
+                    }
+                    print("1st pizza in section named \(sectionName) is:\n\(pizza)\n")
+                    print("\n***********************************************************\n")
+                }
+            }
+
+                completion(nil, nil)      // testing
+          }.resume()
+    }
+
     func parseJSON(completion:@escaping (Error?, [PizzaItem]?) -> Void) {
         DispatchQueue.global(qos:.background).async {
              do {

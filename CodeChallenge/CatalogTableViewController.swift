@@ -16,8 +16,8 @@ class CatalogTableViewController:UITableViewController, CatalogItemDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let catalog = PizzaMenu()
-        catalog.parseJSON { (error, catalogObjects) in
+        let pizzaMenu = PizzaMenu()
+        pizzaMenu.downloadedPizzaJSON() { (error, catalogObjects) in
             DispatchQueue.main.async(execute:{
                 if let error = error {
                     let alertController = UIAlertController(title:"Error", message:
