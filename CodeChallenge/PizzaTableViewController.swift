@@ -95,8 +95,8 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
         return sectionNames[section]
     }
 
-    // get the catalog items in section at an index path
-    func getCatalogItem(atIndexPath indexPath:IndexPath) -> Pizza? {
+    // get the pizza model object at an index path
+    func getPizza(atIndexPath indexPath:IndexPath) -> Pizza? {
         guard indexPath.section < self.sectionPizzas.count else {
             return nil
         }
@@ -120,7 +120,7 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
     }
 
     override func tableView(_ tableView:UITableView, cellForRowAt indexPath:IndexPath) -> UITableViewCell {
-        guard let pizza = getCatalogItem(atIndexPath:indexPath) else {
+        guard let pizza = getPizza(atIndexPath:indexPath) else {
             return tableView.dequeueReusableCell(withIdentifier:"CatalogItemCell")!
         }
         let cell = tableView.dequeueReusableCell(withIdentifier:"CatalogItemCell", for:indexPath)
@@ -133,19 +133,7 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
     }
 
     override func tableView(_ tableView:UITableView, didSelectRowAt indexPath:IndexPath) {
-        guard let pizza = getCatalogItem(atIndexPath:indexPath) else {
-            return
-        }
-        switch (pizza.itemSummary.type) {
-        case  Pizza.CatalogItemType.consumerProduct.rawValue:
-            showViewController(withtCatalogItem:pizza as! ConsumerProductCatalogItem)
-            
-        case  Pizza.CatalogItemType.hardware.rawValue:
-            showViewController(withtCatalogItem:pizza as! HardwareCatalogItem)
-
-        case  Pizza.CatalogItemType.animal.rawValue:
-            showViewController(withtCatalogItem:pizza as! AnimalCatalogItem)
-        default:
+        guard let pizza = getPizza(atIndexPath:indexPath) else {
             return
         }
     }
@@ -161,25 +149,7 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
         self.navigationController?.pushViewController(viewController, animated:true)
     }
    
-    func showViewController(withtCatalogItem pizza:HardwareCatalogItem) {
-        let storyboard = UIStoryboard(name:"Main", bundle:nil)
-        guard let viewController = storyboard.instantiateViewController(withIdentifier:"HardwareViewController") as? HardwareViewController else {
-            return
-        }
-        viewController.setupViewController(with:pizza)
-        self.navigationController?.pushViewController(viewController, animated:true)
-    }
-    
-    func showViewController(withtCatalogItem pizza:AnimalCatalogItem) {
-        let storyboard = UIStoryboard(name:"Main", bundle:nil)
-        guard let viewController = storyboard.instantiateViewController(withIdentifier:"AnimalViewController") as? AnimalViewController else {
-            return
-        }
-        viewController.setupViewController(with:pizza)
-        self.navigationController?.pushViewController(viewController, animated:true)
-    }
-    
-    // MARK - CatalogItemDelegate
+    // MARK - PizzaDelegate
     func pizza(_ pizza: Pizza, didLoadImageImage image: UIImage?, withError error: Error?) {
         guard let indexPath = pizza.indexPath, error == nil else {
             return

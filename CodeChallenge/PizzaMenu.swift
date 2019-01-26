@@ -46,48 +46,18 @@ class PizzaMenu {
             }
             // TODO: do something with the data
             print("Downloaded the data: \(jsonData.count) bytes")
+            print(String(data: jsonData, encoding: .utf8) ?? "No response data as string")
 
-            guard let pizzaMenu = try? JSONSerialization.jsonObject(with:jsonData, options:.allowFragments) as! [[String:AnyObject]] else {
-                completion(FoodMenuError.errorParsingFoodMenuJSON, nil)
-                return
-            }
-            for pizzaSection in pizzaMenu {
-                for (sectionName, sectionPizzas) in pizzaSection {
-                    //                   print("Found Pizza Section =  \(pizzaSection) that is of type \(type(of:pizzaSection))")
-                    self.self.sectionNames?.append(sectionName)
-                    print("section name = \(sectionName)")
-                    print("section pizzas = has \(String(describing: sectionPizzas.count)) pizzas")
-                    
-                    guard let pizza = sectionPizzas[0] as? [String:AnyObject] else {
-                        print("no pizzas in the section")
-                        continue
-                    }
-                    print("1st pizza in section named \(sectionName) is:\n\(pizza)\n")
-                    print("\n***********************************************************\n")
-                }
-                
-                completion(nil, pizzaMenu)      // testing
-            }
-          }.resume()
+            self.parseFoodMenuJSONData(jsonData: jsonData, completion: completion)
+            }.resume()
     }
 
-    func parseJSON(completion:@escaping (Error?, [Pizza]?) -> Void) {
+    func parseFoodMenuJSONData(jsonData: Data, completion:@escaping (Error?, [[String:AnyObject]]?) -> Void)  {
         DispatchQueue.global(qos:.background).async {
              do {
-                // TODO: Testing load the pizza data
-                guard let path = Bundle.main.path(forResource:"pizza", ofType:"json") else {
-                    completion(ParseFoodMenuError.errorParsingFoodMenuJSON, nil)
-                    return
-                }
-                let url = URL(fileURLWithPath:path)
-                let jsonData = try Data(contentsOf:url)
-                let menuDict = try JSONSerialization.jsonObject(with:jsonData, options:.allowFragments) as! [AnyObject]
-
-//                   print("Found the Menu Dictionary: \(menuDict) that is of type \(type(of:menuDict))")
-
-                for pizzaSection in menuDict where pizzaSection is [String:AnyObject] {
-  //                   print("Found Pizza Section =  \(pizzaSection) that is of type \(type(of:pizzaSection))")
-                    for sectionName in pizzaSection.keyEnumerator() where sectionName is String {
+                let foodMenuDict = try JSONSerialization.jsonObject(with:jsonData, options:.allowFragments) as! [[String:AnyObject]]
+                for pizzaSection in foodMenuDict {
+                    for (sectionName, _) in pizzaSection {
                         print("section name = \(sectionName)")
                         guard let sectionPizzas = pizzaSection[sectionName] as? [AnyObject] else {
                             continue
@@ -101,54 +71,8 @@ class PizzaMenu {
                         print("1st pizza in section named \(sectionName) is:\n\(pizza)\n")
                         print("\n***********************************************************\n")
                     }
-  /**
-                    guard let objectDict = objectDict as? Dictionary<String, AnyObject> else {
-                        completion(ParseError.errorParsingJSON, nil)
-                        return
-                    }
-                    guard let itemSummaryDict = objectDict["object_summary"] as? [String:String] else {
-                        completion(ParseError.errorParsingJSON, nil)
-                        return
-                    }
-                    guard let objectType = itemSummaryDict["type"] else {
-                        completion(ParseError.errorParsingJSON, nil)
-                        return
-                    }
-                    
-                    switch objectType {
-                    case  CatalogItem.CatalogItemType.consumerProduct.rawValue:
-                        // add a Car catalog object to this catalog
-                        guard let carCatalogItem =  ConsumerProductCatalogItem(itemIdentifier:itemIdentifier, objectDict:objectDict) else {
-                            completion(ParseError.errorParsingJSON, nil)
-                            return
-                        }
-                        self.pizzas?.append(carCatalogItem)
-                        break;
-                        
-                    case  CatalogItem.CatalogItemType.hardware.rawValue:
-                        // add a Computer catalog object to this catalog
-                        guard let computerCatalogItem =  HardwareCatalogItem(itemIdentifier:itemIdentifier, objectDict:objectDict) else {
-                            completion(ParseError.errorParsingJSON, nil)
-                           return
-                        }
-                        self.pizzas?.append(computerCatalogItem)
-                        break;
-                        
-                    case  CatalogItem.CatalogItemType.animal.rawValue:
-                        // add an Animal catalog object to this catalog
-                        guard let animalCatalogItem =  AnimalCatalogItem(itemIdentifier:itemIdentifier, objectDict:objectDict) else {
-                            completion(ParseError.errorParsingJSON, nil)
-                            return
-                        }
-                        self.pizzas?.append(animalCatalogItem)
-                        break;
-                        
-                    default:
-                        break;
-                    }
-                    */
                 }
-                completion(nil, self.pizzas)
+                completion(nil, foodMenuDict)
             }
             catch {
                 completion(ParseFoodMenuError.errorParsingFoodMenuJSON, nil)
