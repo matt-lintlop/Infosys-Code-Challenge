@@ -56,6 +56,7 @@ class PizzaMenu {
         DispatchQueue.global(qos:.background).async {
              do {
                 let foodMenuDict = try JSONSerialization.jsonObject(with:jsonData, options:.allowFragments) as! [[String:AnyObject]]
+                var pizzaSectionDicts:[[String:AnyObject]] = []
                 for pizzaSection in foodMenuDict {
                     for (sectionName, _) in pizzaSection {
                         print("section name = \(sectionName)")
@@ -70,9 +71,11 @@ class PizzaMenu {
                         }
                         print("1st pizza in section named \(sectionName) is:\n\(pizza)\n")
                         print("\n***********************************************************\n")
+                        
+                        pizzaSectionDicts.append(pizzaSection)
                     }
                 }
-                completion(nil, foodMenuDict)
+                completion(nil, pizzaSectionDicts)
             }
             catch {
                 completion(ParseFoodMenuError.errorParsingFoodMenuJSON, nil)
