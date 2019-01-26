@@ -10,7 +10,7 @@ import Foundation
 
 
 // Catalog
-class PizzaMenu {
+class FoodMenu {
     var pizzas:[Pizza]?
     var sectionNames:[String]?
     var pizzaSectionDict:[String:[Pizza]]?
@@ -27,7 +27,7 @@ class PizzaMenu {
         self.pizzaSectionDict = [:]
     }
  
-    func downloadAndParsePizzaJSON(completion:@escaping (Error?, [[String:AnyObject]]?) -> Void)  {
+    func downloadAndParseFoodMenuJSON(completion:@escaping (Error?, [[String:AnyObject]]?) -> Void)  {
         enum FoodMenuError:Error {
             case errorParsingFoodMenuJSON       // thrown if there is an error parsing the food menu json
             case errorDownloadingFoodMenuJSON   // thrown if there is an error downloading the food menu json

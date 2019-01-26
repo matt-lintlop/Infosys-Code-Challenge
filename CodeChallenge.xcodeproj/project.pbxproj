@@ -14,7 +14,7 @@
 		445413192156FF3D00735833 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 445413182156FF3D00735833 /* Assets.xcassets */; };
 		4454131C2156FF3D00735833 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4454131A2156FF3D00735833 /* LaunchScreen.storyboard */; };
 		445413242156FF5A00735833 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 445413232156FF5A00735833 /* data.json */; };
-		4454132821571CCD00735833 /* PizzaMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4454132721571CCD00735833 /* PizzaMenu.swift */; };
+		4454132821571CCD00735833 /* FoodMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4454132721571CCD00735833 /* FoodMenu.swift */; };
 		44DC7C582159EED100A7E922 /* AnimalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DC7C572159EED100A7E922 /* AnimalViewController.swift */; };
 		44DC7C5A2159EEE800A7E922 /* HardwareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DC7C592159EEE800A7E922 /* HardwareViewController.swift */; };
 		44DC7C5C2159EF0B00A7E922 /* ConsumerProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DC7C5B2159EF0B00A7E922 /* ConsumerProductViewController.swift */; };
@@ -37,7 +37,7 @@
 		4454131B2156FF3D00735833 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4454131D2156FF3D00735833 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		445413232156FF5A00735833 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
-		4454132721571CCD00735833 /* PizzaMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PizzaMenu.swift; sourceTree = "<group>"; };
+		4454132721571CCD00735833 /* FoodMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodMenu.swift; sourceTree = "<group>"; };
 		44C6C4A6215B8CDA00125C24 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		44DC7C572159EED100A7E922 /* AnimalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalViewController.swift; sourceTree = "<group>"; };
 		44DC7C592159EEE800A7E922 /* HardwareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardwareViewController.swift; sourceTree = "<group>"; };
@@ -90,7 +90,7 @@
 				445413112156FF3D00735833 /* AppDelegate.swift */,
 				44E9CCDA215871B100A7A597 /* ImageReference.swift */,
 				44E9CCE62158779500A7A597 /* ConsumerProductCatalogItem.swift */,
-				4454132721571CCD00735833 /* PizzaMenu.swift */,
+				4454132721571CCD00735833 /* FoodMenu.swift */,
 				44E9CCDC215871B200A7A597 /* CatalogItemSummary.swift */,
 				44E9CCDF215871B200A7A597 /* Pizza.swift */,
 				44E9CCE821587F0F00A7A597 /* VisualCatalogItem.swift */,
@@ -185,7 +185,7 @@
 				4410FC0C215892530064F053 /* PizzaTableViewController.swift in Sources */,
 				44E9CCE5215871B200A7A597 /* Pizza.swift in Sources */,
 				44E9CCE2215871B200A7A597 /* CatalogItemSummary.swift in Sources */,
-				4454132821571CCD00735833 /* PizzaMenu.swift in Sources */,
+				4454132821571CCD00735833 /* FoodMenu.swift in Sources */,
 				44E9CCE0215871B200A7A597 /* ImageReference.swift in Sources */,
 				44E9CCE4215871B200A7A597 /* AnimalCatalogItem.swift in Sources */,
 				44DC7C582159EED100A7E922 /* AnimalViewController.swift in Sources */,

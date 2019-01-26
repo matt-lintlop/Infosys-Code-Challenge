@@ -12,18 +12,20 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
     var pizzas:[Pizza]?
     var sectionNames:[String] = []
     var sectionPizzas:[[Pizza]] = []
+    var foodMenu:[[String:AnyObject]]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let pizzaMenu = PizzaMenu()
-        pizzaMenu.downloadAndParsePizzaJSON() { (error, pizzaMenu) in
+        let foodMenu = FoodMenu()
+        foodMenu.downloadAndParseFoodMenuJSON() { (error, foodMenu) in
             
             if let error = error {
-                print("Error in downloadAndParsePizzaJSON(): \(error.localizedDescription)")
+                print("Error in downloadAndParseFoodMenuJSON(): \(error.localizedDescription)")
             }
             else {
-                print("Success in downloadAndParsePizzaJSON() : pizzaMenu = \(String(describing: pizzaMenu))")
+                self.foodMenu = foodMenu
+                print("Success in downloadAndParseFoodMenuJSON() : foodMenu = \(String(describing: foodMenu))")
             }
             
             DispatchQueue.main.async(execute:{
