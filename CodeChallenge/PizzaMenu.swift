@@ -1,5 +1,5 @@
 //
-//  Catalog.swift
+//  PizzaMenu.swift
 //  Zume-Code-Challenge
 //
 //  Created by Matt Lintlop on 9/22/18.
@@ -10,15 +10,15 @@ import Foundation
 
 
 // Catalog
-class FoodMenu {
+class PizzaMenu {
     var pizzas:[Pizza]?
     var sectionNames:[String]?
     var pizzaSectionDict:[String:[Pizza]]?
     var error:Error?
     let pizzaDataURLPath = "https://api.myjson.com/bins/snyji"
 
-    enum ParseFoodMenuError:Error {
-        case errorParsingFoodMenuJSON
+    enum ParsePizzaMenuError:Error {
+        case errorParsingPizzaMenuJSON
     }
     
     init() {
@@ -27,37 +27,37 @@ class FoodMenu {
         self.pizzaSectionDict = [:]
     }
  
-    func downloadAndParseFoodMenuJSON(completion:@escaping (Error?, [[String:AnyObject]]?) -> Void)  {
-        enum FoodMenuError:Error {
-            case errorParsingFoodMenuJSON       // thrown if there is an error parsing the food menu json
-            case errorDownloadingFoodMenuJSON   // thrown if there is an error downloading the food menu json
+    func downloadAndParsePizzaMenuJSON(completion:@escaping (Error?, [[String:AnyObject]]?) -> Void)  {
+        enum PizzaMenuError:Error {
+            case errorParsingPizzaMenuJSON       // thrown if there is an error parsing the pizza menu json
+            case errorDownloadingPizzaMenuJSON   // thrown if there is an error downloading the pizza menu json
         }
         
         guard let url = URL(string: pizzaDataURLPath) else {
-            completion(FoodMenuError.errorDownloadingFoodMenuJSON, nil)
+            completion(PizzaMenuError.errorDownloadingPizzaMenuJSON, nil)
             return
         }
         URLSession.shared.dataTask(with:url) { jsonData, response, error in
             guard let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
                 let jsonData = jsonData, error == nil
                 else {
-                    completion(FoodMenuError.errorDownloadingFoodMenuJSON, nil)
+                    completion(PizzaMenuError.errorDownloadingPizzaMenuJSON, nil)
                     return
             }
             // TODO: do something with the data
             print("Downloaded the data: \(jsonData.count) bytes")
             print(String(data: jsonData, encoding: .utf8) ?? "No response data as string")
 
-            self.parseFoodMenuJSONData(jsonData: jsonData, completion: completion)
+            self.parsePizzaMenuJSONData(jsonData: jsonData, completion: completion)
             }.resume()
     }
 
-    func parseFoodMenuJSONData(jsonData: Data, completion:@escaping (Error?, [[String:AnyObject]]?) -> Void)  {
+    func parsePizzaMenuJSONData(jsonData: Data, completion:@escaping (Error?, [[String:AnyObject]]?) -> Void)  {
         DispatchQueue.global(qos:.background).async {
              do {
-                let foodMenuDict = try JSONSerialization.jsonObject(with:jsonData, options:.allowFragments) as! [[String:AnyObject]]
+                let pizzaMenuDict = try JSONSerialization.jsonObject(with:jsonData, options:.allowFragments) as! [[String:AnyObject]]
                 var pizzaSectionDicts:[[String:AnyObject]] = []
-                for pizzaSection in foodMenuDict {
+                for pizzaSection in pizzaMenuDict {
                     for (sectionName, _) in pizzaSection {
                         print("section name = \(sectionName)")
                         guard let sectionPizzas = pizzaSection[sectionName] as? [AnyObject] else {
@@ -78,7 +78,7 @@ class FoodMenu {
                 completion(nil, pizzaSectionDicts)
             }
             catch {
-                completion(ParseFoodMenuError.errorParsingFoodMenuJSON, nil)
+                completion(ParsePizzaMenuError.errorParsingPizzaMenuJSON, nil)
             }
         }
     }

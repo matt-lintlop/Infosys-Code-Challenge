@@ -12,26 +12,26 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
     var pizzas:[Pizza]?
     var sectionNames:[String] = []
     var sectionPizzas:[[Pizza]] = []
-    var foodMenu:[[String:AnyObject]]?
+    var pizzaMenu:[[String:AnyObject]]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let foodMenu = FoodMenu()
-        foodMenu.downloadAndParseFoodMenuJSON() { (error, foodMenu) in
+        let pizzaMenu = PizzaMenu()
+        pizzaMenu.downloadAndParsePizzaMenuJSON() { (error, pizzaMenu) in
             
             if let error = error {
-                print("Error in downloadAndParseFoodMenuJSON(): \(error.localizedDescription)")
+                print("Error in downloadAndParsePizzaMenuJSON(): \(error.localizedDescription)")
             }
             else {
-                self.foodMenu = foodMenu
-                print("Success in downloadAndParseFoodMenuJSON() : foodMenu = \(String(describing: foodMenu))")
+                self.pizzaMenu = pizzaMenu
+                print("Success in downloadAndParsePizzaMenuJSON() : pizzaMenu = \(String(describing: pizzaMenu))")
             }
             
             DispatchQueue.main.async(execute:{
                 if let error = error {
                     let alertController = UIAlertController(title:"Error", message:
-                        "Error downloading food menu: \(error)", preferredStyle:UIAlertControllerStyle.alert)
+                        "Error downloading pizza menu: \(error)", preferredStyle:UIAlertControllerStyle.alert)
                     alertController.addAction(UIAlertAction(title:"Dismiss", style:UIAlertActionStyle.default,handler:nil))
                     self.present(alertController, animated:true, completion:nil)
                 }
