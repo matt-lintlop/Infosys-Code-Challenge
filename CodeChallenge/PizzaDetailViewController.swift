@@ -1,6 +1,9 @@
 //
-//  HardwareViewController.swift
+//  PizzaDetailViewController.swift
 //  Zume-Code-Challenge
+//
+//  This class is a view controller that shows the information
+//  about a pizza.
 //
 //  Created by Matt Lintlop on 9/24/18.
 //  Copyright © 2019 Matt Lintlop. All rights reserved.
@@ -8,7 +11,7 @@
 
 import UIKit
 
-class HardwareViewController: UIViewController {
+class PizzaDetailViewController: UIViewController {
 
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var purchaseDateLabel: UILabel!
@@ -32,23 +35,23 @@ class HardwareViewController: UIViewController {
         super.init(coder: aDecoder)
     }
 
-    func setupViewController(with pizza:HardwareCatalogItem) {
-        self.loadViewIfNeeded()
-        self.title = pizza.itemIdentifier
-        self.purchaseDateLabel.text = pizza.purchaseDate
-        self.descriptionTextView.text = pizza.itemSummary.description
-        self.colorLabel.text = pizza.itemSummary.color
-        self.headerLabel.text = "\(pizza.itemSummary.name.capitalized) The \(pizza.itemIdentifier.capitalized)"
-        self.descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
-        self.descriptionTextView.setNeedsDisplay()
-        self.showStartOfText = true
-        if let image = pizza.image {
-            self.imageView.alpha = 0.0
-            UIView.animate(withDuration: 0.5, animations: {
-                    self.imageView.image = image
-                    self.imageView.alpha = 1.0
-          })
-        }
+    func setupViewController(withPizza pizza:Pizza) {
+//        self.loadViewIfNeeded()
+//        self.title = pizzaSummary.pizzaIdentifier
+//        self.purchaseDateLabel.text = pizzaSummary.purchaseDate
+//        self.descriptionTextView.text = pizzaSummary.description
+//        self.colorLabel.text = pizzaSummary.color
+//        self.headerLabel.text = "\(pizza.pizzaSummary.name.capitalized) The \(pizza.pizzaIdentifier.capitalized)"
+//        self.descriptionTextView.setContentOffset(CGPoint.zero, animated: false)
+//        self.descriptionTextView.setNeedsDisplay()
+//        self.showStartOfText = true
+//        if let image = pizza.image {
+//            self.imageView.alpha = 0.0
+//            UIView.animate(withDuration: 0.5, animations: {
+//                    self.imageView.image = image
+//                    self.imageView.alpha = 1.0
+//          })
+//        }
     }
 
     override func viewDidLayoutSubviews() {

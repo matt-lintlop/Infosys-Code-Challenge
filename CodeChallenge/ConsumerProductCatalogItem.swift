@@ -21,7 +21,7 @@ class ConsumerProductCatalogItem:Pizza {
         case objectImage = "image"
   }
     
-    override init?(itemIdentifier:String, objectDict:Dictionary<String, AnyObject>) {
+    override init?(pizzaIdentifier:String, objectDict:Dictionary<String, AnyObject>) {
         guard let doors = objectDict[DictionaryKeys.doors.rawValue] as? String,
               let price = objectDict[DictionaryKeys.price.rawValue] as? String,
               let milage = objectDict[DictionaryKeys.milage.rawValue] as? String else {
@@ -30,6 +30,6 @@ class ConsumerProductCatalogItem:Pizza {
         self.doors = doors.capitalized
         self.price = price.capitalized
         self.milage = milage.capitalized
-        super.init(itemIdentifier:itemIdentifier, objectDict:objectDict)
+        super.init(pizzaIdentifier:pizzaIdentifier, objectDict:objectDict)
     }
 }

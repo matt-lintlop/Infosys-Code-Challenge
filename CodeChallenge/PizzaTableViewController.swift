@@ -65,7 +65,7 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
 
         for pizza in pizzas {
             pizza.delegate = self
-            let type = pizza.itemSummary.type.capitalized
+            let type = pizza.pizzaSummary.type.capitalized
             if var sectionPizzas = sectionsDict[type] {
                 sectionPizzas.append(pizza)
                 sectionsDict[type] = sectionPizzas
@@ -79,14 +79,14 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
             self.sectionNames.append(sectionName)
             let unsortedSectionPizzas = sectionsDict[sectionName]!
             let sortedSectionPizzas = unsortedSectionPizzas.sorted { (pizza1, pizza2) -> Bool in
-                return pizza1.itemIdentifier < pizza2.itemIdentifier
+                return pizza1.pizzaIdentifier < pizza2.pizzaIdentifier
             }
             self.sectionPizzas.append(sortedSectionPizzas)
         }
         for (sectionNunber, _) in self.sectionNames.enumerated() {
-            let sectionpizzas = self.sectionPizzas[sectionNunber]
-            for (rowNumber, catalogObject) in sectionpizzas.enumerated() {
-                catalogObject.indexPath = IndexPath(row:rowNumber, section:sectionNunber)
+            let sectionPizzas = self.sectionPizzas[sectionNunber]
+            for (rowNumber, pizza) in sectionPizzas.enumerated() {
+                pizza.indexPath = IndexPath(row:rowNumber, section:sectionNunber)
             }
         }
     }
@@ -128,7 +128,7 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
             return tableView.dequeueReusableCell(withIdentifier:"CatalogItemCell")!
         }
         let cell = tableView.dequeueReusableCell(withIdentifier:"CatalogItemCell", for:indexPath)
-        cell.textLabel?.text = pizza.itemIdentifier
+        cell.textLabel?.text = pizza.pizzaIdentifier
         
         if let visualCatalogItem = pizza as? VisualCatalogItem {
             cell.imageView?.image = visualCatalogItem.image
@@ -144,12 +144,12 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
     
     // MARK:- Catalog Item View Controllers
     
-    func showViewController(withtCatalogItem consumerProductCatalogItem:ConsumerProductCatalogItem) {
+    func showPizzaDetailViewController(withPizza pizza:Pizza) {
         let storyboard = UIStoryboard(name:"Main", bundle:nil)
-        guard let viewController:ConsumerProductViewController = storyboard.instantiateViewController(withIdentifier:"ConsumerProductViewController") as? ConsumerProductViewController else {
+        guard let viewController:PizzaDetailViewController = storyboard.instantiateViewController(withIdentifier:"PizzaDetailViewController") as? PizzaDetailViewController else {
             return
         }
-        viewController.setupViewController(with:consumerProductCatalogItem)
+        viewController.setupViewController(withPizza:pizza)
         self.navigationController?.pushViewController(viewController, animated:true)
     }
    

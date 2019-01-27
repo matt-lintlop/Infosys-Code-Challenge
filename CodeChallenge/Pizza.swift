@@ -17,23 +17,23 @@ protocol PizzaDelegate {
 
 // Catalog Item class
 class  Pizza  {
-    var itemIdentifier:String                           // catalog item identifier
-    var itemSummary:CatalogItemSummary                  // catalog item summary dictionary
+    var pizzaIdentifier:String                          // pizza identifier
+    var pizzaSummary:PizzasSummary                      // pizza summary dictionary
     var indexPath:IndexPath?                            // index path of associated table view cell
-    var delegate:PizzaDelegate?                   // delegate
+    var delegate:PizzaDelegate?                         // delegate
  
     private enum DictionaryKeys:String {
-        case itemSummary = "object_summary"
+        case pizzaSummary = "object_summary"
     }
     
-    init?(itemIdentifier:String, objectDict:Dictionary<String, AnyObject>) {
-        self.itemIdentifier = itemIdentifier.capitalized
-        guard let itemSummaryDict = objectDict[DictionaryKeys.itemSummary.rawValue] as? Dictionary<String, String> else {
+    init?(pizzaIdentifier:String, objectDict:Dictionary<String, AnyObject>) {
+        self.pizzaIdentifier = pizzaIdentifier.capitalized
+        guard let pizzaSummaryDict = objectDict[DictionaryKeys.pizzaSummary.rawValue] as? Dictionary<String, String> else {
             return nil
         }
-        guard let summary =   CatalogItemSummary(withDictionary:itemSummaryDict) else {
+        guard let summary =   PizzasSummary(withDictionary:pizzaSummaryDict) else {
             return nil
         }
-        self.itemSummary = summary
+        self.pizzaSummary = summary
    }
  }

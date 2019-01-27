@@ -9,7 +9,7 @@
 import Foundation
 
 // Catalog Item Summary
-struct  CatalogItemSummary {
+struct  PizzasSummary {
     let type:String                                    // item type
     let name:String                                    // item name
     let color:String                                   // item color
@@ -22,9 +22,9 @@ struct  CatalogItemSummary {
         case description
     }
     
-    init?(withDictionary itemSummaryDict:Dictionary<String, String>) {
-        guard let type = itemSummaryDict[DictionaryKeys.type.rawValue], let name = itemSummaryDict[DictionaryKeys.name.rawValue],
-            let color = itemSummaryDict[DictionaryKeys.color.rawValue], let description = itemSummaryDict[DictionaryKeys.description.rawValue]
+    init?(withDictionary pizzaSummaryDict:Dictionary<String, String>) {
+        guard let type = pizzaSummaryDict[DictionaryKeys.type.rawValue], let name = pizzaSummaryDict[DictionaryKeys.name.rawValue],
+            let color = pizzaSummaryDict[DictionaryKeys.color.rawValue], let description = pizzaSummaryDict[DictionaryKeys.description.rawValue]
             else {
                 return nil
         }
