@@ -2,6 +2,8 @@
 //  PizzaTableViewController.swift
 //  Zume-Code-Challenge
 //
+//  This class is a table view with several sections of pizzs.
+//
 //  Created by Matt Lintlop on 1/24/19.
 //  Copyright © 2019 Matt Lintlop. All rights reserved.
 //
@@ -17,8 +19,8 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let pizzaMenu = PizzaMenu()
-        pizzaMenu.downloadAndParsePizzaMenuJSON() { (error, pizzaMenu) in
+        let pizzaMenuParser = PizzaMenuParser()
+        pizzaMenuParser.downloadAndParsePizzaMenuJSON() { (error, pizzaMenu) in
             
             if let error = error {
                 print("Error in downloadAndParsePizzaMenuJSON(): \(error.localizedDescription)")

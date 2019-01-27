@@ -1,7 +1,10 @@
 //
-//  PizzaMenu.swift
+//  PizzaMenuParser.swift
 //  Zume-Code-Challenge
 //
+//  This class downloads and parses the pizza menu json.
+//  A PizzaMenu object is created.
+// 
 //  Created by Matt Lintlop on 9/22/18.
 //  Copyright © 2019 Matt Lintlop. All rights reserved.
 //
@@ -9,8 +12,8 @@
 import Foundation
 
 
-// Catalog
-class PizzaMenu {
+// PizzaMenuParser
+class PizzaMenuParser {
     var pizzas:[Pizza]?
     var sectionNames:[String]?
     var pizzaSectionDict:[String:[Pizza]]?

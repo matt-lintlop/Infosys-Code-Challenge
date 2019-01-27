@@ -1,6 +1,8 @@
 //
-//  CatalogItem.swift
+//  Pizza.swift
 //  Zume-Code-Challenge
+//
+//  This class is a model object with the data for one pizza.
 //
 //  Created by Matt Lintlop on 9/22/18.
 //  Copyright © 2019 Matt Lintlop. All rights reserved.
@@ -19,13 +21,7 @@ class  Pizza  {
     var itemSummary:CatalogItemSummary                  // catalog item summary dictionary
     var indexPath:IndexPath?                            // index path of associated table view cell
     var delegate:PizzaDelegate?                   // delegate
-    
-    enum  CatalogItemType:String {
-        case consumerProduct = "consumer product"
-        case hardware
-        case animal
-    }
-
+ 
     private enum DictionaryKeys:String {
         case itemSummary = "object_summary"
     }
