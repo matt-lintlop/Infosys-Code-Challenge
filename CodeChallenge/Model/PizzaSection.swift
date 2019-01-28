@@ -14,20 +14,10 @@ struct PizzaSection {
     let sectionName:String
     let sectionPizzas:[Pizza]?
     
-    let sectionsDict:[String:[[String:AnyObject]]]      // pizza section dict (key = section name, value = pizzas in the section)
-    
-    init?(withDictionary dict:[String:[[String:AnyObject]]]) {
-        guard let name = dict.keys.first else {
-            return nil
-        }
-        
-        self.sectionsDict = dict
-        self.sectionName = name
+    init?(withSectionName sectionName:String, sectionPizzaDicts:[[String:AnyObject]]) {
+        self.sectionName = sectionName
         self.sectionPizzas = []
-        guard let pizzaDicts:[[String:AnyObject]] = dict.values.first else {
-            return nil
-        }
-        for pizzaDict in pizzaDicts {
+         for pizzaDict in sectionPizzaDicts {
             guard let pizza = Pizza(withDictionary: pizzaDict) else {
                 return nil
             }
