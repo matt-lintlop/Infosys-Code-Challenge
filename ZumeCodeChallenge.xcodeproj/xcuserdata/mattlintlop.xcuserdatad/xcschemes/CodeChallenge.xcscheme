@@ -17,7 +17,7 @@
                BlueprintIdentifier = "4454130D2156FF3D00735833"
                BuildableName = "CodeChallenge.app"
                BlueprintName = "CodeChallenge"
-               ReferencedContainer = "container:CodeChallenge.xcodeproj">
+               ReferencedContainer = "container:ZumeCodeChallenge.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
             BlueprintIdentifier = "4454130D2156FF3D00735833"
             BuildableName = "CodeChallenge.app"
             BlueprintName = "CodeChallenge"
-            ReferencedContainer = "container:CodeChallenge.xcodeproj">
+            ReferencedContainer = "container:ZumeCodeChallenge.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -58,7 +58,7 @@
             BlueprintIdentifier = "4454130D2156FF3D00735833"
             BuildableName = "CodeChallenge.app"
             BlueprintName = "CodeChallenge"
-            ReferencedContainer = "container:CodeChallenge.xcodeproj">
+            ReferencedContainer = "container:ZumeCodeChallenge.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -77,7 +77,7 @@
             BlueprintIdentifier = "4454130D2156FF3D00735833"
             BuildableName = "CodeChallenge.app"
             BlueprintName = "CodeChallenge"
-            ReferencedContainer = "container:CodeChallenge.xcodeproj">
+            ReferencedContainer = "container:ZumeCodeChallenge.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
