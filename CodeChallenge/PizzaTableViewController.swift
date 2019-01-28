@@ -11,10 +11,7 @@
 import UIKit
 
 class PizzaTableViewController:UITableViewController, PizzaDelegate {
-    var pizzas:[Pizza]?
     var pizzaSections:[PizzaSection]?
-    var sectionNames:[String] = []
-    var sectionPizzas:[[Pizza]] = []
     var pizzaMenu:[[String:AnyObject]]?
     
     override func viewDidLoad() {
@@ -28,7 +25,7 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
             }
             else {
                 self.pizzaSections = pizzaSections
-                print("Success in downloadAndParsePizzaMenuJSON()")
+                print("Success in downloadAndParsePizzaMenuJSON() : \(pizzaSections!.count) sections")
             }
             
             DispatchQueue.main.async(execute:{
@@ -39,11 +36,7 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
                     self.present(alertController, animated:true, completion:nil)
                 }
                 else {
-                    guard let pizzas = self.pizzas else {
-                        return
-                    }
-                    self.pizzas = pizzas
-                    self.makeSectionsWithPizzas(pizzas)
+ //                   self.makeSectionsWithPizzas(???)
                     self.tableView.reloadData()
                 }
             })
@@ -91,33 +84,60 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
 //            }
 //        }
     }
-
-    // get the name of the section at an index path
-    func getSectionName(atSection section:Int) -> String {
-        guard section < sectionNames.count else {
-            return ""
+    
+    
+    // get the pizza section at a given index
+    func getPizzaSection(_ section:Int) -> PizzaSection? {
+        guard let sectionCount = self.pizzaSections?.count, section < sectionCount else {
+            return nil
         }
-        return sectionNames[section]
+        
+        guard let pizzaSection = self.pizzaSections?[section] else {
+            return nil
+        }
+        return pizzaSection
+    }
+
+
+    // get the name of the section at an index
+    func getSectionName(atSection section:Int) -> String? {
+        guard let pizzaSection = getPizzaSection(section) else {
+            return nil
+        }
+        return pizzaSection.sectionName
     }
 
     // get the pizza model object at an index path
     func getPizza(atIndexPath indexPath:IndexPath) -> Pizza? {
-        guard indexPath.section < self.sectionPizzas.count else {
+        guard let pizzaSection = getPizzaSection(indexPath.section) else {
             return nil
         }
-        let sectionPizzas = self.sectionPizzas[indexPath.section]
+        guard let sectionPizzas = pizzaSection.sectionPizzas else {
+            return nil
+        }
+        guard indexPath.row < sectionPizzas.count else {
+            return nil
+        }
         return sectionPizzas[indexPath.row]
     }
 
     // MARK:- Table view data source
 
     override func numberOfSections(in tableView:UITableView) -> Int {
-       return sectionNames.count
+        guard let sectionCount = pizzaSections?.count else {
+            return 0
+        }
+       return sectionCount
     }
 
     override func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int) -> Int {
-        let sectionObjects = sectionPizzas[section]
-        return sectionObjects.count
+        guard let pizzaSection = getPizzaSection(section) else {
+            return 0
+        }
+        guard let sectionPizzas = pizzaSection.sectionPizzas else {
+            return 0
+        }
+        return sectionPizzas.count
     }
     
     override func tableView(_ tableView:UITableView, titleForHeaderInSection section:Int) -> String? {

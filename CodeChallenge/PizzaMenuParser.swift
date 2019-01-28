@@ -71,14 +71,9 @@ class PizzaMenuParser {
                             print("Error parsing pizza section dictionary")
                             continue
                         }
+                        self.pizzaSections.append(pizzaSection)
                     }
-//                  if let pizzaCount = pizzaSection.sectionPizzas?.count {
-//                        print("\n***********************************************************")
-//                        print("section name = \(pizzaSection.sectionName), has \(pizzaCount) pizzas")
-//                        print("***********************************************************\n")
-//                    }
-//                    self.pizzaSections.append(pizzaSection)
-                }
+               }
                 completion(nil, self.pizzaSections)
              }
              catch {
