@@ -23,5 +23,16 @@ struct PizzaSection {
         self.sectionsDict = dict
         self.sectionName = sectionName
         self.sectionPizzas = nil
+        
+        var sectionPizzas:[Pizza] = []
+        guard let pizzaDicts:[[String:AnyObject]] = dict.values.first else {
+            return nil
+        }
+        for pizzaDict in pizzaDicts {
+            guard let pizza = Pizza(withDictionary: pizzaDict) else {
+                return nil
+            }
+            self.sectionPizzas?.append(pizza)
+        }
     }
 }
