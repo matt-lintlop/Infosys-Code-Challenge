@@ -20,6 +20,7 @@
 		447130D421FF1C5F00214C37 /* PizzaImageReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447130CD21FF1C5F00214C37 /* PizzaImageReference.swift */; };
 		447130D621FF1C5F00214C37 /* PizzaTopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447130CF21FF1C5F00214C37 /* PizzaTopping.swift */; };
 		447130D721FF1C5F00214C37 /* PizzaAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447130D021FF1C5F00214C37 /* PizzaAssets.swift */; };
+		447130E721FF7F6D00214C37 /* instructions.txt in Resources */ = {isa = PBXBuildFile; fileRef = 447130E621FF7F6D00214C37 /* instructions.txt */; };
 		44DC7C5A2159EEE800A7E922 /* PizzaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DC7C592159EEE800A7E922 /* PizzaDetailViewController.swift */; };
 		44E9CCE0215871B200A7A597 /* ImageReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E9CCDA215871B100A7A597 /* ImageReference.swift */; };
 		44E9CCE2215871B200A7A597 /* PizzasSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E9CCDC215871B200A7A597 /* PizzasSummary.swift */; };
@@ -41,7 +42,7 @@
 		447130CD21FF1C5F00214C37 /* PizzaImageReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PizzaImageReference.swift; sourceTree = "<group>"; };
 		447130CF21FF1C5F00214C37 /* PizzaTopping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PizzaTopping.swift; sourceTree = "<group>"; };
 		447130D021FF1C5F00214C37 /* PizzaAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PizzaAssets.swift; sourceTree = "<group>"; };
-		44C6C4A6215B8CDA00125C24 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		447130E621FF7F6D00214C37 /* instructions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = instructions.txt; sourceTree = "<group>"; };
 		44DC7C592159EEE800A7E922 /* PizzaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaDetailViewController.swift; sourceTree = "<group>"; };
 		44E9CCDA215871B100A7A597 /* ImageReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageReference.swift; sourceTree = "<group>"; };
 		44E9CCDC215871B200A7A597 /* PizzasSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PizzasSummary.swift; sourceTree = "<group>"; };
@@ -88,7 +89,7 @@
 				4409F8F421FD812F0012A0AB /* Main.storyboard */,
 				445413182156FF3D00735833 /* Assets.xcassets */,
 				4454131D2156FF3D00735833 /* Info.plist */,
-				44C6C4A6215B8CDA00125C24 /* README.md */,
+				447130E621FF7F6D00214C37 /* instructions.txt */,
 				445413232156FF5A00735833 /* data.json */,
 			);
 			path = CodeChallenge;
@@ -168,6 +169,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				447130E721FF7F6D00214C37 /* instructions.txt in Resources */,
 				4454131C2156FF3D00735833 /* LaunchScreen.storyboard in Resources */,
 				4409F8F621FD812F0012A0AB /* Main.storyboard in Resources */,
 				445413192156FF3D00735833 /* Assets.xcassets in Resources */,
