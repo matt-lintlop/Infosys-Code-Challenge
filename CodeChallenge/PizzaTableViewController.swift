@@ -127,7 +127,8 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
         guard let sectionCount = pizzaSections?.count else {
             return 0
         }
-       return sectionCount
+        print(">>> Total # Sections: \(sectionCount)")
+        return sectionCount
     }
 
     override func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int) -> Int {
@@ -137,6 +138,7 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
         guard let sectionPizzas = pizzaSection.sectionPizzas else {
             return 0
         }
+        print(">>> Section #\(section) has \(sectionPizzas.count) rows")
         return sectionPizzas.count
     }
     

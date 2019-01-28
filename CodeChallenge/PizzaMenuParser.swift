@@ -63,10 +63,6 @@ class PizzaMenuParser {
                 
                 for sectionDict in pizzaMenuDict {
                     for (sectionName, sectionPizzaDicts) in sectionDict {
-                        print("\n***********************************************************")
-                        print("section name = \(sectionName), has \(sectionPizzaDicts.count) pizzas")
-                        print("***********************************************************\n")
-   
                         guard let pizzaSection = PizzaSection(withSectionName: sectionName, sectionPizzaDicts:sectionPizzaDicts) else {
                             print("Error parsing pizza section dictionary")
                             continue

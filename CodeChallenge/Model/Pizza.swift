@@ -64,7 +64,5 @@ class  Pizza  {
             let topping = PizzaTopping(withDictionary: toppingsDict) {
             self.toppings?.append(topping)
         }
-        
-        print("Found Pizza: \(self.name)")
-    }
+     }
 }
