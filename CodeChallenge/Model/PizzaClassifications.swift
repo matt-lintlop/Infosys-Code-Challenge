@@ -10,5 +10,12 @@
 import Foundation
 
 struct PizzaClassifications: Decodable {
-    let vegetarion:Bool         // vegetariona pizza flag
+    let vegetarian:Bool         // vegetariona pizza flag
+ 
+    init?(withDictionary dict:[String:AnyObject]) {
+        guard let vegetarian = dict["vegetarian"] as? Bool else {
+            return nil
+        }
+        self.vegetarian = vegetarian
+    }
 }

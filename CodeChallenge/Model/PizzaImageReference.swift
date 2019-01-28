@@ -14,4 +14,11 @@ import Foundation
 // Image Reference
 struct PizzaImageReference: Decodable {
     let url:String                          // image url
- }
+    
+    init?(withDictionary dict:[String:AnyObject]) {
+        guard let url = dict["url"] as? String else {
+            return nil
+        }
+        self.url = url
+    }
+}

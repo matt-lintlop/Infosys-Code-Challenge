@@ -11,11 +11,23 @@
 import Foundation
 
 struct PizzaAssets: Decodable {
-    let menu:PizzaImageReference                // image of pizza in menu
-    let productDetailsPage:PizzaImageReference  // image of product details
+    let menu:PizzaImageReference?                   // image of pizza in menu
+    let productDetailsPage:PizzaImageReference?      // image of product details
 
     private enum CodingKeys: String, CodingKey {
         case productDetailsPage = "product_details_page"
         case menu
+    }
+
+    init?(withDictionary dict:[String:AnyObject]) {
+        guard let menuAssetDict = dict["menu"] as? [String:AnyObject] else {
+            return nil
+        }
+        self.menu = PizzaImageReference(withDictionary: menuAssetDict)
+
+        guard let productDetailsAssetDict = dict["product_details_page"] as? [String:AnyObject] else {
+            return nil
+        }
+        self.productDetailsPage = PizzaImageReference(withDictionary: productDetailsAssetDict)
     }
 }

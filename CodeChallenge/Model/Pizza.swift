@@ -36,4 +36,8 @@ class  Pizza:Decodable  {
         case assets
         case toppings
     }
+    
+    init?(withDictionary dict:[String:AnyObject]) {
+
+    }
 }

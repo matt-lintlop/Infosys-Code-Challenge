@@ -16,4 +16,8 @@ struct PizzaSection:Decodable {
     private enum CodingKeys: String, CodingKey {
         case sectionsDict = ""
     }
+    
+    init?(withDictionary dict:[String:[String:AnyObject]]) {
+        self.sectionsDict = [:]
+    }
 }
