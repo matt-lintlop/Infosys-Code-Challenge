@@ -13,6 +13,7 @@ import UIKit
 class PizzaTableViewController:UITableViewController, PizzaDelegate {
     var pizzaSections:[PizzaSection]?
     var pizzaMenu:[[String:AnyObject]]?
+    var shoppigCartCount:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +37,15 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
                     self.present(alertController, animated:true, completion:nil)
                 }
                 else {
- //                   self.makeSectionsWithPizzas(???)
                     self.tableView.reloadData()
                 }
             })
-        }
+            guard let shoppingCartImage = UIImage(named: "shoppingCart.png") else {
+                return
+            }
+            let shoppingCartButton = UIBarButtonItem(image: shoppingCartImage, style: .plain, target: nil, action: nil)
+
+         }
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -51,41 +56,7 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func makeSectionsWithPizzas(_ pizzas:[Pizza]) {
-//        var sectionsDict:[String:[Pizza]] = [:]
-//        self.sectionNames = []
-//        self.sectionPizzas = []
-//
-//        for pizza in pizzas {
-//            pizza.delegate = self
-//            let type = pizza.pizzaSummary.type.capitalized
-//            if var sectionPizzas = sectionsDict[type] {
-//                sectionPizzas.append(pizza)
-//                sectionsDict[type] = sectionPizzas
-//            }
-//            else {
-//                sectionsDict[type] = [pizza]
-//            }
-//        }
-//        let sortedSectionNames = sectionsDict.keys.sorted()
-//        for sectionName in sortedSectionNames {
-//            self.sectionNames.append(sectionName)
-//            let unsortedSectionPizzas = sectionsDict[sectionName]!
-//            let sortedSectionPizzas = unsortedSectionPizzas.sorted { (pizza1, pizza2) -> Bool in
-//                return pizza1.pizzaIdentifier < pizza2.pizzaIdentifier
-//            }
-//            self.sectionPizzas.append(sortedSectionPizzas)
-//        }
-//        for (sectionNunber, _) in self.sectionNames.enumerated() {
-//            let sectionPizzas = self.sectionPizzas[sectionNunber]
-//            for (rowNumber, pizza) in sectionPizzas.enumerated() {
-//                pizza.indexPath = IndexPath(row:rowNumber, section:sectionNunber)
-//            }
-//        }
-    }
-    
-    
+
     // get the pizza section at a given index
     func getPizzaSection(_ section:Int) -> PizzaSection? {
         guard let sectionCount = self.pizzaSections?.count, section < sectionCount else {
@@ -174,7 +145,7 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
         }
     }
     
-    // MARK:- Catalog Item View Controllers
+    // MARK:- Pizza Detail View Controller
     
     func showPizzaDetailViewController(withPizza pizza:Pizza) {
         let storyboard = UIStoryboard(name:"Main", bundle:nil)
@@ -194,4 +165,6 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
             self.tableView.reloadRows(at: [indexPath], with: .none)
         })
     }
+    
+    
  }

@@ -61,7 +61,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "158"
             endingLineNumber = "158"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkName = "pizza(_:didLoadImageImage:withError:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
