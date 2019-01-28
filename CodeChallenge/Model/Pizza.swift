@@ -66,13 +66,14 @@ class  Pizza  {
         }
      }
     
-    // Is this a vegetarian pizza?
-    func isVegetarian() -> Bool {
+    // Get the classification string to determine if the pizza is vegetarian, spicy,
+    // oe gluton free
+    func classificationString() -> String? {
         if let classifications = classifications {
-            return classifications.vegetarian
+            return classifications.toString()
         }
         else {
-            return false
+            return nil
         }
     }
 }

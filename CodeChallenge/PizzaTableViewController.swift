@@ -152,10 +152,20 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
         guard let pizza = getPizza(atIndexPath:indexPath) else {
             return tableView.dequeueReusableCell(withIdentifier:"PizzaCell")!
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier:"PizzaCell", for:indexPath)
-        cell.textLabel?.text = pizza.name
+        let classificationString = pizza.classificationString()
         
-        return cell
+        if (classificationString != nil) && (classificationString!.isEmpty == false) {
+            let cell = tableView.dequeueReusableCell(withIdentifier:"PizzaDetailCell", for:indexPath)
+            cell.textLabel?.text = pizza.name
+            cell.detailTextLabel?.text = classificationString
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier:"PizzaCell", for:indexPath)
+            cell.textLabel?.text = pizza.name
+            return cell
+        }
+  
     }
 
     override func tableView(_ tableView:UITableView, didSelectRowAt indexPath:IndexPath) {

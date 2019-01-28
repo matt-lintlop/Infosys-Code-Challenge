@@ -21,21 +21,24 @@ struct PizzaClassifications {
     }
 
     init?(withDictionary dict:[String:AnyObject]) {
-        guard let vegetarian = dict[DictionaryKeys.vegetarian.rawValue] as? Bool else {
-            return nil
+        if let vegetarian = dict[DictionaryKeys.vegetarian.rawValue] as? Bool {
+            self.vegetarian = vegetarian
         }
-        self.vegetarian = vegetarian
-        
-        guard let spicy = dict[DictionaryKeys.spicy.rawValue] as? Bool else {
-            return nil
+        else {
+            self.vegetarian = false
         }
-        self.spicy = spicy
-        
-        guard let glutonFree = dict[DictionaryKeys.glutonFree.rawValue] as? Bool else {
-            return nil
+        if let spicy = dict[DictionaryKeys.spicy.rawValue] as? Bool {
+            self.spicy = spicy
         }
-        self.glutonFree = glutonFree
-
+        else {
+            self.spicy = false
+        }
+        if let glutonFree = dict[DictionaryKeys.glutonFree.rawValue] as? Bool {
+            self.glutonFree = glutonFree
+        }
+        else {
+            self.glutonFree = false
+        }
    }
     
     

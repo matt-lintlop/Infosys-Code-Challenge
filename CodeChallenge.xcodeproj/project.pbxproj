@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4409F8F621FD812F0012A0AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4409F8F421FD812F0012A0AB /* Main.storyboard */; };
 		4410FC0C215892530064F053 /* PizzaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410FC0B215892530064F053 /* PizzaTableViewController.swift */; };
-		4447CFAE21F9699600646107 /* pizza.json in Resources */ = {isa = PBXBuildFile; fileRef = 4447CFAD21F9699600646107 /* pizza.json */; };
 		445413122156FF3D00735833 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445413112156FF3D00735833 /* AppDelegate.swift */; };
 		445413192156FF3D00735833 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 445413182156FF3D00735833 /* Assets.xcassets */; };
 		4454131C2156FF3D00735833 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4454131A2156FF3D00735833 /* LaunchScreen.storyboard */; };
@@ -29,7 +28,6 @@
 /* Begin PBXFileReference section */
 		4409F8F521FD812F0012A0AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4410FC0B215892530064F053 /* PizzaTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaTableViewController.swift; sourceTree = "<group>"; };
-		4447CFAD21F9699600646107 /* pizza.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pizza.json; sourceTree = "<group>"; };
 		4454130E2156FF3D00735833 /* CodeChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		445413112156FF3D00735833 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		445413182156FF3D00735833 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 				4454131D2156FF3D00735833 /* Info.plist */,
 				44C6C4A6215B8CDA00125C24 /* README.md */,
 				445413232156FF5A00735833 /* data.json */,
-				4447CFAD21F9699600646107 /* pizza.json */,
 			);
 			path = CodeChallenge;
 			sourceTree = "<group>";
@@ -174,7 +171,6 @@
 				4454131C2156FF3D00735833 /* LaunchScreen.storyboard in Resources */,
 				4409F8F621FD812F0012A0AB /* Main.storyboard in Resources */,
 				445413192156FF3D00735833 /* Assets.xcassets in Resources */,
-				4447CFAE21F9699600646107 /* pizza.json in Resources */,
 				445413242156FF5A00735833 /* data.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
