@@ -62,16 +62,17 @@ class PizzaMenuParser {
                 let pizzaMenuDict = try JSONSerialization.jsonObject(with:jsonData, options:.allowFragments) as! [[String:[[String:AnyObject]]]]
                 
                 for sectionDict in pizzaMenuDict {
-                    for (sectionName, sectionPizzas) in sectionDict {
+                    for (sectionName, sectionPizzaDicts) in sectionDict {
                         print("\n***********************************************************")
-                        print("section name = \(sectionName), has \(sectionPizzas.count) pizzas")
+                        print("section name = \(sectionName), has \(sectionPizzaDicts.count) pizzas")
                         print("***********************************************************\n")
+   
+                        guard let pizzaSection = PizzaSection(withSectionName: sectionName, sectionPizzaDicts:sectionPizzaDicts) else {
+                            print("Error parsing pizza section dictionary")
+                            continue
+                        }
                     }
-//                     guard let pizzaSection = PizzaSection(withDictionary: sectionDict) else {
-//                        print("Error parsing pizza section dictionary")
-//                        continue
-//                    }
-//                    if let pizzaCount = pizzaSection.sectionPizzas?.count {
+//                  if let pizzaCount = pizzaSection.sectionPizzas?.count {
 //                        print("\n***********************************************************")
 //                        print("section name = \(pizzaSection.sectionName), has \(pizzaCount) pizzas")
 //                        print("***********************************************************\n")
