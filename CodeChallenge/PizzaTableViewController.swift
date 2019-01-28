@@ -59,36 +59,36 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
     }
     
     func makeSectionsWithPizzas(_ pizzas:[Pizza]) {
-        var sectionsDict:[String:[Pizza]] = [:]
-        self.sectionNames = []
-        self.sectionPizzas = []
-
-        for pizza in pizzas {
-            pizza.delegate = self
-            let type = pizza.pizzaSummary.type.capitalized
-            if var sectionPizzas = sectionsDict[type] {
-                sectionPizzas.append(pizza)
-                sectionsDict[type] = sectionPizzas
-            }
-            else {
-                sectionsDict[type] = [pizza]
-            }
-        }
-        let sortedSectionNames = sectionsDict.keys.sorted()
-        for sectionName in sortedSectionNames {
-            self.sectionNames.append(sectionName)
-            let unsortedSectionPizzas = sectionsDict[sectionName]!
-            let sortedSectionPizzas = unsortedSectionPizzas.sorted { (pizza1, pizza2) -> Bool in
-                return pizza1.pizzaIdentifier < pizza2.pizzaIdentifier
-            }
-            self.sectionPizzas.append(sortedSectionPizzas)
-        }
-        for (sectionNunber, _) in self.sectionNames.enumerated() {
-            let sectionPizzas = self.sectionPizzas[sectionNunber]
-            for (rowNumber, pizza) in sectionPizzas.enumerated() {
-                pizza.indexPath = IndexPath(row:rowNumber, section:sectionNunber)
-            }
-        }
+//        var sectionsDict:[String:[Pizza]] = [:]
+//        self.sectionNames = []
+//        self.sectionPizzas = []
+//
+//        for pizza in pizzas {
+//            pizza.delegate = self
+//            let type = pizza.pizzaSummary.type.capitalized
+//            if var sectionPizzas = sectionsDict[type] {
+//                sectionPizzas.append(pizza)
+//                sectionsDict[type] = sectionPizzas
+//            }
+//            else {
+//                sectionsDict[type] = [pizza]
+//            }
+//        }
+//        let sortedSectionNames = sectionsDict.keys.sorted()
+//        for sectionName in sortedSectionNames {
+//            self.sectionNames.append(sectionName)
+//            let unsortedSectionPizzas = sectionsDict[sectionName]!
+//            let sortedSectionPizzas = unsortedSectionPizzas.sorted { (pizza1, pizza2) -> Bool in
+//                return pizza1.pizzaIdentifier < pizza2.pizzaIdentifier
+//            }
+//            self.sectionPizzas.append(sortedSectionPizzas)
+//        }
+//        for (sectionNunber, _) in self.sectionNames.enumerated() {
+//            let sectionPizzas = self.sectionPizzas[sectionNunber]
+//            for (rowNumber, pizza) in sectionPizzas.enumerated() {
+//                pizza.indexPath = IndexPath(row:rowNumber, section:sectionNunber)
+//            }
+//        }
     }
 
     // get the name of the section at an index path
@@ -128,11 +128,8 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
             return tableView.dequeueReusableCell(withIdentifier:"CatalogItemCell")!
         }
         let cell = tableView.dequeueReusableCell(withIdentifier:"CatalogItemCell", for:indexPath)
-        cell.textLabel?.text = pizza.pizzaIdentifier
+        cell.textLabel?.text = pizza.name
         
-        if let visualCatalogItem = pizza as? VisualCatalogItem {
-            cell.imageView?.image = visualCatalogItem.image
-        }
         return cell
     }
 
