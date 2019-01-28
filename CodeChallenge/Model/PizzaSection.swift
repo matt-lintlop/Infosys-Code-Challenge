@@ -17,14 +17,13 @@ struct PizzaSection {
     let sectionsDict:[String:[[String:AnyObject]]]      // pizza section dict (key = section name, value = pizzas in the section)
     
     init?(withDictionary dict:[String:[[String:AnyObject]]]) {
-        guard let sectionName = dict.keys.first else {
+        guard let name = dict.keys.first else {
             return nil
         }
-        self.sectionsDict = dict
-        self.sectionName = sectionName
-        self.sectionPizzas = nil
         
-        var sectionPizzas:[Pizza] = []
+        self.sectionsDict = dict
+        self.sectionName = name
+        self.sectionPizzas = []
         guard let pizzaDicts:[[String:AnyObject]] = dict.values.first else {
             return nil
         }

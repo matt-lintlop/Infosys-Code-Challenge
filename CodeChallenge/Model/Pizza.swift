@@ -17,13 +17,14 @@ protocol PizzaDelegate {
 
 // Catalog Item class
 class  Pizza  {
-    var id:String = ""                              // pizza id
-    var name:String = ""                            // name of pizza
-    var price:String = ""                           // price of pizza
-    let menuDescription:String = ""                 // pizza menu description
+    var id:Int                                   // pizza id
+    var name:String                                 // name of pizza
+    var price:String?                               // price of pizza
+    let menuDescription:String?                     // pizza menu description
     var assets:PizzaAssets?                         // pizza assets (images)
     var toppings:[PizzaTopping]?                    // pizza toppings
     var classifications:PizzaClassifications?       // pizza classifications
+    
     var indexPath:IndexPath?                        // index path of associated table view cell
     var delegate:PizzaDelegate?                     // delegate
  
@@ -38,6 +39,30 @@ class  Pizza  {
     }
     
     init?(withDictionary dict:[String:AnyObject]) {
-
+        guard let id = dict[DictionaryKeys.id.rawValue] as? Int else {
+            return nil
+        }
+        self.id = id
+        
+        guard let name = dict[DictionaryKeys.name.rawValue] as? String else {
+            return nil
+        }
+        self.name = name
+        self.price = dict[DictionaryKeys.price.rawValue] as? String
+        self.menuDescription = dict[DictionaryKeys.menuDescription.rawValue] as? String
+        
+        if let classificationsDict = dict[DictionaryKeys.classifications.rawValue] as? [String:AnyObject] {
+            self.classifications = PizzaClassifications(withDictionary: classificationsDict)
+        }
+        
+        if let assetsDict = dict[DictionaryKeys.assets.rawValue] as? [String:AnyObject] {
+            self.assets = PizzaAssets(withDictionary: assetsDict)
+        }
+        
+        self.toppings = []
+        if let toppingsDict = dict[DictionaryKeys.toppings.rawValue] as? [String:AnyObject],
+            let topping = PizzaTopping(withDictionary: toppingsDict) {
+            self.toppings?.append(topping)
+        }
     }
 }
