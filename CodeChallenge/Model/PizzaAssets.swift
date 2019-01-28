@@ -11,8 +11,8 @@
 import Foundation
 
 struct PizzaAssets {
-    let menu:PizzaImageReference?                   // image of pizza in menu
-    let productDetailsPage:PizzaImageReference?      // image of product details
+    var menu:PizzaImageReference?                   // image of pizza in menu
+    var productDetailsPage:PizzaImageReference?      // image of product details
 
     private enum DictionaryKeys: String {
         case productDetailsPage = "product_details_page"
@@ -20,14 +20,30 @@ struct PizzaAssets {
     }
 
     init?(withDictionary dict:[String:AnyObject]) {
-        guard let menuAssetDict = dict["menu"] as? [String:AnyObject] else {
+        
+        if let menuAssetDict = dict[DictionaryKeys.menu.rawValue] as? [String:AnyObject] {
+            guard let menu = PizzaImageReference(withDictionary: menuAssetDict) else {
+                return nil
+            }
+            self.menu = menu
+        }
+        else {
             return nil
         }
-        self.menu = PizzaImageReference(withDictionary: menuAssetDict)
+        if let productDetailsAssetDict = dict[DictionaryKeys.productDetailsPage.rawValue] as? [String:AnyObject] {
+            guard let productDetailsPage = PizzaImageReference(withDictionary: productDetailsAssetDict) else {
+                return nil
+            }
+            self.productDetailsPage = productDetailsPage
+        }
+        else {
+            return nil
+        }
 
-        guard let productDetailsAssetDict = dict["product_details_page"] as? [String:AnyObject] else {
+        
+        guard let productDetailsAssetDict = dict["product_details_page"] as? [String:String] else {
             return nil
         }
-        self.productDetailsPage = PizzaImageReference(withDictionary: productDetailsAssetDict)
+        self.productDetailsPage = PizzaImageReference(withDictionary: productDetailsAssetDict as [String : AnyObject])
     }
 }
