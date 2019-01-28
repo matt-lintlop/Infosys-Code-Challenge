@@ -65,4 +65,14 @@ class  Pizza  {
             self.toppings?.append(topping)
         }
      }
+    
+    // Is this a vegetarian pizza?
+    func isVegetarian() -> Bool {
+        if let classifications = classifications {
+            return classifications.vegetarian
+        }
+        else {
+            return false
+        }
+    }
 }

@@ -104,6 +104,8 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
         guard let pizzaSection = getPizzaSection(section) else {
             return nil
         }
+        print(">>> name of section # \(section) = \(pizzaSection.sectionName)")
+        
         return pizzaSection.sectionName
     }
 
@@ -148,9 +150,9 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
 
     override func tableView(_ tableView:UITableView, cellForRowAt indexPath:IndexPath) -> UITableViewCell {
         guard let pizza = getPizza(atIndexPath:indexPath) else {
-            return tableView.dequeueReusableCell(withIdentifier:"CatalogItemCell")!
+            return tableView.dequeueReusableCell(withIdentifier:"PizzaCell")!
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier:"CatalogItemCell", for:indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier:"PizzaCell", for:indexPath)
         cell.textLabel?.text = pizza.name
         
         return cell
