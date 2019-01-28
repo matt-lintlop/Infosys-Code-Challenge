@@ -20,7 +20,7 @@ struct PizzaImageReference {
     }
 
     init?(withDictionary dict:[String:AnyObject]) {
-        guard let url = dict["url"] as? String else {
+        guard let url = dict[DictionaryKeys.url.rawValue] as? String else {
             return nil
         }
         self.url = url

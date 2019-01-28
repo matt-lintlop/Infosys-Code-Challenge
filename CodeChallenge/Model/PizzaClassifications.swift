@@ -17,7 +17,7 @@ struct PizzaClassifications {
     }
 
     init?(withDictionary dict:[String:AnyObject]) {
-        guard let vegetarian = dict["vegetarian"] as? Bool else {
+        guard let vegetarian = dict[DictionaryKeys.vegetarian.rawValue] as? Bool else {
             return nil
         }
         self.vegetarian = vegetarian
