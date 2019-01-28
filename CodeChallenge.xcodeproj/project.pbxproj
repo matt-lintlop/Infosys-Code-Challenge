@@ -101,10 +101,10 @@
 			isa = PBXGroup;
 			children = (
 				447130CA21FF1C5E00214C37 /* Pizza.swift */,
+				447130CC21FF1C5F00214C37 /* PizzaSection.swift */,
 				447130D021FF1C5F00214C37 /* PizzaAssets.swift */,
 				447130CB21FF1C5F00214C37 /* PizzaClassifications.swift */,
 				447130CD21FF1C5F00214C37 /* PizzaImageReference.swift */,
-				447130CC21FF1C5F00214C37 /* PizzaSection.swift */,
 				447130CF21FF1C5F00214C37 /* PizzaTopping.swift */,
 			);
 			path = Model;
