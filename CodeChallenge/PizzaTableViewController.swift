@@ -12,6 +12,7 @@ import UIKit
 
 class PizzaTableViewController:UITableViewController, PizzaDelegate {
     var pizzas:[Pizza]?
+    var pizzaSections:[PizzaSection]?
     var sectionNames:[String] = []
     var sectionPizzas:[[Pizza]] = []
     var pizzaMenu:[[String:AnyObject]]?
@@ -20,14 +21,14 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
         super.viewDidLoad()
 
         let pizzaMenuParser = PizzaMenuParser()
-        pizzaMenuParser.downloadAndParsePizzaMenuJSON() { (error, pizzaMenu) in
+        pizzaMenuParser.downloadAndParsePizzaMenuJSON() { (error, pizzaSections) in
             
             if let error = error {
                 print("Error in downloadAndParsePizzaMenuJSON(): \(error.localizedDescription)")
             }
             else {
-                self.pizzaMenu = pizzaMenu
-                print("Success in downloadAndParsePizzaMenuJSON() : pizzaMenu = \(String(describing: pizzaMenu))")
+                self.pizzaSections = pizzaSections
+                print("Success in downloadAndParsePizzaMenuJSON()")
             }
             
             DispatchQueue.main.async(execute:{

@@ -14,6 +14,7 @@ import Foundation
 
 // PizzaMenuParser
 class PizzaMenuParser {
+    var pizzaSections:[PizzaSection]
     var pizzas:[Pizza]?
     var sectionNames:[String]?
     var pizzaSectionDict:[String:[Pizza]]?
@@ -28,9 +29,10 @@ class PizzaMenuParser {
         self.pizzas = []
         self.sectionNames = []
         self.pizzaSectionDict = [:]
+        self.pizzaSections = []
     }
  
-    func downloadAndParsePizzaMenuJSON(completion:@escaping (Error?, [[String:AnyObject]]?) -> Void)  {
+    func downloadAndParsePizzaMenuJSON(completion:@escaping (Error?, [PizzaSection]?) -> Void)  {
         enum PizzaMenuError:Error {
             case errorParsingPizzaMenuJSON       // thrown if there is an error parsing the pizza menu json
             case errorDownloadingPizzaMenuJSON   // thrown if there is an error downloading the pizza menu json
@@ -54,30 +56,31 @@ class PizzaMenuParser {
             }.resume()
     }
 
-    func parsePizzaMenuJSONData(jsonData: Data, completion:@escaping (Error?, [[String:AnyObject]]?) -> Void)  {
+    func parsePizzaMenuJSONData(jsonData: Data, completion:@escaping (Error?, [PizzaSection]?) -> Void)  {
         DispatchQueue.global(qos:.background).async {
              do {
-                let pizzaMenuDict = try JSONSerialization.jsonObject(with:jsonData, options:.allowFragments) as! [[String:AnyObject]]
-                var pizzaSectionDicts:[[String:AnyObject]] = []
-                for pizzaSection in pizzaMenuDict {
-                    for (sectionName, _) in pizzaSection {
-                        guard let sectionPizzas = pizzaSection[sectionName] as? [AnyObject] else {
-                            continue
-                        }
-                        guard let pizza = sectionPizzas[0] as? [String:AnyObject] else {
-                            print("no pizzas in the section")
-                            continue
-                        }
+                let pizzaMenuDict = try JSONSerialization.jsonObject(with:jsonData, options:.allowFragments) as! [[String:[[String:AnyObject]]]]
+                
+                for sectionDict in pizzaMenuDict {
+                    for (sectionName, sectionPizzas) in sectionDict {
                         print("\n***********************************************************")
                         print("section name = \(sectionName), has \(sectionPizzas.count) pizzas")
                         print("***********************************************************\n")
-                        
-                        pizzaSectionDicts.append(pizzaSection)
                     }
+//                     guard let pizzaSection = PizzaSection(withDictionary: sectionDict) else {
+//                        print("Error parsing pizza section dictionary")
+//                        continue
+//                    }
+//                    if let pizzaCount = pizzaSection.sectionPizzas?.count {
+//                        print("\n***********************************************************")
+//                        print("section name = \(pizzaSection.sectionName), has \(pizzaCount) pizzas")
+//                        print("***********************************************************\n")
+//                    }
+//                    self.pizzaSections.append(pizzaSection)
                 }
-                completion(nil, pizzaSectionDicts)
-            }
-            catch {
+                completion(nil, self.pizzaSections)
+             }
+             catch {
                 completion(ParsePizzaMenuError.errorParsingPizzaMenuJSON, nil)
             }
         }
