@@ -15,10 +15,6 @@ struct PizzaSection {
     let sectionPizzas:[Pizza]?
     
     let sectionsDict:[String:[[String:AnyObject]]]      // pizza section dict (key = section name, value = pizzas in the section)
-
-    private enum DictionaryKeys: String {
-        case sectionsDict = ""
-    }
     
     init?(withDictionary dict:[String:[[String:AnyObject]]]) {
         guard let sectionName = dict.keys.first else {

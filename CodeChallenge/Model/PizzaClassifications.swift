@@ -13,7 +13,7 @@ struct PizzaClassifications {
     let vegetarian:Bool         // vegetariona pizza flag
  
     private enum DictionaryKeys: String {
-        case vegetarian = "vegetarian"
+        case vegetarian
     }
 
     init?(withDictionary dict:[String:AnyObject]) {

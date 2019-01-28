@@ -14,7 +14,11 @@ import Foundation
 // Image Reference
 struct PizzaImageReference {
     let url:String                          // image url
-    
+ 
+    private enum DictionaryKeys: String {
+        case url
+    }
+
     init?(withDictionary dict:[String:AnyObject]) {
         guard let url = dict["url"] as? String else {
             return nil

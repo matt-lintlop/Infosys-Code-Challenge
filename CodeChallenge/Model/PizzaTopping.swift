@@ -21,18 +21,17 @@ struct PizzaTopping  {
             return nil
         }
         self.id = id
-
         guard let name = dict["name"] as? String else {
             return nil
         }
         self.name = name
-        
         self.description = dict["description"] as? String
-
-        if let assets = dict["assets"] as? [[String:String]] {
-
+        if let assetsDict = dict["assets"] as? [String:AnyObject] {
+            guard let assets = PizzaAssets(withDictionary: assetsDict) else {
+                return nil
+            }
+            self.assets = assets
         }
-        self.description = dict["description"] as? String
         return nil
     }
 }
