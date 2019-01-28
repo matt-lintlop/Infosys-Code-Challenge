@@ -47,9 +47,8 @@ class PizzaMenuParser {
                     completion(PizzaMenuError.errorDownloadingPizzaMenuJSON, nil)
                     return
             }
-            // TODO: do something with the data
-            print("Downloaded the data: \(jsonData.count) bytes")
-            print(String(data: jsonData, encoding: .utf8) ?? "No response data as string")
+//            print("Downloaded the data: \(jsonData.count) bytes")
+//            print(String(data: jsonData, encoding: .utf8) ?? "No response data as string")
 
             self.parsePizzaMenuJSONData(jsonData: jsonData, completion: completion)
             }.resume()
@@ -62,18 +61,16 @@ class PizzaMenuParser {
                 var pizzaSectionDicts:[[String:AnyObject]] = []
                 for pizzaSection in pizzaMenuDict {
                     for (sectionName, _) in pizzaSection {
-                        print("section name = \(sectionName)")
                         guard let sectionPizzas = pizzaSection[sectionName] as? [AnyObject] else {
                             continue
                         }
-                        print("section pizzas = has \(sectionPizzas.count) pizzas")
-                    
                         guard let pizza = sectionPizzas[0] as? [String:AnyObject] else {
                             print("no pizzas in the section")
                             continue
                         }
-                        print("1st pizza in section named \(sectionName) is:\n\(pizza)\n")
-                        print("\n***********************************************************\n")
+                        print("\n***********************************************************")
+                        print("section name = \(sectionName), has \(sectionPizzas.count) pizzas")
+                        print("***********************************************************\n")
                         
                         pizzaSectionDicts.append(pizzaSection)
                     }

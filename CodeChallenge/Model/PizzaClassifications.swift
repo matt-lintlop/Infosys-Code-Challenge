@@ -9,9 +9,13 @@
 
 import Foundation
 
-struct PizzaClassifications: Decodable {
+struct PizzaClassifications {
     let vegetarian:Bool         // vegetariona pizza flag
  
+    private enum DictionaryKeys: String {
+        case vegetarian = "vegetarian"
+    }
+
     init?(withDictionary dict:[String:AnyObject]) {
         guard let vegetarian = dict["vegetarian"] as? Bool else {
             return nil

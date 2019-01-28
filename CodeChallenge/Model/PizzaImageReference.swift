@@ -12,7 +12,7 @@
 import Foundation
 
 // Image Reference
-struct PizzaImageReference: Decodable {
+struct PizzaImageReference {
     let url:String                          // image url
     
     init?(withDictionary dict:[String:AnyObject]) {

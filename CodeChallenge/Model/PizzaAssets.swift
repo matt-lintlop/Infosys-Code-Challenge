@@ -10,11 +10,11 @@
 
 import Foundation
 
-struct PizzaAssets: Decodable {
+struct PizzaAssets {
     let menu:PizzaImageReference?                   // image of pizza in menu
     let productDetailsPage:PizzaImageReference?      // image of product details
 
-    private enum CodingKeys: String, CodingKey {
+    private enum DictionaryKeys: String {
         case productDetailsPage = "product_details_page"
         case menu
     }

@@ -10,10 +10,10 @@
 
 import Foundation
 
-struct PizzaSection:Decodable {
+struct PizzaSection {
     let sectionsDict:[String:[Pizza]]      // pizza section dict (key = section name, value = pizzas in the section)
 
-    private enum CodingKeys: String, CodingKey {
+    private enum DictionaryKeys: String {
         case sectionsDict = ""
     }
     

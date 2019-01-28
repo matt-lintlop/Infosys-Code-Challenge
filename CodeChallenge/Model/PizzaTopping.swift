@@ -10,7 +10,7 @@
 
 import Foundation
 
-struct PizzaTopping: Decodable {
+struct PizzaTopping  {
     let id:Int                      // topping id
     let name:String                 // name of topping
     var description:String?         // description of topping

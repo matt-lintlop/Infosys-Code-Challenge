@@ -16,7 +16,7 @@ protocol PizzaDelegate {
 }
 
 // Catalog Item class
-class  Pizza:Decodable  {
+class  Pizza  {
     var id:String = ""                              // pizza id
     var name:String = ""                            // name of pizza
     var price:String = ""                           // price of pizza
@@ -27,7 +27,7 @@ class  Pizza:Decodable  {
     var indexPath:IndexPath?                        // index path of associated table view cell
     var delegate:PizzaDelegate?                     // delegate
  
-    private enum CodingKeys: String, CodingKey {
+    private enum DictionaryKeys: String {
         case id
         case name
         case price
