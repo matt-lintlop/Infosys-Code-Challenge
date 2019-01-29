@@ -51,7 +51,7 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
         // 2
         nav?.barStyle = UIBarStyle.black
         nav?.tintColor = UIColor.white
-        self.shoppingCartCountText = UIBarButtonItem(title: "123", style: .plain, target: self, action: #selector(addTapped))
+        self.shoppingCartCountText = UIBarButtonItem(title: "777", style: .plain, target: self, action: #selector(addTapped))
         self.navigationItem.rightBarButtonItems = [shoppingCartCountText!]
     }
     
