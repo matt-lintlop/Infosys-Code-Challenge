@@ -14,6 +14,7 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
     var pizzaSections:[PizzaSection]?
     var pizzaMenu:[[String:AnyObject]]?
     var shoppigCartCount:Int = 0
+    var shoppingCartCountText:UIBarButtonItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,18 +51,15 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
         // 2
         nav?.barStyle = UIBarStyle.black
         nav?.tintColor = UIColor.white
-        
-        // 3
-//        let button = UIButton(type: .custom)
-//        //set image for button
-//        button.setImage(UIImage(named: "shopping_cart1600.png"), for: .normal)
-//        //add function for button
-
-        let button = UIBarButtonItem(title: "123", style: .plain, target: self, action: #selector(addTapped))
-        
-  //      let barButton = UIBarButtonItem(customView: button)
-        //assign button to navigationbar
-        self.navigationItem.rightBarButtonItem = button
+        self.shoppingCartCountText = UIBarButtonItem(title: "123", style: .plain, target: self, action: #selector(addTapped))
+        self.navigationItem.rightBarButtonItems = [shoppingCartCountText!]
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        if let shoppingCartCountText = self.shoppingCartCountText {
+            self.navigationItem.rightBarButtonItems = nil
+            self.shoppingCartCountText = nil
+        }
     }
     
     //This method will call when you press button.
