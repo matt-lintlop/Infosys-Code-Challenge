@@ -56,11 +56,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CodeChallenge/PizzaTableViewController.swift"
-            timestampString = "570388644.59672"
+            timestampString = "570444061.276931"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "pizza(_:didLoadImageImage:withError:)"
             landmarkType = "7">
          </BreakpointContent>

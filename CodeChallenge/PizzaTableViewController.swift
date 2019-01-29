@@ -37,15 +37,38 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
                     self.present(alertController, animated:true, completion:nil)
                 }
                 else {
-                    self.tableView.reloadData()
+                     self.tableView.reloadData()
                 }
             })
-            guard let shoppingCartImage = UIImage(named: "shoppingCart.png") else {
-                return
-            }
-            let shoppingCartButton = UIBarButtonItem(image: shoppingCartImage, style: .plain, target: nil, action: nil)
-
-         }
+          }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // 1
+        let nav = self.navigationController?.navigationBar
+        
+        // 2
+        nav?.barStyle = UIBarStyle.black
+        nav?.tintColor = UIColor.yellow
+        
+        // 3
+        let button = UIButton(type: .custom)
+        //set image for button
+        button.setImage(UIImage(named: "shopping_cart1600.png"), for: .normal)
+        //add function for button
+        button.addTarget(self, action: #selector(fbButtonPressed), for: .touchUpInside)
+        //set frame
+        button.frame = CGRect(x: 0, y: 0, width: 53, height: 51)
+        
+        let barButton = UIBarButtonItem(customView: button)
+        //assign button to navigationbar
+        self.navigationItem.rightBarButtonItem = barButton
+    }
+    
+    //This method will call when you press button.
+    @objc func fbButtonPressed() {
+        
+        print("Share to fb")
     }
 
     required init?(coder aDecoder: NSCoder) {
