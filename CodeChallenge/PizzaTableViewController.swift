@@ -49,26 +49,25 @@ class PizzaTableViewController:UITableViewController, PizzaDelegate {
         
         // 2
         nav?.barStyle = UIBarStyle.black
-        nav?.tintColor = UIColor.yellow
+        nav?.tintColor = UIColor.white
         
         // 3
-        let button = UIButton(type: .custom)
-        //set image for button
-        button.setImage(UIImage(named: "shopping_cart1600.png"), for: .normal)
-        //add function for button
-        button.addTarget(self, action: #selector(fbButtonPressed), for: .touchUpInside)
-        //set frame
-        button.frame = CGRect(x: 0, y: 0, width: 53, height: 51)
+//        let button = UIButton(type: .custom)
+//        //set image for button
+//        button.setImage(UIImage(named: "shopping_cart1600.png"), for: .normal)
+//        //add function for button
+
+        let button = UIBarButtonItem(title: "123", style: .plain, target: self, action: #selector(addTapped))
         
-        let barButton = UIBarButtonItem(customView: button)
+  //      let barButton = UIBarButtonItem(customView: button)
         //assign button to navigationbar
-        self.navigationItem.rightBarButtonItem = barButton
+        self.navigationItem.rightBarButtonItem = button
     }
     
     //This method will call when you press button.
-    @objc func fbButtonPressed() {
+    @objc func addTapped() {
         
-        print("Share to fb")
+        print("Add btton tapped")
     }
 
     required init?(coder aDecoder: NSCoder) {
